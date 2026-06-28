@@ -243,35 +243,48 @@ class SAGEv0(nn.Module):
         }
     
     @torch.no_grad()
-    def update_energy(self, selected_organs, reward, lr=0.01, homeostasis=0.02, activation_cost=0.015):
+    def update_energy(self, selected_organs, correct, lr=0.02, homeostasis=0.08):
         """
-        v0.3 energy update
-        - 에너지는 1.0 근처로 돌아가려 함
-        - 평균보다 좋은 reward일 때만 조금 강화
-        - 선택된 기관은 사용 비용을 냄
-        - 전체 포화 방지
+        v0.4 energy update
+
+        selected_organs: [batch, top_k]
+        correct: [batch] 1.0이면 정답, 0.0이면 오답
+
+        핵심:
+        - 에너지는 기본적으로 1.0으로 회귀한다.
+        - 정답에 참여한 기관은 강화된다.
+        - 오답에 참여한 기관은 약화된다.
+        - batch 안에서 기관별 평균 기여도를 계산해서 업데이트한다.
+        - v0.2처럼 전부 과충전되거나 v0.3처럼 전부 방전되는 것을 막는다.
         """
 
-        if not hasattr(self, "reward_baseline"):
-            self.register_buffer("reward_baseline", torch.tensor(float(reward), device=self.organ_energy.device))
-
-        reward_value = float(reward)
-
-        # reward 기준선 업데이트
-        self.reward_baseline *= 0.99
-        self.reward_baseline += 0.01 * reward_value
-
-        advantage = reward_value - float(self.reward_baseline.item())
-
-        # 전체 에너지는 1.0으로 회귀
+        # 1. 전체 기관은 1.0으로 회귀
         self.organ_energy += homeostasis * (1.0 - self.organ_energy)
 
-        # 선택된 기관만 업데이트
-        for organ_id in selected_organs.flatten().tolist():
-            self.organ_energy[organ_id] += lr * advantage
-            self.organ_energy[organ_id] -= activation_cost
+        # 2. 정답이면 +1, 오답이면 -1
+        score = correct.detach().float() * 2.0 - 1.0
 
-        self.organ_energy.clamp_(0.4, 2.5)
+        organ_score = torch.zeros_like(self.organ_energy)
+        organ_count = torch.zeros_like(self.organ_energy)
+
+        batch_size = selected_organs.shape[0]
+        top_k = selected_organs.shape[1]
+
+        # 3. 선택된 기관별 평균 성과 계산
+        for i in range(batch_size):
+            for k in range(top_k):
+                organ_id = int(selected_organs[i, k].item())
+                organ_score[organ_id] += score[i]
+                organ_count[organ_id] += 1.0
+
+        # 4. 기관별 평균 score만 반영
+        for organ_id in range(self.num_organs):
+            if organ_count[organ_id] > 0:
+                mean_score = organ_score[organ_id] / organ_count[organ_id]
+                self.organ_energy[organ_id] += lr * mean_score
+
+        # 5. 극단값 방지
+        self.organ_energy.clamp_(0.5, 1.6)
 
 
 # =========================
@@ -368,7 +381,8 @@ def train():
             acc = (pred_actions == target_actions).float().mean().item()
             reward_mean = rewards.mean().item()
 
-            model.update_energy(out["selected_organs"], reward_mean)
+            correct = (pred_actions == target_actions).float()
+            model.update_energy(out["selected_organs"], correct)
             selected = out["selected_organs"].flatten()
             usage = torch.bincount(selected, minlength=model.num_organs).float()
             usage = usage / usage.sum()
