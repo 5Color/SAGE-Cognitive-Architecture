@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+*.pth
+*.pt
+*.onnx
+runs/
+logs/
+checkpoints/
+*.log
+.DS_Store
+.vscode/
