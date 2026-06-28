@@ -1,0 +1,262 @@
+[
+  {
+    "model": "SingleMLP-Replay",
+    "final_avg_acc": 0.6773,
+    "avg_reward": 0.5382,
+    "avg_adapt_gain": 0.1107,
+    "ms_per_batch": 0.7645,
+    "effective_params": 52550,
+    "reward_per_million_effective_params": 10.2414,
+    "phase_acc": {
+      "phase_0": 0.6068,
+      "phase_1": 0.4703,
+      "phase_2": 0.6781,
+      "phase_3": 0.9542
+    },
+    "first_window_acc": {
+      "phase_0": 0.7146,
+      "phase_1": 0.8248,
+      "phase_2": 0.8494,
+      "phase_3": 0.8675
+    },
+    "last_window_acc": {
+      "phase_0": 0.8814,
+      "phase_1": 0.9012,
+      "phase_2": 0.9586,
+      "phase_3": 0.9578
+    },
+    "adapt_gain": {
+      "phase_0": 0.1668,
+      "phase_1": 0.0764,
+      "phase_2": 0.1092,
+      "phase_3": 0.0903
+    },
+    "usage": null,
+    "use_state": false,
+    "use_replay": true,
+    "use_energy": false,
+    "use_context": false
+  },
+  {
+    "model": "ContextMLP-Replay",
+    "final_avg_acc": 0.6719,
+    "avg_reward": 0.5249,
+    "avg_adapt_gain": 0.1393,
+    "ms_per_batch": 0.47,
+    "effective_params": 53062,
+    "reward_per_million_effective_params": 9.892,
+    "phase_acc": {
+      "phase_0": 0.574,
+      "phase_1": 0.4016,
+      "phase_2": 0.7958,
+      "phase_3": 0.9161
+    },
+    "first_window_acc": {
+      "phase_0": 0.6342,
+      "phase_1": 0.8209,
+      "phase_2": 0.8438,
+      "phase_3": 0.8544
+    },
+    "last_window_acc": {
+      "phase_0": 0.8887,
+      "phase_1": 0.9084,
+      "phase_2": 0.9551,
+      "phase_3": 0.9582
+    },
+    "adapt_gain": {
+      "phase_0": 0.2545,
+      "phase_1": 0.0875,
+      "phase_2": 0.1113,
+      "phase_3": 0.1038
+    },
+    "usage": null,
+    "use_state": false,
+    "use_replay": true,
+    "use_energy": false,
+    "use_context": true
+  },
+  {
+    "model": "BasicMoE-Replay",
+    "final_avg_acc": 0.685,
+    "avg_reward": 0.5467,
+    "avg_adapt_gain": 0.1183,
+    "ms_per_batch": 2.6534,
+    "effective_params": 187402,
+    "reward_per_million_effective_params": 2.9172,
+    "phase_acc": {
+      "phase_0": 0.6099,
+      "phase_1": 0.4682,
+      "phase_2": 0.7057,
+      "phase_3": 0.9563
+    },
+    "first_window_acc": {
+      "phase_0": 0.6785,
+      "phase_1": 0.8207,
+      "phase_2": 0.8426,
+      "phase_3": 0.8596
+    },
+    "last_window_acc": {
+      "phase_0": 0.8713,
+      "phase_1": 0.8961,
+      "phase_2": 0.9504,
+      "phase_3": 0.9568
+    },
+    "adapt_gain": {
+      "phase_0": 0.1928,
+      "phase_1": 0.0754,
+      "phase_2": 0.1078,
+      "phase_3": 0.0972
+    },
+    "usage": [
+      0.26,
+      0.312,
+      0.192,
+      0.236
+    ],
+    "use_state": false,
+    "use_replay": true,
+    "use_energy": false,
+    "use_context": false
+  },
+  {
+    "model": "ContextMoE-Replay",
+    "final_avg_acc": 0.6477,
+    "avg_reward": 0.5005,
+    "avg_adapt_gain": 0.1249,
+    "ms_per_batch": 3.2611,
+    "effective_params": 187914,
+    "reward_per_million_effective_params": 2.6632,
+    "phase_acc": {
+      "phase_0": 0.5521,
+      "phase_1": 0.4208,
+      "phase_2": 0.6875,
+      "phase_3": 0.9302
+    },
+    "first_window_acc": {
+      "phase_0": 0.6756,
+      "phase_1": 0.8137,
+      "phase_2": 0.8401,
+      "phase_3": 0.8608
+    },
+    "last_window_acc": {
+      "phase_0": 0.8773,
+      "phase_1": 0.9035,
+      "phase_2": 0.9543,
+      "phase_3": 0.9547
+    },
+    "adapt_gain": {
+      "phase_0": 0.2018,
+      "phase_1": 0.0898,
+      "phase_2": 0.1142,
+      "phase_3": 0.0939
+    },
+    "usage": [
+      0.304,
+      0.198,
+      0.272,
+      0.227
+    ],
+    "use_state": false,
+    "use_replay": true,
+    "use_energy": false,
+    "use_context": true
+  },
+  {
+    "model": "SAGE-v0.7-StateReplay",
+    "final_avg_acc": 0.6805,
+    "avg_reward": 0.5402,
+    "avg_adapt_gain": 0.162,
+    "ms_per_batch": 3.274,
+    "effective_params": 304716,
+    "reward_per_million_effective_params": 1.7727,
+    "phase_acc": {
+      "phase_0": 0.6036,
+      "phase_1": 0.4578,
+      "phase_2": 0.7089,
+      "phase_3": 0.9516
+    },
+    "first_window_acc": {
+      "phase_0": 0.5752,
+      "phase_1": 0.7805,
+      "phase_2": 0.8135,
+      "phase_3": 0.843
+    },
+    "last_window_acc": {
+      "phase_0": 0.8598,
+      "phase_1": 0.8992,
+      "phase_2": 0.9533,
+      "phase_3": 0.9479
+    },
+    "adapt_gain": {
+      "phase_0": 0.2846,
+      "phase_1": 0.1187,
+      "phase_2": 0.1399,
+      "phase_3": 0.1048
+    },
+    "usage": [
+      0.375,
+      0.311,
+      0.171,
+      0.143
+    ],
+    "use_state": true,
+    "use_replay": true,
+    "use_energy": true,
+    "use_context": false,
+    "final_energy": [
+      1.2163,
+      1.2236,
+      1.2393,
+      1.2152
+    ]
+  },
+  {
+    "model": "SAGE-v0.8-Context",
+    "final_avg_acc": 0.6598,
+    "avg_reward": 0.5088,
+    "avg_adapt_gain": 0.1613,
+    "ms_per_batch": 3.3597,
+    "effective_params": 305228,
+    "reward_per_million_effective_params": 1.6668,
+    "phase_acc": {
+      "phase_0": 0.5625,
+      "phase_1": 0.4141,
+      "phase_2": 0.7885,
+      "phase_3": 0.874
+    },
+    "first_window_acc": {
+      "phase_0": 0.5307,
+      "phase_1": 0.7753,
+      "phase_2": 0.8394,
+      "phase_3": 0.844
+    },
+    "last_window_acc": {
+      "phase_0": 0.8648,
+      "phase_1": 0.8828,
+      "phase_2": 0.9424,
+      "phase_3": 0.9443
+    },
+    "adapt_gain": {
+      "phase_0": 0.3342,
+      "phase_1": 0.1076,
+      "phase_2": 0.103,
+      "phase_3": 0.1003
+    },
+    "usage": [
+      0.255,
+      0.227,
+      0.256,
+      0.262
+    ],
+    "use_state": true,
+    "use_replay": true,
+    "use_energy": true,
+    "use_context": true,
+    "final_energy": [
+      1.23,
+      1.2329,
+      1.2166,
+      1.2147
+    ]
+  }
+]
