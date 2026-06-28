@@ -154,3 +154,24 @@
 ### Expected Question
 
 SAGE는 단일 MLP나 일반 MoE보다 더 적은 계산으로 비슷하거나 더 좋은 적응 성능을 보이는가?
+
+
+## v0.5 - Baseline Benchmark
+
+### Result
+
+- SingleMLP: acc 0.9294, reward 0.8413, ms/batch 0.4521, reward/Mparam 16.0090
+- BasicMoE: acc 0.9244, reward 0.8413, ms/batch 2.1971, reward/Mparam 4.4894
+- SAGE-v0.4: acc 0.9125, reward 0.8221, ms/batch 2.5151, reward/Mparam 2.6979
+
+### Interpretation
+
+- 정적 ToySocialEnv에서는 SingleMLP가 가장 효율적이었다.
+- BasicMoE와 SAGE는 구조가 복잡해서 계산 비용이 증가했다.
+- SAGE는 energy homeostasis와 organ usage는 유지했지만, 단순 규칙 분류 문제에서는 구조적 이점이 드러나지 않았다.
+
+### Conclusion
+
+- SAGE는 단순 정적 분류 문제에서는 비효율적이다.
+- SAGE의 장점은 규칙 변화, 지속학습, 기억, 불확실성, 에너지 조절이 필요한 환경에서 검증해야 한다.
+- v0.6에서는 ContinualEnv를 도입한다.
