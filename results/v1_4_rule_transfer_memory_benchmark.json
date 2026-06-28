@@ -1,0 +1,1421 @@
+{
+  "benchmark": "SAGE-v1.4-rule-transfer-memory",
+  "goal": "Measure rapid new-rule inference, durable episodic memory, planning, language-action grounding, and organ role routing.",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "tasks": [
+    "episodic_memory",
+    "affine_rule",
+    "threshold_rule",
+    "language_action",
+    "grid_planning",
+    "world_dynamics"
+  ],
+  "organs": [
+    "memory_organ",
+    "algebra_organ",
+    "concept_organ",
+    "planner_organ"
+  ],
+  "agents": [
+    "RandomBaseline",
+    "EpisodicMemoryOnly",
+    "RuleTransferMemoryPlanner"
+  ],
+  "runs": [
+    {
+      "seed": 0,
+      "agent": "RandomBaseline",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 0
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 0.1731,
+          "affine_rule": 0.1755,
+          "threshold_rule": 0.1634,
+          "language_action": 0.1602,
+          "grid_planning": 0.1704,
+          "world_dynamics": 0.1681
+        },
+        "axis_scores": {
+          "task_diversity": 0.1684,
+          "long_memory": 0.1731,
+          "fast_rule_inference": 0.1694,
+          "language_action": 0.1602,
+          "planning": 0.1704,
+          "world_model_planning": 0.1681,
+          "organ_specialization": 0.1656
+        },
+        "agi_transfer_score": 0.1679,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "world_dynamics": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "memory_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "memory_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "memory_organ"
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "agent": "EpisodicMemoryOnly",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 0
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.3458,
+          "threshold_rule": 1.0,
+          "language_action": 0.363,
+          "grid_planning": 0.4042,
+          "world_dynamics": 0.4255
+        },
+        "axis_scores": {
+          "task_diversity": 0.5897,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.6729,
+          "language_action": 0.363,
+          "planning": 0.4042,
+          "world_model_planning": 0.4255,
+          "organ_specialization": 0.1656
+        },
+        "agi_transfer_score": 0.5173,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "world_dynamics": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "memory_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "memory_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "memory_organ"
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "agent": "RuleTransferMemoryPlanner",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 0
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 0.9995,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 0.9999,
+          "long_memory": 1.0,
+          "fast_rule_inference": 1.0,
+          "language_action": 1.0,
+          "planning": 0.9995,
+          "world_model_planning": 1.0,
+          "organ_specialization": 0.9227
+        },
+        "agi_transfer_score": 0.9889,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.3199,
+            "algebra_organ": 0.6801,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.2292,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.7708,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0005,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.9995
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": 0.4521,
+          "threshold_rule": -0.0,
+          "language_action": 0.3883,
+          "grid_planning": 0.0031,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "agent": "RandomBaseline",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 1
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 0.1699,
+          "affine_rule": 0.1657,
+          "threshold_rule": 0.1593,
+          "language_action": 0.1639,
+          "grid_planning": 0.1731,
+          "world_dynamics": 0.1727
+        },
+        "axis_scores": {
+          "task_diversity": 0.1674,
+          "long_memory": 0.1699,
+          "fast_rule_inference": 0.1625,
+          "language_action": 0.1639,
+          "planning": 0.1731,
+          "world_model_planning": 0.1727,
+          "organ_specialization": 0.1656
+        },
+        "agi_transfer_score": 0.1679,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "world_dynamics": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "memory_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "memory_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "memory_organ"
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "agent": "EpisodicMemoryOnly",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 1
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.3361,
+          "threshold_rule": 1.0,
+          "language_action": 0.3426,
+          "grid_planning": 0.3944,
+          "world_dynamics": 0.4125
+        },
+        "axis_scores": {
+          "task_diversity": 0.5809,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.6681,
+          "language_action": 0.3426,
+          "planning": 0.3944,
+          "world_model_planning": 0.4125,
+          "organ_specialization": 0.1656
+        },
+        "agi_transfer_score": 0.5092,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "world_dynamics": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "memory_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "memory_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "memory_organ"
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "agent": "RuleTransferMemoryPlanner",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 1
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 1.0,
+          "long_memory": 1.0,
+          "fast_rule_inference": 1.0,
+          "language_action": 1.0,
+          "planning": 1.0,
+          "world_model_planning": 1.0,
+          "organ_specialization": 0.9235
+        },
+        "agi_transfer_score": 0.9891,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.3287,
+            "algebra_organ": 0.6713,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.2176,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.7824,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": 0.4568,
+          "threshold_rule": -0.0,
+          "language_action": 0.3779,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "agent": "RandomBaseline",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 2
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 0.1704,
+          "affine_rule": 0.1593,
+          "threshold_rule": 0.1741,
+          "language_action": 0.1671,
+          "grid_planning": 0.1671,
+          "world_dynamics": 0.175
+        },
+        "axis_scores": {
+          "task_diversity": 0.1688,
+          "long_memory": 0.1704,
+          "fast_rule_inference": 0.1667,
+          "language_action": 0.1671,
+          "planning": 0.1671,
+          "world_model_planning": 0.175,
+          "organ_specialization": 0.1656
+        },
+        "agi_transfer_score": 0.1687,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "world_dynamics": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "memory_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "memory_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "memory_organ"
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "agent": "EpisodicMemoryOnly",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 2
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.3366,
+          "threshold_rule": 1.0,
+          "language_action": 0.3565,
+          "grid_planning": 0.4315,
+          "world_dynamics": 0.394
+        },
+        "axis_scores": {
+          "task_diversity": 0.5864,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.6683,
+          "language_action": 0.3565,
+          "planning": 0.4315,
+          "world_model_planning": 0.394,
+          "organ_specialization": 0.1656
+        },
+        "agi_transfer_score": 0.5146,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "world_dynamics": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "memory_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "memory_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "memory_organ"
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "agent": "RuleTransferMemoryPlanner",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 2
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 1.0,
+          "long_memory": 1.0,
+          "fast_rule_inference": 1.0,
+          "language_action": 1.0,
+          "planning": 1.0,
+          "world_model_planning": 1.0,
+          "organ_specialization": 0.9231
+        },
+        "agi_transfer_score": 0.989,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.3389,
+            "algebra_organ": 0.6611,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.2162,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.7838,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": 0.4619,
+          "threshold_rule": -0.0,
+          "language_action": 0.3766,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "agent": "RandomBaseline",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 3
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 0.1736,
+          "affine_rule": 0.1639,
+          "threshold_rule": 0.1769,
+          "language_action": 0.1685,
+          "grid_planning": 0.1565,
+          "world_dynamics": 0.1792
+        },
+        "axis_scores": {
+          "task_diversity": 0.1698,
+          "long_memory": 0.1736,
+          "fast_rule_inference": 0.1704,
+          "language_action": 0.1685,
+          "planning": 0.1565,
+          "world_model_planning": 0.1792,
+          "organ_specialization": 0.1656
+        },
+        "agi_transfer_score": 0.1691,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "world_dynamics": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "memory_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "memory_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "memory_organ"
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "agent": "EpisodicMemoryOnly",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 3
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.3199,
+          "threshold_rule": 1.0,
+          "language_action": 0.363,
+          "grid_planning": 0.4028,
+          "world_dynamics": 0.4176
+        },
+        "axis_scores": {
+          "task_diversity": 0.5839,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.66,
+          "language_action": 0.363,
+          "planning": 0.4028,
+          "world_model_planning": 0.4176,
+          "organ_specialization": 0.1656
+        },
+        "agi_transfer_score": 0.5133,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "world_dynamics": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "memory_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "memory_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "memory_organ"
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "agent": "RuleTransferMemoryPlanner",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 3
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 1.0,
+          "long_memory": 1.0,
+          "fast_rule_inference": 1.0,
+          "language_action": 1.0,
+          "planning": 1.0,
+          "world_model_planning": 1.0,
+          "organ_specialization": 0.9229
+        },
+        "agi_transfer_score": 0.989,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.3454,
+            "algebra_organ": 0.6546,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.2153,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.7847,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": 0.4649,
+          "threshold_rule": -0.0,
+          "language_action": 0.3757,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "agent": "RandomBaseline",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 4
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 0.1546,
+          "affine_rule": 0.1579,
+          "threshold_rule": 0.156,
+          "language_action": 0.162,
+          "grid_planning": 0.1634,
+          "world_dynamics": 0.1681
+        },
+        "axis_scores": {
+          "task_diversity": 0.1603,
+          "long_memory": 0.1546,
+          "fast_rule_inference": 0.157,
+          "language_action": 0.162,
+          "planning": 0.1634,
+          "world_model_planning": 0.1681,
+          "organ_specialization": 0.1656
+        },
+        "agi_transfer_score": 0.1616,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "world_dynamics": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "memory_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "memory_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "memory_organ"
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "agent": "EpisodicMemoryOnly",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 4
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.3384,
+          "threshold_rule": 1.0,
+          "language_action": 0.3634,
+          "grid_planning": 0.3884,
+          "world_dynamics": 0.4176
+        },
+        "axis_scores": {
+          "task_diversity": 0.5846,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.6692,
+          "language_action": 0.3634,
+          "planning": 0.3884,
+          "world_model_planning": 0.4176,
+          "organ_specialization": 0.1656
+        },
+        "agi_transfer_score": 0.5127,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "world_dynamics": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "memory_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "memory_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "memory_organ"
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "agent": "RuleTransferMemoryPlanner",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 4
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 1.0,
+          "long_memory": 1.0,
+          "fast_rule_inference": 1.0,
+          "language_action": 1.0,
+          "planning": 1.0,
+          "world_model_planning": 1.0,
+          "organ_specialization": 0.9215
+        },
+        "agi_transfer_score": 0.9888,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.3472,
+            "algebra_organ": 0.6528,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.2315,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.7685,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": 0.4658,
+          "threshold_rule": -0.0,
+          "language_action": 0.3903,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        }
+      }
+    }
+  ],
+  "summary": {
+    "RandomBaseline": {
+      "agi_transfer_score": {
+        "mean": 0.16704,
+        "std": 0.003085125605222582,
+        "n": 5
+      },
+      "task_diversity": {
+        "mean": 0.16694,
+        "std": 0.0038102493356734564,
+        "n": 5
+      },
+      "long_memory": {
+        "mean": 0.16832,
+        "std": 0.007838813685756289,
+        "n": 5
+      },
+      "fast_rule_inference": {
+        "mean": 0.16519999999999999,
+        "std": 0.005510444628158417,
+        "n": 5
+      },
+      "language_action": {
+        "mean": 0.16434,
+        "std": 0.0034544174617437305,
+        "n": 5
+      },
+      "planning": {
+        "mean": 0.1661,
+        "std": 0.006479583319936554,
+        "n": 5
+      },
+      "world_model_planning": {
+        "mean": 0.17262,
+        "std": 0.0047388817246266,
+        "n": 5
+      },
+      "organ_specialization": {
+        "mean": 0.1656,
+        "std": 0.0,
+        "n": 5
+      }
+    },
+    "EpisodicMemoryOnly": {
+      "agi_transfer_score": {
+        "mean": 0.51342,
+        "std": 0.0029490676492749278,
+        "n": 5
+      },
+      "task_diversity": {
+        "mean": 0.5851,
+        "std": 0.0032473065762259187,
+        "n": 5
+      },
+      "long_memory": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "fast_rule_inference": {
+        "mean": 0.6677000000000001,
+        "std": 0.004719639816765686,
+        "n": 5
+      },
+      "language_action": {
+        "mean": 0.3577,
+        "std": 0.008917959407846609,
+        "n": 5
+      },
+      "planning": {
+        "mean": 0.40426,
+        "std": 0.016529609795757426,
+        "n": 5
+      },
+      "world_model_planning": {
+        "mean": 0.41344000000000003,
+        "std": 0.011820025380683406,
+        "n": 5
+      },
+      "organ_specialization": {
+        "mean": 0.1656,
+        "std": 0.0,
+        "n": 5
+      }
+    },
+    "RuleTransferMemoryPlanner": {
+      "agi_transfer_score": {
+        "mean": 0.98896,
+        "std": 0.00011401754250990124,
+        "n": 5
+      },
+      "task_diversity": {
+        "mean": 0.99998,
+        "std": 4.472135954999087e-05,
+        "n": 5
+      },
+      "long_memory": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "fast_rule_inference": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "language_action": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "planning": {
+        "mean": 0.9999,
+        "std": 0.00022360679774995434,
+        "n": 5
+      },
+      "world_model_planning": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "organ_specialization": {
+        "mean": 0.92274,
+        "std": 0.0007536577472566807,
+        "n": 5
+      }
+    }
+  },
+  "interpretation_guardrail": "RuleTransferMemoryPlanner is a scaffold probe, not proof of AGI. It tests whether the architecture benefits from explicit fast-rule, memory, and planning organs."
+}
