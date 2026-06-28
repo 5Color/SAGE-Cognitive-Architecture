@@ -202,7 +202,7 @@ class SAGEv0(nn.Module):
 
         # 에너지 높은 기관은 조금 더 선택되기 쉬움
         energy_bias = torch.log(self.organ_energy + 1e-6).unsqueeze(0)
-        router_logits = router_logits + 0.05 * energy_bias
+        router_logits = router_logits + 0.02 * energy_bias
 
         router_probs = F.softmax(router_logits, dim=-1)
         top_vals, top_idx = torch.topk(router_probs, self.top_k, dim=-1)
@@ -243,24 +243,35 @@ class SAGEv0(nn.Module):
         }
     
     @torch.no_grad()
-    def update_energy(self, selected_organs, reward, lr=0.02, decay_to_one=0.01, activation_cost=0.02):
+    def update_energy(self, selected_organs, reward, lr=0.01, homeostasis=0.02, activation_cost=0.015):
         """
-        기관 에너지 업데이트.
-        - 에너지가 1.0 쪽으로 조금씩 돌아가게 함
-        - 선택된 기관은 reward가 activation_cost보다 클 때만 강화
-        - 무한 폭주 방지
+        v0.3 energy update
+        - 에너지는 1.0 근처로 돌아가려 함
+        - 평균보다 좋은 reward일 때만 조금 강화
+        - 선택된 기관은 사용 비용을 냄
+        - 전체 포화 방지
         """
 
-        # 에너지를 1.0 쪽으로 서서히 회복
-        self.organ_energy += decay_to_one * (1.0 - self.organ_energy)
+        if not hasattr(self, "reward_baseline"):
+            self.register_buffer("reward_baseline", torch.tensor(float(reward), device=self.organ_energy.device))
 
         reward_value = float(reward)
-        delta = lr * (reward_value - activation_cost)
 
+        # reward 기준선 업데이트
+        self.reward_baseline *= 0.99
+        self.reward_baseline += 0.01 * reward_value
+
+        advantage = reward_value - float(self.reward_baseline.item())
+
+        # 전체 에너지는 1.0으로 회귀
+        self.organ_energy += homeostasis * (1.0 - self.organ_energy)
+
+        # 선택된 기관만 업데이트
         for organ_id in selected_organs.flatten().tolist():
-            self.organ_energy[organ_id] += delta
+            self.organ_energy[organ_id] += lr * advantage
+            self.organ_energy[organ_id] -= activation_cost
 
-        self.organ_energy.clamp_(0.2, 5.0)
+        self.organ_energy.clamp_(0.4, 2.5)
 
 
 # =========================
