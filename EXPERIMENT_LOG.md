@@ -488,3 +488,73 @@ Result:
 - v1.3보다 더 강한 architectural decomposition evidence다. world dynamics를 hidden episode metadata가 아니라 support transitions로부터 추론하기 때문이다.
 - 여전히 AGI proof는 아니다. 이것은 다음 SAGE architecture가 이 organ들을 외부 hand-coded helper로 두는 대신 neural ecosystem 내부로 통합해야 한다는 controlled proof다.
 - 다음 target은 neural SAGE router가 언제 어떤 organ을 호출할지 학습하게 만들고, scaffold가 prewritten family-specific rules에 의존할 수 없는 held-out task families에서 검증하는 것이다.
+
+## v1.5 - Evidence-Based Organ Router Probe
+
+### Goal
+
+- v1.4에서는 `RuleTransferMemoryPlanner`가 task family를 알고 있는 상태에서 적절한 organ을 사용했다.
+- v1.5의 목적은 family label 없이 support examples만 보고 어떤 organ을 호출할지 선택하는 것이다.
+- 즉, 사람이 memory/algebra/concept/planner organ을 지정하는 scaffold에서 evidence-based organ selection으로 한 단계 이동한다.
+- 이것은 neural SAGE router가 내부적으로 organ call policy를 학습하기 전의 중간 검증이다.
+
+### Implementation
+
+- `benchmark_v1_5_evidence_router.py`를 추가했다.
+- 기존 `benchmark_v1_4_rule_transfer_memory.py`의 episode generator와 task family를 재사용했다.
+- Output:
+  - `results/v1_5_evidence_router_benchmark.json`
+- 비교 대상:
+  - `RandomOrganRouter`
+  - `EvidenceRouter`
+  - `FamilyOracleRouter`
+
+### Router Design
+
+- `RandomOrganRouter`는 organ을 무작위로 선택한다.
+- `EvidenceRouter`는 hidden family label을 보지 않는다.
+- `EvidenceRouter`는 각 candidate organ을 support subset에 fit한 뒤, 남은 support subset을 얼마나 잘 설명하는지로 organ을 고른다.
+- `FamilyOracleRouter`는 task family label을 알고 있는 upper bound다.
+- candidate organs:
+  - memory_organ
+  - algebra_organ
+  - concept_organ
+  - planner_organ
+
+### Smoke Test
+
+Command:
+
+```bash
+python benchmark_v1_5_evidence_router.py --episodes 20 --queries-per-episode 8
+```
+
+Result:
+
+- RandomOrganRouter: evidence_router_score 0.5731 +/- 0.0240, task_diversity 0.6687 +/- 0.0150, fast_rule_inference 0.7419 +/- 0.0323, planning 0.5325 +/- 0.0323, organ_specialization 0.3956 +/- 0.1127, route_confidence 0.2500 +/- 0.0000
+- EvidenceRouter: evidence_router_score 0.7776 +/- 0.0096, task_diversity 0.8069 +/- 0.0139, fast_rule_inference 0.6619 +/- 0.0244, planning 0.5175 +/- 0.0774, organ_specialization 0.5504 +/- 0.0141, route_confidence 0.6844 +/- 0.0093
+- FamilyOracleRouter: evidence_router_score 1.0000 +/- 0.0000, task_diversity 1.0000 +/- 0.0000, fast_rule_inference 1.0000 +/- 0.0000, planning 1.0000 +/- 0.0000, organ_specialization 1.0000 +/- 0.0000, route_confidence 1.0000 +/- 0.0000
+
+### Full Run
+
+Command:
+
+```bash
+python benchmark_v1_5_evidence_router.py --episodes 120 --queries-per-episode 18
+```
+
+Result:
+
+- RandomOrganRouter: evidence_router_score 0.5811 +/- 0.0239, task_diversity 0.6877 +/- 0.0160, fast_rule_inference 0.7515 +/- 0.0182, planning 0.5263 +/- 0.0176, organ_specialization 0.3367 +/- 0.1094, route_confidence 0.2500 +/- 0.0000
+- EvidenceRouter: evidence_router_score 0.7750 +/- 0.0035, task_diversity 0.8059 +/- 0.0054, fast_rule_inference 0.6669 +/- 0.0048, planning 0.5013 +/- 0.0336, organ_specialization 0.5416 +/- 0.0071, route_confidence 0.6844 +/- 0.0054
+- FamilyOracleRouter: evidence_router_score 1.0000 +/- 0.0000, task_diversity 1.0000 +/- 0.0000, fast_rule_inference 1.0000 +/- 0.0000, planning 1.0000 +/- 0.0000, organ_specialization 1.0000 +/- 0.0000, route_confidence 1.0000 +/- 0.0000
+
+### Interpretation
+
+- EvidenceRouter는 family label 없이도 RandomOrganRouter보다 높은 evidence_router_score를 달성했다.
+- 이는 support examples만으로도 어떤 cognitive organ을 호출해야 하는지 일부 추론할 수 있음을 보여준다.
+- 그러나 EvidenceRouter는 FamilyOracleRouter와 큰 격차가 있다. 즉 organ selection은 아직 완전하지 않다.
+- 특히 planning score가 낮게 남아 있어, support evidence만으로 planner organ을 안정적으로 선택하거나 검증하는 방식이 부족하다.
+- fast_rule_inference에서는 RandomOrganRouter가 높게 보이는데, 이는 일부 rule task에서 여러 organ이 support/query를 부분적으로 맞출 수 있기 때문이다. 따라서 v1.5는 단순 score뿐 아니라 route_confidence와 organ_specialization을 함께 해석해야 한다.
+- 현재 결론은 “organ을 explicit module로 두는 것” 다음 단계로 “evidence 기반 organ routing”이 가능하다는 것이다.
+- 다음 target은 이 symbolic EvidenceRouter를 neural SAGE router의 학습 target으로 바꾸고, support evidence에서 route confidence를 예측하도록 만드는 것이다.

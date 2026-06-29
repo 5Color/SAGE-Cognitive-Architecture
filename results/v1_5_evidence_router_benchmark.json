@@ -1,0 +1,1571 @@
+{
+  "benchmark": "SAGE-v1.5-evidence-router",
+  "goal": "Select cognitive organs from support evidence instead of hand-coded task-family labels.",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "tasks": [
+    "episodic_memory",
+    "affine_rule",
+    "threshold_rule",
+    "language_action",
+    "grid_planning",
+    "world_dynamics"
+  ],
+  "organs": [
+    "memory_organ",
+    "algebra_organ",
+    "concept_organ",
+    "planner_organ"
+  ],
+  "agents": [
+    "RandomOrganRouter",
+    "EvidenceRouter",
+    "FamilyOracleRouter"
+  ],
+  "runs": [
+    {
+      "seed": 0,
+      "agent": "RandomOrganRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 0
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.5222,
+          "threshold_rule": 1.0,
+          "language_action": 0.5417,
+          "grid_planning": 0.5236,
+          "world_dynamics": 0.5745
+        },
+        "axis_scores": {
+          "task_diversity": 0.6937,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.7611,
+          "language_action": 0.5417,
+          "planning": 0.5236,
+          "world_model_planning": 0.5745,
+          "organ_specialization": 0.2575,
+          "route_confidence": 0.25
+        },
+        "evidence_router_score": 0.5753,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.2,
+            "algebra_organ": 0.2583,
+            "concept_organ": 0.2417,
+            "planner_organ": 0.3
+          },
+          "affine_rule": {
+            "memory_organ": 0.2417,
+            "algebra_organ": 0.2917,
+            "concept_organ": 0.275,
+            "planner_organ": 0.1917
+          },
+          "threshold_rule": {
+            "memory_organ": 0.2583,
+            "algebra_organ": 0.2917,
+            "concept_organ": 0.225,
+            "planner_organ": 0.225
+          },
+          "language_action": {
+            "memory_organ": 0.275,
+            "algebra_organ": 0.2,
+            "concept_organ": 0.2917,
+            "planner_organ": 0.2333
+          },
+          "grid_planning": {
+            "memory_organ": 0.2167,
+            "algebra_organ": 0.3333,
+            "concept_organ": 0.2417,
+            "planner_organ": 0.2083
+          },
+          "world_dynamics": {
+            "memory_organ": 0.1833,
+            "algebra_organ": 0.35,
+            "concept_organ": 0.2083,
+            "planner_organ": 0.2583
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": 0.9925,
+          "affine_rule": 0.9913,
+          "threshold_rule": 0.9957,
+          "language_action": 0.9925,
+          "grid_planning": 0.9865,
+          "world_dynamics": 0.9774
+        },
+        "route_top_by_family": {
+          "episodic_memory": "planner_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "algebra_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "algebra_organ",
+          "world_dynamics": "algebra_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 0.25,
+          "affine_rule": 0.25,
+          "threshold_rule": 0.25,
+          "language_action": 0.25,
+          "grid_planning": 0.25,
+          "world_dynamics": 0.25
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "agent": "EvidenceRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 0
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.3472,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 0.5162,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 0.8106,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.6736,
+          "language_action": 1.0,
+          "planning": 0.5162,
+          "world_model_planning": 1.0,
+          "organ_specialization": 0.5343,
+          "route_confidence": 0.6829
+        },
+        "evidence_router_score": 0.7772,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.1917,
+            "algebra_organ": 0.0917,
+            "concept_organ": 0.1,
+            "planner_organ": 0.6167
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.0167,
+            "concept_organ": 0.4417,
+            "planner_organ": 0.375
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.8083,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.1917
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": 0.7676,
+          "affine_rule": -0.0,
+          "threshold_rule": 0.7903,
+          "language_action": -0.0,
+          "grid_planning": 0.3525,
+          "world_dynamics": -0.0
+        },
+        "route_top_by_family": {
+          "episodic_memory": "planner_organ",
+          "affine_rule": "planner_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 0.2917,
+          "affine_rule": 1.0,
+          "threshold_rule": 0.8056,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 0.0
+        }
+      }
+    },
+    {
+      "seed": 0,
+      "agent": "FamilyOracleRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 0
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 1.0,
+          "long_memory": 1.0,
+          "fast_rule_inference": 1.0,
+          "language_action": 1.0,
+          "planning": 1.0,
+          "world_model_planning": 1.0,
+          "organ_specialization": 1.0,
+          "route_confidence": 1.0
+        },
+        "evidence_router_score": 1.0,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "route_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "agent": "RandomOrganRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 1
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.5245,
+          "threshold_rule": 1.0,
+          "language_action": 0.5333,
+          "grid_planning": 0.5338,
+          "world_dynamics": 0.5782
+        },
+        "axis_scores": {
+          "task_diversity": 0.695,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.7622,
+          "language_action": 0.5333,
+          "planning": 0.5338,
+          "world_model_planning": 0.5782,
+          "organ_specialization": 0.4587,
+          "route_confidence": 0.25
+        },
+        "evidence_router_score": 0.6014,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.2167,
+            "algebra_organ": 0.3,
+            "concept_organ": 0.225,
+            "planner_organ": 0.2583
+          },
+          "affine_rule": {
+            "memory_organ": 0.2333,
+            "algebra_organ": 0.2833,
+            "concept_organ": 0.1917,
+            "planner_organ": 0.2917
+          },
+          "threshold_rule": {
+            "memory_organ": 0.2,
+            "algebra_organ": 0.3833,
+            "concept_organ": 0.1917,
+            "planner_organ": 0.225
+          },
+          "language_action": {
+            "memory_organ": 0.1917,
+            "algebra_organ": 0.325,
+            "concept_organ": 0.2583,
+            "planner_organ": 0.225
+          },
+          "grid_planning": {
+            "memory_organ": 0.2833,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3083,
+            "planner_organ": 0.2417
+          },
+          "world_dynamics": {
+            "memory_organ": 0.3,
+            "algebra_organ": 0.2667,
+            "concept_organ": 0.1667,
+            "planner_organ": 0.2667
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": 0.9939,
+          "affine_rule": 0.9903,
+          "threshold_rule": 0.9678,
+          "language_action": 0.9862,
+          "grid_planning": 0.9824,
+          "world_dynamics": 0.9845
+        },
+        "route_top_by_family": {
+          "episodic_memory": "algebra_organ",
+          "affine_rule": "planner_organ",
+          "threshold_rule": "algebra_organ",
+          "language_action": "algebra_organ",
+          "grid_planning": "concept_organ",
+          "world_dynamics": "memory_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 0.25,
+          "affine_rule": 0.25,
+          "threshold_rule": 0.25,
+          "language_action": 0.25,
+          "grid_planning": 0.25,
+          "world_dynamics": 0.25
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "agent": "EvidenceRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 1
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.3273,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 0.5231,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 0.8084,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.6636,
+          "language_action": 1.0,
+          "planning": 0.5231,
+          "world_model_planning": 1.0,
+          "organ_specialization": 0.5347,
+          "route_confidence": 0.6861
+        },
+        "evidence_router_score": 0.777,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.1583,
+            "algebra_organ": 0.0667,
+            "concept_organ": 0.1333,
+            "planner_organ": 0.6417
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.15,
+            "algebra_organ": 0.0333,
+            "concept_organ": 0.45,
+            "planner_organ": 0.3667
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.8083,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.1917
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": 0.7399,
+          "affine_rule": -0.0,
+          "threshold_rule": 0.8116,
+          "language_action": -0.0,
+          "grid_planning": 0.3525,
+          "world_dynamics": -0.0
+        },
+        "route_top_by_family": {
+          "episodic_memory": "planner_organ",
+          "affine_rule": "planner_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 0.2889,
+          "affine_rule": 1.0,
+          "threshold_rule": 0.8278,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 0.0
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "agent": "FamilyOracleRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 1
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 1.0,
+          "long_memory": 1.0,
+          "fast_rule_inference": 1.0,
+          "language_action": 1.0,
+          "planning": 1.0,
+          "world_model_planning": 1.0,
+          "organ_specialization": 1.0,
+          "route_confidence": 1.0
+        },
+        "evidence_router_score": 1.0,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "route_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "agent": "RandomOrganRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 2
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.4514,
+          "threshold_rule": 1.0,
+          "language_action": 0.4769,
+          "grid_planning": 0.5167,
+          "world_dynamics": 0.5556
+        },
+        "axis_scores": {
+          "task_diversity": 0.6668,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.7257,
+          "language_action": 0.4769,
+          "planning": 0.5167,
+          "world_model_planning": 0.5556,
+          "organ_specialization": 0.2575,
+          "route_confidence": 0.25
+        },
+        "evidence_router_score": 0.5562,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.3,
+            "algebra_organ": 0.2583,
+            "concept_organ": 0.2333,
+            "planner_organ": 0.2083
+          },
+          "affine_rule": {
+            "memory_organ": 0.3333,
+            "algebra_organ": 0.1833,
+            "concept_organ": 0.225,
+            "planner_organ": 0.2583
+          },
+          "threshold_rule": {
+            "memory_organ": 0.25,
+            "algebra_organ": 0.2083,
+            "concept_organ": 0.2583,
+            "planner_organ": 0.2833
+          },
+          "language_action": {
+            "memory_organ": 0.2667,
+            "algebra_organ": 0.1833,
+            "concept_organ": 0.2333,
+            "planner_organ": 0.3167
+          },
+          "grid_planning": {
+            "memory_organ": 0.3167,
+            "algebra_organ": 0.2417,
+            "concept_organ": 0.2417,
+            "planner_organ": 0.2
+          },
+          "world_dynamics": {
+            "memory_organ": 0.2,
+            "algebra_organ": 0.3167,
+            "concept_organ": 0.2667,
+            "planner_organ": 0.2167
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": 0.9934,
+          "affine_rule": 0.9828,
+          "threshold_rule": 0.9957,
+          "language_action": 0.9862,
+          "grid_planning": 0.99,
+          "world_dynamics": 0.9881
+        },
+        "route_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "memory_organ",
+          "threshold_rule": "planner_organ",
+          "language_action": "planner_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "algebra_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 0.25,
+          "affine_rule": 0.25,
+          "threshold_rule": 0.25,
+          "language_action": 0.25,
+          "grid_planning": 0.25,
+          "world_dynamics": 0.25
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "agent": "EvidenceRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 2
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.3227,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 0.5301,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 0.8088,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.6613,
+          "language_action": 1.0,
+          "planning": 0.5301,
+          "world_model_planning": 1.0,
+          "organ_specialization": 0.5418,
+          "route_confidence": 0.6782
+        },
+        "evidence_router_score": 0.7775,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.1583,
+            "algebra_organ": 0.075,
+            "concept_organ": 0.1,
+            "planner_organ": 0.6667
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.175,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.4417,
+            "planner_organ": 0.3833
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.8167,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.1833
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": 0.7117,
+          "affine_rule": -0.0,
+          "threshold_rule": 0.7455,
+          "language_action": -0.0,
+          "grid_planning": 0.3437,
+          "world_dynamics": -0.0
+        },
+        "route_top_by_family": {
+          "episodic_memory": "planner_organ",
+          "affine_rule": "planner_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 0.2694,
+          "affine_rule": 1.0,
+          "threshold_rule": 0.8,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 0.0
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "agent": "FamilyOracleRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 2
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 1.0,
+          "long_memory": 1.0,
+          "fast_rule_inference": 1.0,
+          "language_action": 1.0,
+          "planning": 1.0,
+          "world_model_planning": 1.0,
+          "organ_specialization": 1.0,
+          "route_confidence": 1.0
+        },
+        "evidence_router_score": 1.0,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "route_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "agent": "RandomOrganRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 3
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.538,
+          "threshold_rule": 1.0,
+          "language_action": 0.5444,
+          "grid_planning": 0.5519,
+          "world_dynamics": 0.6065
+        },
+        "axis_scores": {
+          "task_diversity": 0.7068,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.769,
+          "language_action": 0.5444,
+          "planning": 0.5519,
+          "world_model_planning": 0.6065,
+          "organ_specialization": 0.4544,
+          "route_confidence": 0.25
+        },
+        "evidence_router_score": 0.6104,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.3167,
+            "algebra_organ": 0.25,
+            "concept_organ": 0.2167,
+            "planner_organ": 0.2167
+          },
+          "affine_rule": {
+            "memory_organ": 0.25,
+            "algebra_organ": 0.2833,
+            "concept_organ": 0.2833,
+            "planner_organ": 0.1833
+          },
+          "threshold_rule": {
+            "memory_organ": 0.2667,
+            "algebra_organ": 0.2333,
+            "concept_organ": 0.2583,
+            "planner_organ": 0.2417
+          },
+          "language_action": {
+            "memory_organ": 0.225,
+            "algebra_organ": 0.2667,
+            "concept_organ": 0.3083,
+            "planner_organ": 0.2
+          },
+          "grid_planning": {
+            "memory_organ": 0.2917,
+            "algebra_organ": 0.25,
+            "concept_organ": 0.1917,
+            "planner_organ": 0.2667
+          },
+          "world_dynamics": {
+            "memory_organ": 0.1917,
+            "algebra_organ": 0.2333,
+            "concept_organ": 0.2833,
+            "planner_organ": 0.2917
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": 0.9907,
+          "affine_rule": 0.9899,
+          "threshold_rule": 0.999,
+          "language_action": 0.9902,
+          "grid_planning": 0.9919,
+          "world_dynamics": 0.9903
+        },
+        "route_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 0.25,
+          "affine_rule": 0.25,
+          "threshold_rule": 0.25,
+          "language_action": 0.25,
+          "grid_planning": 0.25,
+          "world_dynamics": 0.25
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "agent": "EvidenceRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 3
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.3375,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 0.4889,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 0.8044,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.6687,
+          "language_action": 1.0,
+          "planning": 0.4889,
+          "world_model_planning": 1.0,
+          "organ_specialization": 0.5483,
+          "route_confidence": 0.6824
+        },
+        "evidence_router_score": 0.7741,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.1833,
+            "algebra_organ": 0.05,
+            "concept_organ": 0.075,
+            "planner_organ": 0.6917
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.125,
+            "algebra_organ": 0.0167,
+            "concept_organ": 0.525,
+            "planner_organ": 0.3333
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.85,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.15
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": 0.6565,
+          "affine_rule": -0.0,
+          "threshold_rule": 0.7449,
+          "language_action": -0.0,
+          "grid_planning": 0.3049,
+          "world_dynamics": -0.0
+        },
+        "route_top_by_family": {
+          "episodic_memory": "planner_organ",
+          "affine_rule": "planner_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 0.2556,
+          "affine_rule": 1.0,
+          "threshold_rule": 0.8389,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 0.0
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "agent": "FamilyOracleRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 3
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 1.0,
+          "long_memory": 1.0,
+          "fast_rule_inference": 1.0,
+          "language_action": 1.0,
+          "planning": 1.0,
+          "world_model_planning": 1.0,
+          "organ_specialization": 1.0,
+          "route_confidence": 1.0
+        },
+        "evidence_router_score": 1.0,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "route_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "agent": "RandomOrganRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 4
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.4792,
+          "threshold_rule": 1.0,
+          "language_action": 0.5315,
+          "grid_planning": 0.5056,
+          "world_dynamics": 0.5403
+        },
+        "axis_scores": {
+          "task_diversity": 0.6761,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.7396,
+          "language_action": 0.5315,
+          "planning": 0.5056,
+          "world_model_planning": 0.5403,
+          "organ_specialization": 0.2555,
+          "route_confidence": 0.25
+        },
+        "evidence_router_score": 0.5623,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.2167,
+            "algebra_organ": 0.2583,
+            "concept_organ": 0.325,
+            "planner_organ": 0.2
+          },
+          "affine_rule": {
+            "memory_organ": 0.2167,
+            "algebra_organ": 0.25,
+            "concept_organ": 0.2417,
+            "planner_organ": 0.2917
+          },
+          "threshold_rule": {
+            "memory_organ": 0.2167,
+            "algebra_organ": 0.275,
+            "concept_organ": 0.2333,
+            "planner_organ": 0.275
+          },
+          "language_action": {
+            "memory_organ": 0.25,
+            "algebra_organ": 0.2333,
+            "concept_organ": 0.2917,
+            "planner_organ": 0.225
+          },
+          "grid_planning": {
+            "memory_organ": 0.2333,
+            "algebra_organ": 0.2917,
+            "concept_organ": 0.2667,
+            "planner_organ": 0.2083
+          },
+          "world_dynamics": {
+            "memory_organ": 0.25,
+            "algebra_organ": 0.2667,
+            "concept_organ": 0.275,
+            "planner_organ": 0.2083
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": 0.9869,
+          "affine_rule": 0.9958,
+          "threshold_rule": 0.9962,
+          "language_action": 0.9963,
+          "grid_planning": 0.9942,
+          "world_dynamics": 0.9961
+        },
+        "route_top_by_family": {
+          "episodic_memory": "concept_organ",
+          "affine_rule": "planner_organ",
+          "threshold_rule": "algebra_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "algebra_organ",
+          "world_dynamics": "concept_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 0.25,
+          "affine_rule": 0.25,
+          "threshold_rule": 0.25,
+          "language_action": 0.25,
+          "grid_planning": 0.25,
+          "world_dynamics": 0.25
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "agent": "EvidenceRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 4
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 0.3343,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 0.4481,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 0.7971,
+          "long_memory": 1.0,
+          "fast_rule_inference": 0.6672,
+          "language_action": 1.0,
+          "planning": 0.4481,
+          "world_model_planning": 1.0,
+          "organ_specialization": 0.5489,
+          "route_confidence": 0.6926
+        },
+        "evidence_router_score": 0.7692,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.1167,
+            "algebra_organ": 0.05,
+            "concept_organ": 0.1333,
+            "planner_organ": 0.7
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.15,
+            "algebra_organ": 0.0333,
+            "concept_organ": 0.3917,
+            "planner_organ": 0.425
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.9083,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0917
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": 0.6627,
+          "affine_rule": -0.0,
+          "threshold_rule": 0.8142,
+          "language_action": -0.0,
+          "grid_planning": 0.221,
+          "world_dynamics": -0.0
+        },
+        "route_top_by_family": {
+          "episodic_memory": "planner_organ",
+          "affine_rule": "planner_organ",
+          "threshold_rule": "planner_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "memory_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 0.325,
+          "affine_rule": 1.0,
+          "threshold_rule": 0.8306,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 0.0
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "agent": "FamilyOracleRouter",
+      "config": {
+        "episodes": 120,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "seed": 4
+      },
+      "metrics": {
+        "family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "axis_scores": {
+          "task_diversity": 1.0,
+          "long_memory": 1.0,
+          "fast_rule_inference": 1.0,
+          "language_action": 1.0,
+          "planning": 1.0,
+          "world_model_planning": 1.0,
+          "organ_specialization": 1.0,
+          "route_confidence": 1.0
+        },
+        "evidence_router_score": 1.0,
+        "route_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "route_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "route_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "route_confidence_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        }
+      }
+    }
+  ],
+  "summary": {
+    "RandomOrganRouter": {
+      "evidence_router_score": {
+        "mean": 0.5811200000000001,
+        "std": 0.023862460057588374,
+        "n": 5
+      },
+      "task_diversity": {
+        "mean": 0.68768,
+        "std": 0.01601146464256159,
+        "n": 5
+      },
+      "long_memory": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "fast_rule_inference": {
+        "mean": 0.75152,
+        "std": 0.018166920487523462,
+        "n": 5
+      },
+      "language_action": {
+        "mean": 0.52556,
+        "std": 0.027741809602114996,
+        "n": 5
+      },
+      "planning": {
+        "mean": 0.52632,
+        "std": 0.01760360758481053,
+        "n": 5
+      },
+      "world_model_planning": {
+        "mean": 0.57102,
+        "std": 0.025019932054264275,
+        "n": 5
+      },
+      "organ_specialization": {
+        "mean": 0.33672,
+        "std": 0.10940293414712422,
+        "n": 5
+      },
+      "route_confidence": {
+        "mean": 0.25,
+        "std": 0.0,
+        "n": 5
+      }
+    },
+    "EvidenceRouter": {
+      "evidence_router_score": {
+        "mean": 0.775,
+        "std": 0.0035192328709535547,
+        "n": 5
+      },
+      "task_diversity": {
+        "mean": 0.80586,
+        "std": 0.0053951830367467415,
+        "n": 5
+      },
+      "long_memory": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "fast_rule_inference": {
+        "mean": 0.66688,
+        "std": 0.004755733381929641,
+        "n": 5
+      },
+      "language_action": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "planning": {
+        "mean": 0.50128,
+        "std": 0.03358082786352951,
+        "n": 5
+      },
+      "world_model_planning": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "organ_specialization": {
+        "mean": 0.5416,
+        "std": 0.007055494312945082,
+        "n": 5
+      },
+      "route_confidence": {
+        "mean": 0.68444,
+        "std": 0.00535751808209734,
+        "n": 5
+      }
+    },
+    "FamilyOracleRouter": {
+      "evidence_router_score": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "task_diversity": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "long_memory": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "fast_rule_inference": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "language_action": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "planning": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "world_model_planning": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "organ_specialization": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "route_confidence": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      }
+    }
+  },
+  "interpretation_guardrail": "EvidenceRouter is still a symbolic router probe. It is progress toward neural organ selection, not proof that the neural SAGE core has learned this routing internally."
+}
