@@ -1,0 +1,23 @@
+{
+  "benchmark": "SAGE-v2.0-emergent-reflection-smoke",
+  "version": "v2.0",
+  "selected_organ": "curiosity_organ",
+  "candidate_count": 5.0,
+  "organ_diversity": 1.0,
+  "top_score": 0.5378,
+  "top_second_gap": 0.0163,
+  "mean_novelty": 0.514,
+  "mean_reuse_value": 0.77,
+  "memory_inbox_count_before": 9,
+  "memory_inbox_count_after": 10,
+  "result_detail_path": "results/v2_0_emergent_reflection_smoke_detail.json",
+  "reflection_log_path": "logs/v2_0_emergent_reflection_smoke.md",
+  "safety_policy": {
+    "network_actions": false,
+    "shell_actions": false,
+    "auto_delete_organs": false,
+    "auto_disable_organs": false,
+    "memory_approval_required": true
+  },
+  "passed": true
+}

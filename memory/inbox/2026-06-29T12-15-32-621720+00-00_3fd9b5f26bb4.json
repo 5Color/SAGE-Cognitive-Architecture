@@ -1,0 +1,33 @@
+{
+  "id": "3fd9b5f26bb4",
+  "created_at": "2026-06-29T12:15:32.621720+00:00",
+  "status": "inbox",
+  "source": "runtime_v1_9",
+  "importance": 0.55,
+  "content": "SAGE v1.9 runtime node started in safe idle mode. It can persist state, read organ registry, propose memory, and write reflection logs.",
+  "evidence": {
+    "registry_summary": {
+      "exists": true,
+      "num_organs": 4,
+      "status_counts": {
+        "active_monitor": 2,
+        "core_active": 1,
+        "active": 1
+      },
+      "recommendation_counts": {
+        "monitor": 2,
+        "keep_active": 2
+      },
+      "source_variant": "calibrated_safe",
+      "policy": {
+        "auto_delete": false,
+        "auto_disable": false,
+        "recommend_only": true,
+        "human_approval_required": true,
+        "default_delete_policy": "never_auto_delete; archive_or_disable_only_after_human_approval"
+      }
+    },
+    "policy": "human review required before long-term memory approval"
+  },
+  "human_review_required": true
+}
