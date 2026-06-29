@@ -1,0 +1,57 @@
+{
+  "benchmark": "SAGE-v1.6.2-anti-leak-keytype-control",
+  "goal": "Config-runner migration of anti-leak routing task using weak key-type baseline.",
+  "seed": 0,
+  "max_steps": 512,
+  "output_path": "results/v1_6_2_anti_leak_keytype.json",
+  "state": {
+    "energy": 1.0
+  },
+  "engine": {
+    "energy_decay": 1.0,
+    "reward_gain": 0.0,
+    "organ_cost": 0.0,
+    "max_memory": 128
+  },
+  "organs": [
+    {
+      "module": "benchmarks.tasks.anti_leak_routing_task",
+      "class": "MemoryOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.anti_leak_routing_task",
+      "class": "LinearOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.anti_leak_routing_task",
+      "class": "ThresholdOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.anti_leak_routing_task",
+      "class": "PlannerOrgan",
+      "params": {}
+    }
+  ],
+  "router": {
+    "module": "benchmarks.tasks.anti_leak_routing_task",
+    "class": "KeyTypeAntiLeakRouter",
+    "params": {}
+  },
+  "environment": {
+    "module": "benchmarks.tasks.anti_leak_routing_task",
+    "class": "AntiLeakRoutingEnvironment",
+    "params": {
+      "episodes_per_family": 40,
+      "support_size": 6,
+      "seed": 0
+    }
+  },
+  "metric": {
+    "module": "benchmarks.tasks.anti_leak_routing_task",
+    "class": "AntiLeakRoutingMetric",
+    "params": {}
+  }
+}

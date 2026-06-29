@@ -1,0 +1,85 @@
+{
+  "benchmark": "SAGE-v1.6.2-anti-leak-keytype-control",
+  "goal": "Config-runner migration of anti-leak routing task using weak key-type baseline.",
+  "version": "v1.6.1",
+  "config_path": "benchmarks\\configs\\anti_leak_keytype.json",
+  "seed": 0,
+  "components": {
+    "organs": [
+      "memory_organ",
+      "linear_organ",
+      "threshold_organ",
+      "planner_organ"
+    ],
+    "router": "keytype_anti_leak_router",
+    "environment": "anti_leak_routing_environment",
+    "metric": "anti_leak_routing_metric"
+  },
+  "interpretation_guardrail": "This is a config-runner smoke/refactor test, not an intelligence or AGI benchmark.",
+  "result": {
+    "avg_reward": 0.15,
+    "accuracy": 0.575,
+    "total_reward": 24.0,
+    "organ_usage": {
+      "memory_organ": 160
+    },
+    "family_accuracy": {
+      "linear_rule": 0.15,
+      "memory": 1.0,
+      "planning": 0.6,
+      "threshold_rule": 0.55
+    },
+    "family_top_organ": {
+      "linear_rule": "memory_organ",
+      "memory": "memory_organ",
+      "planning": "memory_organ",
+      "threshold_rule": "memory_organ"
+    },
+    "task_diversity": 0.575,
+    "families": [
+      "linear_rule",
+      "memory",
+      "planning",
+      "threshold_rule"
+    ],
+    "final_state": {
+      "step": 160,
+      "energy": 1.0,
+      "reward": 1.0,
+      "organ_energy": {
+        "memory_organ": 0.7641155699108375,
+        "linear_organ": 1.0,
+        "threshold_organ": 1.0,
+        "planner_organ": 1.0
+      },
+      "memory_size": 128,
+      "router_feedback": {
+        "selected": [
+          "memory_organ"
+        ],
+        "num_outputs": 1,
+        "last_action": {
+          "prediction": 0,
+          "chosen_organ": "memory_organ",
+          "confidence": 0.3
+        },
+        "last_info": {
+          "correct": true,
+          "target": 0,
+          "prediction": 0,
+          "family": "planning",
+          "chosen_organ": "memory_organ",
+          "confidence": 0.3
+        }
+      },
+      "context": {}
+    },
+    "steps": 160,
+    "engine": {
+      "energy_decay": 1.0,
+      "reward_gain": 0.0,
+      "organ_cost": 0.0,
+      "max_memory": 128
+    }
+  }
+}
