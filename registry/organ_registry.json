@@ -1,0 +1,116 @@
+{
+  "version": "v1.8",
+  "created_at": "2026-06-29T08:46:34.403356+00:00",
+  "updated_at": "2026-06-29T08:46:34.403356+00:00",
+  "source_result": "results\\v1_7_1_lifecycle_calibration_multiseed.json",
+  "source_variant": "calibrated_safe",
+  "policy": {
+    "auto_delete": false,
+    "auto_disable": false,
+    "recommend_only": true,
+    "human_approval_required": true,
+    "default_delete_policy": "never_auto_delete; archive_or_disable_only_after_human_approval"
+  },
+  "organs": {
+    "linear_organ": {
+      "name": "linear_organ",
+      "status": "active_monitor",
+      "recommendation": "monitor",
+      "health_score": 0.780925,
+      "usage_ratio_over_steps": 0.6190624999999998,
+      "chosen_ratio_over_steps": 0.2959375000000001,
+      "chosen_success_rate": 0.8961830725713454,
+      "evidence": {
+        "recommendation_counts": {
+          "keep_active": 3,
+          "monitor": 7
+        },
+        "usage_ratio_over_steps_std": 0.014837809483807826,
+        "chosen_success_rate_std": 0.027961609302380973
+      },
+      "allowed_actions": [
+        "observe",
+        "recommend"
+      ],
+      "can_auto_delete": false,
+      "can_auto_disable": false,
+      "requires_human_approval": true,
+      "notes": []
+    },
+    "memory_organ": {
+      "name": "memory_organ",
+      "status": "core_active",
+      "recommendation": "keep_active",
+      "health_score": 0.955156,
+      "usage_ratio_over_steps": 0.6565624999999999,
+      "chosen_ratio_over_steps": 0.2384375,
+      "chosen_success_rate": 1.0,
+      "evidence": {
+        "recommendation_counts": {
+          "keep_active": 10
+        },
+        "usage_ratio_over_steps_std": 0.025449517704445583,
+        "chosen_success_rate_std": 0.0
+      },
+      "allowed_actions": [
+        "observe",
+        "recommend"
+      ],
+      "can_auto_delete": false,
+      "can_auto_disable": false,
+      "requires_human_approval": true,
+      "notes": [
+        "core organ: never auto-disable"
+      ]
+    },
+    "planner_organ": {
+      "name": "planner_organ",
+      "status": "active",
+      "recommendation": "keep_active",
+      "health_score": 0.908865,
+      "usage_ratio_over_steps": 0.5975,
+      "chosen_ratio_over_steps": 0.190625,
+      "chosen_success_rate": 0.9543108037640058,
+      "evidence": {
+        "recommendation_counts": {
+          "keep_active": 10
+        },
+        "usage_ratio_over_steps_std": 0.019252525086913188,
+        "chosen_success_rate_std": 0.019649868630692745
+      },
+      "allowed_actions": [
+        "observe",
+        "recommend"
+      ],
+      "can_auto_delete": false,
+      "can_auto_disable": false,
+      "requires_human_approval": true,
+      "notes": []
+    },
+    "threshold_organ": {
+      "name": "threshold_organ",
+      "status": "active_monitor",
+      "recommendation": "monitor",
+      "health_score": 0.72303,
+      "usage_ratio_over_steps": 0.5621875000000001,
+      "chosen_ratio_over_steps": 0.275,
+      "chosen_success_rate": 0.8739890575308771,
+      "evidence": {
+        "recommendation_counts": {
+          "keep_active": 1,
+          "monitor": 9
+        },
+        "usage_ratio_over_steps_std": 0.02177307604078435,
+        "chosen_success_rate_std": 0.03957795472802689
+      },
+      "allowed_actions": [
+        "observe",
+        "recommend"
+      ],
+      "can_auto_delete": false,
+      "can_auto_disable": false,
+      "requires_human_approval": true,
+      "notes": []
+    }
+  }
+}

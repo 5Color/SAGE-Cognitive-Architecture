@@ -1,0 +1,36 @@
+{
+  "version": "v1.8",
+  "created_at": "example",
+  "updated_at": "example",
+  "source_result": "results/v1_7_1_lifecycle_calibration_multiseed.json",
+  "source_variant": "calibrated_safe",
+  "policy": {
+    "auto_delete": false,
+    "auto_disable": false,
+    "recommend_only": true,
+    "human_approval_required": true,
+    "default_delete_policy": "never_auto_delete; archive_or_disable_only_after_human_approval"
+  },
+  "organs": {
+    "memory_organ": {
+      "name": "memory_organ",
+      "status": "core_active",
+      "recommendation": "keep_active",
+      "health_score": 1.0,
+      "usage_ratio_over_steps": 0.0,
+      "chosen_ratio_over_steps": 0.0,
+      "chosen_success_rate": 1.0,
+      "evidence": {},
+      "allowed_actions": [
+        "observe",
+        "recommend"
+      ],
+      "can_auto_delete": false,
+      "can_auto_disable": false,
+      "requires_human_approval": true,
+      "notes": [
+        "example registry; generate real one with tools/update_organ_registry.py"
+      ]
+    }
+  }
+}

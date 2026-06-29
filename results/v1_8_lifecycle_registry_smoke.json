@@ -1,0 +1,18 @@
+{
+  "benchmark": "SAGE-v1.8-lifecycle-registry-smoke",
+  "version": "v1.8",
+  "registry_path": "registry\\organ_registry.json",
+  "num_organs": 4,
+  "status_counts": {
+    "active_monitor": 2,
+    "core_active": 1,
+    "active": 1
+  },
+  "recommendation_counts": {
+    "monitor": 2,
+    "keep_active": 2
+  },
+  "unsafe_auto_delete_organs": [],
+  "unsafe_auto_disable_organs": [],
+  "passed": true
+}
