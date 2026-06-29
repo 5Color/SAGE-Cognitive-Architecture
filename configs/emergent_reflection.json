@@ -1,0 +1,8 @@
+{
+  "state_path": "runtime_state/state.json",
+  "registry_path": "registry/organ_registry.json",
+  "memory_root": "memory",
+  "reflection_log_path": "logs/emergent_reflection.md",
+  "result_path": "results/v2_0_emergent_reflection.json",
+  "create_memory_proposal": true
+}

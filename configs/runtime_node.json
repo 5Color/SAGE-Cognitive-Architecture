@@ -1,0 +1,10 @@
+{
+  "node_name": "sage-runtime-node",
+  "state_path": "runtime_state/state.json",
+  "registry_path": "registry/organ_registry.json",
+  "memory_root": "memory",
+  "log_path": "logs/daily_reflection.md",
+  "tick_seconds": 1.0,
+  "max_ticks": 5,
+  "mode": "safe_idle"
+}

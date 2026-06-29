@@ -1,0 +1,16 @@
+v2.0 weight calibration experiment
+
+Changed EmergentAggregator score weights:
+- confidence: 0.28 -> 0.25
+- novelty: 0.20 -> 0.29
+- reuse_value: 0.24 -> 0.20
+- risk penalty: 0.06 -> 0.08
+
+Result:
+- selected organ changed from critic_organ to curiosity_organ
+- top_score: 0.5378
+- top_second_gap: 0.0163
+- smoke test passed
+
+Interpretation:
+Increasing novelty weight shifts SAGE from conservative reflection toward exploratory reflection.

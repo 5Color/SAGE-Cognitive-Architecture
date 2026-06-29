@@ -1,0 +1,45 @@
+{
+  "benchmark": "SAGE-v1.9-runtime-node-smoke",
+  "version": "v1.9",
+  "ticks_requested": 3,
+  "ticks_completed": 3,
+  "state_exists": true,
+  "log_exists": true,
+  "memory_inbox_count": 2,
+  "last_output": {
+    "step": 3,
+    "mode": "safe_idle",
+    "registry_summary": {
+      "exists": true,
+      "num_organs": 4,
+      "status_counts": {
+        "active_monitor": 2,
+        "core_active": 1,
+        "active": 1
+      },
+      "recommendation_counts": {
+        "monitor": 2,
+        "keep_active": 2
+      },
+      "source_variant": "calibrated_safe",
+      "policy": {
+        "auto_delete": false,
+        "auto_disable": false,
+        "recommend_only": true,
+        "human_approval_required": true,
+        "default_delete_policy": "never_auto_delete; archive_or_disable_only_after_human_approval"
+      }
+    },
+    "memory_inbox_count": 2,
+    "state_path": "runtime_state/smoke_state.json",
+    "log_path": "logs/v1_9_runtime_smoke_reflection.md"
+  },
+  "safety_policy": {
+    "network_actions": false,
+    "shell_actions": false,
+    "auto_delete_organs": false,
+    "auto_disable_organs": false,
+    "memory_approval_required": true
+  },
+  "passed": true
+}
