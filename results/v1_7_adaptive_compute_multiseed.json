@@ -1,0 +1,6424 @@
+{
+  "benchmark": "SAGE-v1.7-adaptive-compute-router-multiseed",
+  "version": "v1.7",
+  "goal": "Test whether SAGE can dynamically choose Top1, Top2, or Full Evidence routing.",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "episodes_per_family": 80,
+  "interpretation_guardrail": "Synthetic benchmark evidence only, not AGI proof.",
+  "summary": {
+    "full_evidence": {
+      "accuracy_mean": 0.9490625000000001,
+      "accuracy_std": 0.01428641181332806,
+      "avg_reward_mean": 0.8981250000000001,
+      "avg_reward_std": 0.028572823626656158,
+      "task_diversity_mean": 0.9490624999999999,
+      "task_diversity_std": 0.01428641181332806,
+      "avg_organs_per_step_mean": 4.0,
+      "avg_organs_per_step_std": 0.0,
+      "compute_saving_vs_full_mean": 0.0,
+      "compute_saving_vs_full_std": 0.0,
+      "sparse_efficiency_score_mean": 0.6643437499999999,
+      "sparse_efficiency_score_std": 0.01000048826932964,
+      "adaptive_efficiency_score_mean": 0.0,
+      "adaptive_efficiency_score_std": 0.0,
+      "avg_confidence_gap_mean": 0.0,
+      "avg_confidence_gap_std": 0.0,
+      "avg_best_router_score_mean": 0.0,
+      "avg_best_router_score_std": 0.0,
+      "mode_usage": {}
+    },
+    "sparse_top1": {
+      "accuracy_mean": 0.8456250000000001,
+      "accuracy_std": 0.013677206301808199,
+      "avg_reward_mean": 0.6912499999999999,
+      "avg_reward_std": 0.027354412603616415,
+      "task_diversity_mean": 0.8456250000000001,
+      "task_diversity_std": 0.013677206301808237,
+      "avg_organs_per_step_mean": 1.0,
+      "avg_organs_per_step_std": 0.0,
+      "compute_saving_vs_full_mean": 0.75,
+      "compute_saving_vs_full_std": 0.0,
+      "sparse_efficiency_score_mean": 0.8169375000000001,
+      "sparse_efficiency_score_std": 0.009574044411265732,
+      "adaptive_efficiency_score_mean": 0.0,
+      "adaptive_efficiency_score_std": 0.0,
+      "avg_confidence_gap_mean": 0.0,
+      "avg_confidence_gap_std": 0.0,
+      "avg_best_router_score_mean": 0.0,
+      "avg_best_router_score_std": 0.0,
+      "mode_usage": {}
+    },
+    "sparse_top2": {
+      "accuracy_mean": 0.8968749999999999,
+      "accuracy_std": 0.012412890924805195,
+      "avg_reward_mean": 0.7937500000000001,
+      "avg_reward_std": 0.02482578184961039,
+      "task_diversity_mean": 0.8968749999999999,
+      "task_diversity_std": 0.012412890924805197,
+      "avg_organs_per_step_mean": 2.0,
+      "avg_organs_per_step_std": 0.0,
+      "compute_saving_vs_full_mean": 0.5,
+      "compute_saving_vs_full_std": 0.0,
+      "sparse_efficiency_score_mean": 0.7778124999999999,
+      "sparse_efficiency_score_std": 0.008689023647363625,
+      "adaptive_efficiency_score_mean": 0.0,
+      "adaptive_efficiency_score_std": 0.0,
+      "avg_confidence_gap_mean": 0.0,
+      "avg_confidence_gap_std": 0.0,
+      "avg_best_router_score_mean": 0.0,
+      "avg_best_router_score_std": 0.0,
+      "mode_usage": {}
+    },
+    "adaptive": {
+      "accuracy_mean": 0.9425000000000001,
+      "accuracy_std": 0.013756311682682647,
+      "avg_reward_mean": 0.8849999999999998,
+      "avg_reward_std": 0.027512623365365287,
+      "task_diversity_mean": 0.9425000000000001,
+      "task_diversity_std": 0.0137563116826826,
+      "avg_organs_per_step_mean": 2.208125,
+      "avg_organs_per_step_std": 0.05607998999445145,
+      "compute_saving_vs_full_mean": 0.44796874999999997,
+      "compute_saving_vs_full_std": 0.014019997498612862,
+      "sparse_efficiency_score_mean": 0.794140625,
+      "sparse_efficiency_score_std": 0.011203729111637084,
+      "adaptive_efficiency_score_mean": 0.8246171875,
+      "adaptive_efficiency_score_std": 0.010194485984484301,
+      "avg_confidence_gap_mean": 0.3846875,
+      "avg_confidence_gap_std": 0.014316760040440565,
+      "avg_best_router_score_mean": 0.8182812500000001,
+      "avg_best_router_score_std": 0.010826570405078015,
+      "mode_usage": {
+        "full": {
+          "mean": 0.3803125,
+          "std": 0.01998534619414936
+        },
+        "top1": {
+          "mean": 0.5525,
+          "std": 0.018622249983405476
+        },
+        "top2": {
+          "mean": 0.0671875,
+          "std": 0.012080639067440833
+        }
+      }
+    },
+    "adaptive_aggressive": {
+      "accuracy_mean": 0.9425000000000001,
+      "accuracy_std": 0.013756311682682647,
+      "avg_reward_mean": 0.8849999999999998,
+      "avg_reward_std": 0.027512623365365287,
+      "task_diversity_mean": 0.9425000000000001,
+      "task_diversity_std": 0.0137563116826826,
+      "avg_organs_per_step_mean": 2.208125,
+      "avg_organs_per_step_std": 0.05607998999445145,
+      "compute_saving_vs_full_mean": 0.44796874999999997,
+      "compute_saving_vs_full_std": 0.014019997498612862,
+      "sparse_efficiency_score_mean": 0.794140625,
+      "sparse_efficiency_score_std": 0.011203729111637084,
+      "adaptive_efficiency_score_mean": 0.8246171875,
+      "adaptive_efficiency_score_std": 0.010194485984484301,
+      "avg_confidence_gap_mean": 0.3846875,
+      "avg_confidence_gap_std": 0.014316760040440565,
+      "avg_best_router_score_mean": 0.8182812500000001,
+      "avg_best_router_score_std": 0.010826570405078015,
+      "mode_usage": {
+        "full": {
+          "mean": 0.3803125,
+          "std": 0.01998534619414936
+        },
+        "top1": {
+          "mean": 0.5525,
+          "std": 0.018622249983405476
+        },
+        "top2": {
+          "mean": 0.0671875,
+          "std": 0.012080639067440833
+        }
+      }
+    },
+    "adaptive_conservative": {
+      "accuracy_mean": 0.944375,
+      "accuracy_std": 0.01419115530493866,
+      "avg_reward_mean": 0.8887499999999999,
+      "avg_reward_std": 0.02838231060987732,
+      "task_diversity_mean": 0.944375,
+      "task_diversity_std": 0.014191155304938613,
+      "avg_organs_per_step_mean": 2.3425000000000002,
+      "avg_organs_per_step_std": 0.055866749950216385,
+      "compute_saving_vs_full_mean": 0.414375,
+      "compute_saving_vs_full_std": 0.013966687487554095,
+      "sparse_efficiency_score_mean": 0.7853749999999999,
+      "sparse_efficiency_score_std": 0.01140374068669159,
+      "adaptive_efficiency_score_mean": 0.7841041666666666,
+      "adaptive_efficiency_score_std": 0.010390562995846757,
+      "avg_confidence_gap_mean": 0.3846875,
+      "avg_confidence_gap_std": 0.014316760040440565,
+      "avg_best_router_score_mean": 0.8182812500000001,
+      "avg_best_router_score_std": 0.010826570405078015,
+      "mode_usage": {
+        "full": {
+          "mean": 0.44750000000000006,
+          "std": 0.018622249983405455
+        },
+        "top1": {
+          "mean": 0.5525,
+          "std": 0.018622249983405476
+        }
+      }
+    },
+    "oracle": {
+      "accuracy_mean": 0.9734375000000002,
+      "accuracy_std": 0.007547592055306978,
+      "avg_reward_mean": 0.946875,
+      "avg_reward_std": 0.01509518411061401,
+      "task_diversity_mean": 0.9734375000000002,
+      "task_diversity_std": 0.007547592055307002,
+      "avg_organs_per_step_mean": 1.0,
+      "avg_organs_per_step_std": 0.0,
+      "compute_saving_vs_full_mean": 0.75,
+      "compute_saving_vs_full_std": 0.0,
+      "sparse_efficiency_score_mean": 0.9064062499999999,
+      "sparse_efficiency_score_std": 0.00528331443871489,
+      "adaptive_efficiency_score_mean": 0.0,
+      "adaptive_efficiency_score_std": 0.0,
+      "avg_confidence_gap_mean": 0.0,
+      "avg_confidence_gap_std": 0.0,
+      "avg_best_router_score_mean": 0.0,
+      "avg_best_router_score_std": 0.0,
+      "mode_usage": {}
+    }
+  },
+  "runs": {
+    "full_evidence": [
+      {
+        "avg_reward": 0.85,
+        "accuracy": 0.925,
+        "total_reward": 272.0,
+        "organ_usage": {
+          "memory_organ": 320,
+          "linear_organ": 320,
+          "threshold_organ": 320,
+          "planner_organ": 320
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 1.0,
+          "planning": 0.8875,
+          "threshold_rule": 0.825
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.925,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 1280,
+        "avg_organs_per_step": 4.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.0,
+        "sparse_efficiency_score": 0.6475,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 4.218389108242372,
+            "linear_organ": 4.218389108242372,
+            "threshold_organ": 4.218389108242372,
+            "planner_organ": 4.218389108242372
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 3,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 0,
+        "router": "evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.89375,
+        "accuracy": 0.946875,
+        "total_reward": 286.0,
+        "organ_usage": {
+          "memory_organ": 320,
+          "linear_organ": 320,
+          "threshold_organ": 320,
+          "planner_organ": 320
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 1.0,
+          "planning": 0.8875,
+          "threshold_rule": 0.9
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.946875,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 1280,
+        "avg_organs_per_step": 4.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.0,
+        "sparse_efficiency_score": 0.6628125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 4.358188091950076,
+            "linear_organ": 4.358188091950076,
+            "threshold_organ": 4.358188091950076,
+            "planner_organ": 4.358188091950076
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            },
+            "last_info": {
+              "correct": false,
+              "target": 1,
+              "prediction": 0,
+              "family": "planning",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 1,
+        "router": "evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.93125,
+        "accuracy": 0.965625,
+        "total_reward": 298.0,
+        "organ_usage": {
+          "memory_organ": 320,
+          "linear_organ": 320,
+          "threshold_organ": 320,
+          "planner_organ": 320
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 1.0,
+          "planning": 0.925,
+          "threshold_rule": 0.95
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.965625,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 1280,
+        "avg_organs_per_step": 4.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.0,
+        "sparse_efficiency_score": 0.6759375,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 4.6052379693367556,
+            "linear_organ": 4.6052379693367556,
+            "threshold_organ": 4.6052379693367556,
+            "planner_organ": 4.6052379693367556
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 2,
+        "router": "evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.88125,
+        "accuracy": 0.940625,
+        "total_reward": 282.0,
+        "organ_usage": {
+          "memory_organ": 320,
+          "linear_organ": 320,
+          "threshold_organ": 320,
+          "planner_organ": 320
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 1.0,
+          "planning": 0.875,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.940625,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 1280,
+        "avg_organs_per_step": 4.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.0,
+        "sparse_efficiency_score": 0.6584375,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 4.231083859286927,
+            "linear_organ": 4.231083859286927,
+            "threshold_organ": 4.231083859286927,
+            "planner_organ": 4.231083859286927
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 3,
+        "router": "evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.8625,
+        "accuracy": 0.93125,
+        "total_reward": 276.0,
+        "organ_usage": {
+          "memory_organ": 320,
+          "linear_organ": 320,
+          "threshold_organ": 320,
+          "planner_organ": 320
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 1.0,
+          "planning": 0.85,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9312499999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 1280,
+        "avg_organs_per_step": 4.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.0,
+        "sparse_efficiency_score": 0.651875,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 4.098757561366222,
+            "linear_organ": 4.098757561366222,
+            "threshold_organ": 4.098757561366222,
+            "planner_organ": 4.098757561366222
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 4,
+        "router": "evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.91875,
+        "accuracy": 0.959375,
+        "total_reward": 294.0,
+        "organ_usage": {
+          "memory_organ": 320,
+          "linear_organ": 320,
+          "threshold_organ": 320,
+          "planner_organ": 320
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 1.0,
+          "planning": 0.9125,
+          "threshold_rule": 0.925
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9593750000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 1280,
+        "avg_organs_per_step": 4.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.0,
+        "sparse_efficiency_score": 0.6715625,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 4.394237075764398,
+            "linear_organ": 4.394237075764398,
+            "threshold_organ": 4.394237075764398,
+            "planner_organ": 4.394237075764398
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 5,
+        "router": "evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.925,
+        "accuracy": 0.9625,
+        "total_reward": 296.0,
+        "organ_usage": {
+          "memory_organ": 320,
+          "linear_organ": 320,
+          "threshold_organ": 320,
+          "planner_organ": 320
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 1.0,
+          "planning": 0.9375,
+          "threshold_rule": 0.925
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9624999999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 1280,
+        "avg_organs_per_step": 4.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.0,
+        "sparse_efficiency_score": 0.67375,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 4.465494219842537,
+            "linear_organ": 4.465494219842537,
+            "threshold_organ": 4.465494219842537,
+            "planner_organ": 4.465494219842537
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 3,
+              "prediction": 3,
+              "family": "memory",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 6,
+        "router": "evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.9125,
+        "accuracy": 0.95625,
+        "total_reward": 292.0,
+        "organ_usage": {
+          "memory_organ": 320,
+          "linear_organ": 320,
+          "threshold_organ": 320,
+          "planner_organ": 320
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 1.0,
+          "planning": 0.925,
+          "threshold_rule": 0.9125
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.95625,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 1280,
+        "avg_organs_per_step": 4.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.0,
+        "sparse_efficiency_score": 0.6693749999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 4.373358069100312,
+            "linear_organ": 4.373358069100312,
+            "threshold_organ": 4.373358069100312,
+            "planner_organ": 4.373358069100312
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "planning",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 7,
+        "router": "evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.88125,
+        "accuracy": 0.940625,
+        "total_reward": 282.0,
+        "organ_usage": {
+          "memory_organ": 320,
+          "linear_organ": 320,
+          "threshold_organ": 320,
+          "planner_organ": 320
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 1.0,
+          "planning": 0.875,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.940625,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 1280,
+        "avg_organs_per_step": 4.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.0,
+        "sparse_efficiency_score": 0.6584375,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 4.370023585403191,
+            "linear_organ": 4.370023585403191,
+            "threshold_organ": 4.370023585403191,
+            "planner_organ": 4.370023585403191
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 8,
+        "router": "evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.925,
+        "accuracy": 0.9625,
+        "total_reward": 296.0,
+        "organ_usage": {
+          "memory_organ": 320,
+          "linear_organ": 320,
+          "threshold_organ": 320,
+          "planner_organ": 320
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 1.0,
+          "planning": 0.9625,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9624999999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 1280,
+        "avg_organs_per_step": 4.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.0,
+        "sparse_efficiency_score": 0.67375,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 4.521731045739886,
+            "linear_organ": 4.521731045739886,
+            "threshold_organ": 4.521731045739886,
+            "planner_organ": 4.521731045739886
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            },
+            "last_info": {
+              "correct": false,
+              "target": 3,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 9,
+        "router": "evidence_anti_leak_router"
+      }
+    ],
+    "sparse_top1": [
+      {
+        "avg_reward": 0.675,
+        "accuracy": 0.8375,
+        "total_reward": 216.0,
+        "organ_usage": {
+          "threshold_organ": 67,
+          "linear_organ": 95,
+          "planner_organ": 73,
+          "memory_organ": 85
+        },
+        "family_accuracy": {
+          "linear_rule": 0.95,
+          "memory": 0.8375,
+          "planning": 0.8125,
+          "threshold_rule": 0.75
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.8375,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.8112499999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 2.1855525921453975,
+            "linear_organ": 2.9956797183238293,
+            "threshold_organ": 1.9069347859559218,
+            "planner_organ": 2.2776494592734937
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.3,
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "threshold_rule",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.3
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 0,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.66875,
+        "accuracy": 0.834375,
+        "total_reward": 214.0,
+        "organ_usage": {
+          "threshold_organ": 82,
+          "memory_organ": 96,
+          "planner_organ": 63,
+          "linear_organ": 79
+        },
+        "family_accuracy": {
+          "linear_rule": 0.925,
+          "memory": 0.8625,
+          "planning": 0.775,
+          "threshold_rule": 0.775
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.834375,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.8090624999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 1.76545425724318,
+            "linear_organ": 3.021456434250636,
+            "threshold_organ": 2.1436195971644074,
+            "planner_organ": 2.276735977078399
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "planner_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9,
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 1.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 1,
+              "prediction": 1,
+              "family": "planning",
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 1,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.71875,
+        "accuracy": 0.859375,
+        "total_reward": 230.0,
+        "organ_usage": {
+          "linear_organ": 91,
+          "threshold_organ": 71,
+          "memory_organ": 93,
+          "planner_organ": 65
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9625,
+          "memory": 0.8875,
+          "planning": 0.7625,
+          "threshold_rule": 0.825
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.859375,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.8265625,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 1.6359795715463339,
+            "linear_organ": 3.150069947370794,
+            "threshold_organ": 2.4648422149605613,
+            "planner_organ": 2.4031876424858223
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 2,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.69375,
+        "accuracy": 0.846875,
+        "total_reward": 222.0,
+        "organ_usage": {
+          "linear_organ": 93,
+          "memory_organ": 91,
+          "threshold_organ": 76,
+          "planner_organ": 60
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9625,
+          "memory": 0.8375,
+          "planning": 0.8125,
+          "threshold_rule": 0.775
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.8468749999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.8178124999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 2.1189096002354497,
+            "linear_organ": 2.950974859083935,
+            "threshold_organ": 2.1046953850077825,
+            "planner_organ": 2.225291587059046
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 3,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.7125,
+        "accuracy": 0.85625,
+        "total_reward": 228.0,
+        "organ_usage": {
+          "linear_organ": 87,
+          "memory_organ": 95,
+          "planner_organ": 70,
+          "threshold_organ": 68
+        },
+        "family_accuracy": {
+          "linear_rule": 0.95,
+          "memory": 0.8,
+          "planning": 0.85,
+          "threshold_rule": 0.825
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.85625,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.8243749999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 2.5155800244070465,
+            "linear_organ": 2.9380343477175566,
+            "threshold_organ": 2.082949041656807,
+            "planner_organ": 2.084160118402247
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 1.0,
+                "planner_organ": 0.5
+              }
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 4,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.7125,
+        "accuracy": 0.85625,
+        "total_reward": 228.0,
+        "organ_usage": {
+          "memory_organ": 75,
+          "threshold_organ": 78,
+          "linear_organ": 90,
+          "planner_organ": 77
+        },
+        "family_accuracy": {
+          "linear_rule": 0.925,
+          "memory": 0.825,
+          "planning": 0.8375,
+          "threshold_rule": 0.8375
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.85625,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.8243749999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 1.935333729383491,
+            "linear_organ": 3.1118036160202855,
+            "threshold_organ": 2.458062212916216,
+            "planner_organ": 2.218405342599736
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 5,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.7,
+        "accuracy": 0.85,
+        "total_reward": 224.0,
+        "organ_usage": {
+          "threshold_organ": 70,
+          "planner_organ": 63,
+          "memory_organ": 102,
+          "linear_organ": 85
+        },
+        "family_accuracy": {
+          "linear_rule": 0.925,
+          "memory": 0.8625,
+          "planning": 0.8,
+          "threshold_rule": 0.8125
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.8500000000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.82,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 2.219173899166645,
+            "linear_organ": 3.05298306846471,
+            "threshold_organ": 2.2761909152915507,
+            "planner_organ": 2.0084878857147537
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 3,
+              "prediction": 3,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 6,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.725,
+        "accuracy": 0.8625,
+        "total_reward": 232.0,
+        "organ_usage": {
+          "planner_organ": 64,
+          "memory_organ": 98,
+          "linear_organ": 88,
+          "threshold_organ": 70
+        },
+        "family_accuracy": {
+          "linear_rule": 0.95,
+          "memory": 0.875,
+          "planning": 0.825,
+          "threshold_rule": 0.8
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.8625,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.82875,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 2.0228352132491394,
+            "linear_organ": 3.0392058173447154,
+            "threshold_organ": 2.5298266793808155,
+            "planner_organ": 2.298490804842418
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.3,
+              "router_scores": {
+                "memory_organ": 1.0,
+                "linear_organ": 1.0,
+                "threshold_organ": 1.0,
+                "planner_organ": 1.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "planning",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.3
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 7,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.64375,
+        "accuracy": 0.821875,
+        "total_reward": 206.0,
+        "organ_usage": {
+          "threshold_organ": 72,
+          "memory_organ": 93,
+          "linear_organ": 87,
+          "planner_organ": 68
+        },
+        "family_accuracy": {
+          "linear_rule": 0.925,
+          "memory": 0.75,
+          "planning": 0.8125,
+          "threshold_rule": 0.8
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.8218749999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.8003125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 1.6887620518865956,
+            "linear_organ": 2.9247257953508803,
+            "threshold_organ": 2.383405051029384,
+            "planner_organ": 1.8811107302153476
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 8,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.6625,
+        "accuracy": 0.83125,
+        "total_reward": 212.0,
+        "organ_usage": {
+          "linear_organ": 84,
+          "planner_organ": 61,
+          "threshold_organ": 82,
+          "memory_organ": 93
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9,
+          "memory": 0.875,
+          "planning": 0.7625,
+          "threshold_rule": 0.7875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.8312499999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.806875,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 1.6601709914069898,
+            "linear_organ": 2.950241620112502,
+            "threshold_organ": 2.244535054527634,
+            "planner_organ": 2.1729422170399952
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 1.0,
+                "planner_organ": 0.5
+              }
+            },
+            "last_info": {
+              "correct": false,
+              "target": 3,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 9,
+        "router": "sparse_evidence_anti_leak_router"
+      }
+    ],
+    "sparse_top2": [
+      {
+        "avg_reward": 0.76875,
+        "accuracy": 0.884375,
+        "total_reward": 246.0,
+        "organ_usage": {
+          "threshold_organ": 98,
+          "memory_organ": 243,
+          "linear_organ": 172,
+          "planner_organ": 127
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.925,
+          "planning": 0.85,
+          "threshold_rule": 0.775
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.884375,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 640,
+        "avg_organs_per_step": 2.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.5,
+        "sparse_efficiency_score": 0.7690625,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.9664366930652686,
+            "linear_organ": 3.4494609825742333,
+            "threshold_organ": 2.3686253271178637,
+            "planner_organ": 3.2280431186860272
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "linear_organ",
+              "confidence": 0.5,
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "threshold_rule",
+              "chosen_organ": "linear_organ",
+              "confidence": 0.5
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 0,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.7875,
+        "accuracy": 0.89375,
+        "total_reward": 252.0,
+        "organ_usage": {
+          "threshold_organ": 110,
+          "memory_organ": 258,
+          "linear_organ": 164,
+          "planner_organ": 108
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.925,
+          "planning": 0.825,
+          "threshold_rule": 0.8375
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.8937499999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 640,
+        "avg_organs_per_step": 2.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.5,
+        "sparse_efficiency_score": 0.775625,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.8406632533685046,
+            "linear_organ": 3.3899847724840426,
+            "threshold_organ": 2.8713867132569533,
+            "planner_organ": 3.148593986791905
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "planner_organ",
+              "memory_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9,
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 1.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 1,
+              "prediction": 1,
+              "family": "planning",
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 1,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.8,
+        "accuracy": 0.9,
+        "total_reward": 256.0,
+        "organ_usage": {
+          "linear_organ": 172,
+          "memory_organ": 249,
+          "threshold_organ": 108,
+          "planner_organ": 111
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9625,
+          "planning": 0.8,
+          "threshold_rule": 0.85
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 640,
+        "avg_organs_per_step": 2.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.5,
+        "sparse_efficiency_score": 0.78,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.7208097591047733,
+            "linear_organ": 3.041726433283633,
+            "threshold_organ": 3.2552083810535577,
+            "planner_organ": 3.2562922427481387
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "threshold_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 2,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.775,
+        "accuracy": 0.8875,
+        "total_reward": 248.0,
+        "organ_usage": {
+          "linear_organ": 171,
+          "memory_organ": 245,
+          "threshold_organ": 108,
+          "planner_organ": 116
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 0.9,
+          "planning": 0.875,
+          "threshold_rule": 0.775
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.8875,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 640,
+        "avg_organs_per_step": 2.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.5,
+        "sparse_efficiency_score": 0.77125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.6020206481950545,
+            "linear_organ": 3.2735363006859464,
+            "threshold_organ": 2.605449491875658,
+            "planner_organ": 3.024253682054717
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ",
+              "memory_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 3,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.7625,
+        "accuracy": 0.88125,
+        "total_reward": 244.0,
+        "organ_usage": {
+          "linear_organ": 175,
+          "planner_organ": 112,
+          "memory_organ": 262,
+          "threshold_organ": 91
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9125,
+          "planning": 0.8375,
+          "threshold_rule": 0.7875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.88125,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 640,
+        "avg_organs_per_step": 2.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.5,
+        "sparse_efficiency_score": 0.766875,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 4.02913091412036,
+            "linear_organ": 3.2009299290497846,
+            "threshold_organ": 2.434239743663324,
+            "planner_organ": 2.982794795590119
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ",
+              "memory_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 1.0,
+                "planner_organ": 0.5
+              }
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 4,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.8125,
+        "accuracy": 0.90625,
+        "total_reward": 260.0,
+        "organ_usage": {
+          "memory_organ": 239,
+          "linear_organ": 158,
+          "threshold_organ": 122,
+          "planner_organ": 121
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9125,
+          "planning": 0.85,
+          "threshold_rule": 0.875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.90625,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 640,
+        "avg_organs_per_step": 2.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.5,
+        "sparse_efficiency_score": 0.7843749999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.9142120662248003,
+            "linear_organ": 3.364136926515472,
+            "threshold_organ": 2.909268350423724,
+            "planner_organ": 3.236433573094911
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 5,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.84375,
+        "accuracy": 0.921875,
+        "total_reward": 270.0,
+        "organ_usage": {
+          "threshold_organ": 98,
+          "planner_organ": 112,
+          "memory_organ": 257,
+          "linear_organ": 173
+        },
+        "family_accuracy": {
+          "linear_rule": 0.975,
+          "memory": 1.0,
+          "planning": 0.8875,
+          "threshold_rule": 0.825
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.921875,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 640,
+        "avg_organs_per_step": 2.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.5,
+        "sparse_efficiency_score": 0.7953125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.981950282966448,
+            "linear_organ": 3.687352540151314,
+            "threshold_organ": 2.9743777015719735,
+            "planner_organ": 3.5492213547057605
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 3,
+              "prediction": 3,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 6,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.80625,
+        "accuracy": 0.903125,
+        "total_reward": 258.0,
+        "organ_usage": {
+          "planner_organ": 107,
+          "memory_organ": 257,
+          "linear_organ": 175,
+          "threshold_organ": 101
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.95,
+          "planning": 0.8625,
+          "threshold_rule": 0.8125
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.903125,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 640,
+        "avg_organs_per_step": 2.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.5,
+        "sparse_efficiency_score": 0.7821874999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.622528440691075,
+            "linear_organ": 3.13692031502042,
+            "threshold_organ": 2.9503951885737405,
+            "planner_organ": 3.3335126275245357
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "linear_organ",
+              "confidence": 0.6666666666666666,
+              "router_scores": {
+                "memory_organ": 1.0,
+                "linear_organ": 1.0,
+                "threshold_organ": 1.0,
+                "planner_organ": 1.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "planning",
+              "chosen_organ": "linear_organ",
+              "confidence": 0.6666666666666666
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 7,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.80625,
+        "accuracy": 0.903125,
+        "total_reward": 258.0,
+        "organ_usage": {
+          "threshold_organ": 108,
+          "memory_organ": 240,
+          "linear_organ": 168,
+          "planner_organ": 124
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9375,
+          "planning": 0.875,
+          "threshold_rule": 0.8125
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.903125,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 640,
+        "avg_organs_per_step": 2.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.5,
+        "sparse_efficiency_score": 0.7821874999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.8084219965172115,
+            "linear_organ": 3.290310538271821,
+            "threshold_organ": 3.209734176457396,
+            "planner_organ": 3.4542207705276087
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 0.0
+              }
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 8,
+        "router": "sparse_evidence_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.775,
+        "accuracy": 0.8875,
+        "total_reward": 248.0,
+        "organ_usage": {
+          "linear_organ": 163,
+          "memory_organ": 247,
+          "planner_organ": 111,
+          "threshold_organ": 119
+        },
+        "family_accuracy": {
+          "linear_rule": 0.975,
+          "memory": 0.95,
+          "planning": 0.825,
+          "threshold_rule": 0.8
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.8875,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 640,
+        "avg_organs_per_step": 2.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.5,
+        "sparse_efficiency_score": 0.77125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.5830393109973233,
+            "linear_organ": 3.0989351187981917,
+            "threshold_organ": 2.9411611567617046,
+            "planner_organ": 3.152388545305338
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 1.0,
+                "planner_organ": 0.5
+              }
+            },
+            "last_info": {
+              "correct": false,
+              "target": 3,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 9,
+        "router": "sparse_evidence_anti_leak_router"
+      }
+    ],
+    "adaptive": [
+      {
+        "avg_reward": 0.83125,
+        "accuracy": 0.915625,
+        "total_reward": 266.0,
+        "organ_usage": {
+          "threshold_organ": 170,
+          "linear_organ": 198,
+          "planner_organ": 194,
+          "memory_organ": 142
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9625,
+          "planning": 0.9125,
+          "threshold_rule": 0.8
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9156250000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 704,
+        "avg_organs_per_step": 2.2,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.44999999999999996,
+        "sparse_efficiency_score": 0.7759375,
+        "mode_counts": {
+          "top1": 178,
+          "full": 121,
+          "top2": 21
+        },
+        "mode_usage": {
+          "full": 0.378125,
+          "top1": 0.55625,
+          "top2": 0.065625
+        },
+        "avg_confidence_gap": 0.375,
+        "avg_best_router_score": 0.8203125,
+        "adaptive_efficiency_score": 0.8076562500000001,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.334665848565385,
+            "linear_organ": 3.924509176161422,
+            "threshold_organ": 3.4237806928777235,
+            "planner_organ": 3.7221076226466168
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.5,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 3,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 0,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.89375,
+        "accuracy": 0.946875,
+        "total_reward": 286.0,
+        "organ_usage": {
+          "threshold_organ": 189,
+          "memory_organ": 146,
+          "linear_organ": 191,
+          "planner_organ": 187
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9875,
+          "planning": 0.925,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9468750000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 713,
+        "avg_organs_per_step": 2.228125,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.44296875,
+        "sparse_efficiency_score": 0.7957031250000001,
+        "mode_counts": {
+          "top2": 21,
+          "top1": 175,
+          "full": 124
+        },
+        "mode_usage": {
+          "full": 0.3875,
+          "top1": 0.546875,
+          "top2": 0.065625
+        },
+        "avg_confidence_gap": 0.3828125,
+        "avg_best_router_score": 0.8171875,
+        "adaptive_efficiency_score": 0.8262109375,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.8084193326877402,
+            "linear_organ": 4.231678457639392,
+            "threshold_organ": 3.8436001853703554,
+            "planner_organ": 4.0459298599058595
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "planner_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9,
+              "compute_mode": "top1",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 1.0
+              },
+              "confidence_gap": 1.0,
+              "best_score": 1.0,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 1,
+              "prediction": 1,
+              "family": "planning",
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 1,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.91875,
+        "accuracy": 0.959375,
+        "total_reward": 294.0,
+        "organ_usage": {
+          "linear_organ": 193,
+          "threshold_organ": 176,
+          "memory_organ": 138,
+          "planner_organ": 182
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.975,
+          "planning": 0.95,
+          "threshold_rule": 0.925
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9593749999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 689,
+        "avg_organs_per_step": 2.153125,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.46171874999999996,
+        "sparse_efficiency_score": 0.810078125,
+        "mode_counts": {
+          "top1": 185,
+          "full": 117,
+          "top2": 18
+        },
+        "mode_usage": {
+          "full": 0.365625,
+          "top1": 0.578125,
+          "top2": 0.05625
+        },
+        "avg_confidence_gap": 0.3890625,
+        "avg_best_router_score": 0.834375,
+        "adaptive_efficiency_score": 0.8390234375,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.683720562186376,
+            "linear_organ": 4.163462893274744,
+            "threshold_organ": 3.9427301225227462,
+            "planner_organ": 3.9678149029468197
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "threshold_organ",
+              "linear_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.5,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 2,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.88125,
+        "accuracy": 0.940625,
+        "total_reward": 282.0,
+        "organ_usage": {
+          "linear_organ": 202,
+          "memory_organ": 144,
+          "threshold_organ": 183,
+          "planner_organ": 186
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 0.9875,
+          "planning": 0.9,
+          "threshold_rule": 0.875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.940625,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 715,
+        "avg_organs_per_step": 2.234375,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.44140625,
+        "sparse_efficiency_score": 0.790859375,
+        "mode_counts": {
+          "top1": 177,
+          "full": 126,
+          "top2": 17
+        },
+        "mode_usage": {
+          "full": 0.39375,
+          "top1": 0.553125,
+          "top2": 0.053125
+        },
+        "avg_confidence_gap": 0.390625,
+        "avg_best_router_score": 0.8265625,
+        "adaptive_efficiency_score": 0.8217578125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.495633229791213,
+            "linear_organ": 4.029782090353523,
+            "threshold_organ": 3.596374389065283,
+            "planner_organ": 3.8594522837901364
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ",
+              "memory_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "top2",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.5,
+              "best_score": 0.5,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 3,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.85625,
+        "accuracy": 0.928125,
+        "total_reward": 274.0,
+        "organ_usage": {
+          "linear_organ": 196,
+          "memory_organ": 142,
+          "threshold_organ": 176,
+          "planner_organ": 192
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.925,
+          "planning": 0.925,
+          "threshold_rule": 0.875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9281250000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 706,
+        "avg_organs_per_step": 2.20625,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.44843750000000004,
+        "sparse_efficiency_score": 0.78421875,
+        "mode_counts": {
+          "top1": 178,
+          "full": 122,
+          "top2": 20
+        },
+        "mode_usage": {
+          "full": 0.38125,
+          "top1": 0.55625,
+          "top2": 0.0625
+        },
+        "avg_confidence_gap": 0.3953125,
+        "avg_best_router_score": 0.796875,
+        "adaptive_efficiency_score": 0.8153906249999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.5814560095865855,
+            "linear_organ": 4.04130111508239,
+            "threshold_organ": 3.533380848960979,
+            "planner_organ": 3.7252826448978533
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "top1",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 1.0,
+                "planner_organ": 0.5
+              },
+              "confidence_gap": 0.5,
+              "best_score": 1.0,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 4,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.89375,
+        "accuracy": 0.946875,
+        "total_reward": 286.0,
+        "organ_usage": {
+          "memory_organ": 135,
+          "linear_organ": 182,
+          "planner_organ": 184,
+          "threshold_organ": 167
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9875,
+          "planning": 0.925,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9468750000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 668,
+        "avg_organs_per_step": 2.0875,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.478125,
+        "sparse_efficiency_score": 0.80625,
+        "mode_counts": {
+          "full": 107,
+          "top1": 186,
+          "top2": 27
+        },
+        "mode_usage": {
+          "full": 0.334375,
+          "top1": 0.58125,
+          "top2": 0.084375
+        },
+        "avg_confidence_gap": 0.415625,
+        "avg_best_router_score": 0.828125,
+        "adaptive_efficiency_score": 0.835,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.519357738957517,
+            "linear_organ": 4.005350202739936,
+            "threshold_organ": 3.5824634273423017,
+            "planner_organ": 3.878212079345272
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.0,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 5,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.89375,
+        "accuracy": 0.946875,
+        "total_reward": 286.0,
+        "organ_usage": {
+          "threshold_organ": 183,
+          "planner_organ": 194,
+          "memory_organ": 152,
+          "linear_organ": 204
+        },
+        "family_accuracy": {
+          "linear_rule": 0.975,
+          "memory": 0.975,
+          "planning": 0.9375,
+          "threshold_rule": 0.9
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.946875,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 733,
+        "avg_organs_per_step": 2.290625,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.42734375,
+        "sparse_efficiency_score": 0.791015625,
+        "mode_counts": {
+          "full": 131,
+          "top1": 169,
+          "top2": 20
+        },
+        "mode_usage": {
+          "full": 0.409375,
+          "top1": 0.528125,
+          "top2": 0.0625
+        },
+        "avg_confidence_gap": 0.371875,
+        "avg_best_router_score": 0.8109375,
+        "adaptive_efficiency_score": 0.8223046875,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.6603740883901987,
+            "linear_organ": 4.166354579517896,
+            "threshold_organ": 3.8129676706440425,
+            "planner_organ": 3.909865371034772
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.5,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": true,
+              "target": 3,
+              "prediction": 3,
+              "family": "memory",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 6,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.9125,
+        "accuracy": 0.95625,
+        "total_reward": 292.0,
+        "organ_usage": {
+          "planner_organ": 188,
+          "memory_organ": 144,
+          "threshold_organ": 179,
+          "linear_organ": 199
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9875,
+          "planning": 0.95,
+          "threshold_rule": 0.9
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9562499999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 710,
+        "avg_organs_per_step": 2.21875,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.4453125,
+        "sparse_efficiency_score": 0.8029687499999999,
+        "mode_counts": {
+          "top1": 178,
+          "full": 124,
+          "top2": 18
+        },
+        "mode_usage": {
+          "full": 0.3875,
+          "top1": 0.55625,
+          "top2": 0.05625
+        },
+        "avg_confidence_gap": 0.365625,
+        "avg_best_router_score": 0.8234375,
+        "adaptive_efficiency_score": 0.832890625,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.6700896620353616,
+            "linear_organ": 4.119428306586478,
+            "threshold_organ": 3.765535553585242,
+            "planner_organ": 3.97953558638974
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 1.0,
+                "linear_organ": 1.0,
+                "threshold_organ": 1.0,
+                "planner_organ": 1.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 1.0,
+              "second_score": 1.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "planning",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 7,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.8625,
+        "accuracy": 0.93125,
+        "total_reward": 276.0,
+        "organ_usage": {
+          "threshold_organ": 178,
+          "memory_organ": 154,
+          "linear_organ": 198,
+          "planner_organ": 193
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.95,
+          "planning": 0.925,
+          "threshold_rule": 0.8625
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9312499999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 723,
+        "avg_organs_per_step": 2.259375,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.43515625,
+        "sparse_efficiency_score": 0.782421875,
+        "mode_counts": {
+          "top2": 28,
+          "full": 125,
+          "top1": 167
+        },
+        "mode_usage": {
+          "full": 0.390625,
+          "top1": 0.521875,
+          "top2": 0.0875
+        },
+        "avg_confidence_gap": 0.375,
+        "avg_best_router_score": 0.809375,
+        "adaptive_efficiency_score": 0.8141015625,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.4853195612227936,
+            "linear_organ": 3.9096419907033146,
+            "threshold_organ": 3.632365025129131,
+            "planner_organ": 3.848782930835303
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "compute_mode": "top2",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.5,
+              "best_score": 0.5,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 8,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.90625,
+        "accuracy": 0.953125,
+        "total_reward": 290.0,
+        "organ_usage": {
+          "linear_organ": 190,
+          "planner_organ": 181,
+          "memory_organ": 147,
+          "threshold_organ": 187
+        },
+        "family_accuracy": {
+          "linear_rule": 0.975,
+          "memory": 0.9875,
+          "planning": 0.9625,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.953125,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 705,
+        "avg_organs_per_step": 2.203125,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.44921875,
+        "sparse_efficiency_score": 0.8019531249999999,
+        "mode_counts": {
+          "top1": 175,
+          "top2": 25,
+          "full": 120
+        },
+        "mode_usage": {
+          "full": 0.375,
+          "top1": 0.546875,
+          "top2": 0.078125
+        },
+        "avg_confidence_gap": 0.3859375,
+        "avg_best_router_score": 0.815625,
+        "adaptive_efficiency_score": 0.8318359375,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.8490989948673473,
+            "linear_organ": 4.286071259305294,
+            "threshold_organ": 3.8975149441267893,
+            "planner_organ": 4.083556675102277
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "top1",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 1.0,
+                "planner_organ": 0.5
+              },
+              "confidence_gap": 0.5,
+              "best_score": 1.0,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": false,
+              "target": 3,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 9,
+        "router": "adaptive_compute_mode_router"
+      }
+    ],
+    "adaptive_aggressive": [
+      {
+        "avg_reward": 0.83125,
+        "accuracy": 0.915625,
+        "total_reward": 266.0,
+        "organ_usage": {
+          "threshold_organ": 170,
+          "linear_organ": 198,
+          "planner_organ": 194,
+          "memory_organ": 142
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9625,
+          "planning": 0.9125,
+          "threshold_rule": 0.8
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9156250000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 704,
+        "avg_organs_per_step": 2.2,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.44999999999999996,
+        "sparse_efficiency_score": 0.7759375,
+        "mode_counts": {
+          "top1": 178,
+          "full": 121,
+          "top2": 21
+        },
+        "mode_usage": {
+          "full": 0.378125,
+          "top1": 0.55625,
+          "top2": 0.065625
+        },
+        "avg_confidence_gap": 0.375,
+        "avg_best_router_score": 0.8203125,
+        "adaptive_efficiency_score": 0.8076562500000001,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.334665848565385,
+            "linear_organ": 3.924509176161422,
+            "threshold_organ": 3.4237806928777235,
+            "planner_organ": 3.7221076226466168
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.5,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 3,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 0,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.89375,
+        "accuracy": 0.946875,
+        "total_reward": 286.0,
+        "organ_usage": {
+          "threshold_organ": 189,
+          "memory_organ": 146,
+          "linear_organ": 191,
+          "planner_organ": 187
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9875,
+          "planning": 0.925,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9468750000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 713,
+        "avg_organs_per_step": 2.228125,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.44296875,
+        "sparse_efficiency_score": 0.7957031250000001,
+        "mode_counts": {
+          "top2": 21,
+          "top1": 175,
+          "full": 124
+        },
+        "mode_usage": {
+          "full": 0.3875,
+          "top1": 0.546875,
+          "top2": 0.065625
+        },
+        "avg_confidence_gap": 0.3828125,
+        "avg_best_router_score": 0.8171875,
+        "adaptive_efficiency_score": 0.8262109375,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.8084193326877402,
+            "linear_organ": 4.231678457639392,
+            "threshold_organ": 3.8436001853703554,
+            "planner_organ": 4.0459298599058595
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "planner_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9,
+              "compute_mode": "top1",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 1.0
+              },
+              "confidence_gap": 1.0,
+              "best_score": 1.0,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 1,
+              "prediction": 1,
+              "family": "planning",
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 1,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.91875,
+        "accuracy": 0.959375,
+        "total_reward": 294.0,
+        "organ_usage": {
+          "linear_organ": 193,
+          "threshold_organ": 176,
+          "memory_organ": 138,
+          "planner_organ": 182
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.975,
+          "planning": 0.95,
+          "threshold_rule": 0.925
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9593749999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 689,
+        "avg_organs_per_step": 2.153125,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.46171874999999996,
+        "sparse_efficiency_score": 0.810078125,
+        "mode_counts": {
+          "top1": 185,
+          "full": 117,
+          "top2": 18
+        },
+        "mode_usage": {
+          "full": 0.365625,
+          "top1": 0.578125,
+          "top2": 0.05625
+        },
+        "avg_confidence_gap": 0.3890625,
+        "avg_best_router_score": 0.834375,
+        "adaptive_efficiency_score": 0.8390234375,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.683720562186376,
+            "linear_organ": 4.163462893274744,
+            "threshold_organ": 3.9427301225227462,
+            "planner_organ": 3.9678149029468197
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "threshold_organ",
+              "linear_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.5,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 2,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.88125,
+        "accuracy": 0.940625,
+        "total_reward": 282.0,
+        "organ_usage": {
+          "linear_organ": 202,
+          "memory_organ": 144,
+          "threshold_organ": 183,
+          "planner_organ": 186
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 0.9875,
+          "planning": 0.9,
+          "threshold_rule": 0.875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.940625,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 715,
+        "avg_organs_per_step": 2.234375,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.44140625,
+        "sparse_efficiency_score": 0.790859375,
+        "mode_counts": {
+          "top1": 177,
+          "full": 126,
+          "top2": 17
+        },
+        "mode_usage": {
+          "full": 0.39375,
+          "top1": 0.553125,
+          "top2": 0.053125
+        },
+        "avg_confidence_gap": 0.390625,
+        "avg_best_router_score": 0.8265625,
+        "adaptive_efficiency_score": 0.8217578125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.495633229791213,
+            "linear_organ": 4.029782090353523,
+            "threshold_organ": 3.596374389065283,
+            "planner_organ": 3.8594522837901364
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ",
+              "memory_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "top2",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.5,
+              "best_score": 0.5,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 3,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.85625,
+        "accuracy": 0.928125,
+        "total_reward": 274.0,
+        "organ_usage": {
+          "linear_organ": 196,
+          "memory_organ": 142,
+          "threshold_organ": 176,
+          "planner_organ": 192
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.925,
+          "planning": 0.925,
+          "threshold_rule": 0.875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9281250000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 706,
+        "avg_organs_per_step": 2.20625,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.44843750000000004,
+        "sparse_efficiency_score": 0.78421875,
+        "mode_counts": {
+          "top1": 178,
+          "full": 122,
+          "top2": 20
+        },
+        "mode_usage": {
+          "full": 0.38125,
+          "top1": 0.55625,
+          "top2": 0.0625
+        },
+        "avg_confidence_gap": 0.3953125,
+        "avg_best_router_score": 0.796875,
+        "adaptive_efficiency_score": 0.8153906249999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.5814560095865855,
+            "linear_organ": 4.04130111508239,
+            "threshold_organ": 3.533380848960979,
+            "planner_organ": 3.7252826448978533
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "top1",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 1.0,
+                "planner_organ": 0.5
+              },
+              "confidence_gap": 0.5,
+              "best_score": 1.0,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 4,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.89375,
+        "accuracy": 0.946875,
+        "total_reward": 286.0,
+        "organ_usage": {
+          "memory_organ": 135,
+          "linear_organ": 182,
+          "planner_organ": 184,
+          "threshold_organ": 167
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9875,
+          "planning": 0.925,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9468750000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 668,
+        "avg_organs_per_step": 2.0875,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.478125,
+        "sparse_efficiency_score": 0.80625,
+        "mode_counts": {
+          "full": 107,
+          "top1": 186,
+          "top2": 27
+        },
+        "mode_usage": {
+          "full": 0.334375,
+          "top1": 0.58125,
+          "top2": 0.084375
+        },
+        "avg_confidence_gap": 0.415625,
+        "avg_best_router_score": 0.828125,
+        "adaptive_efficiency_score": 0.835,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.519357738957517,
+            "linear_organ": 4.005350202739936,
+            "threshold_organ": 3.5824634273423017,
+            "planner_organ": 3.878212079345272
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.0,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 5,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.89375,
+        "accuracy": 0.946875,
+        "total_reward": 286.0,
+        "organ_usage": {
+          "threshold_organ": 183,
+          "planner_organ": 194,
+          "memory_organ": 152,
+          "linear_organ": 204
+        },
+        "family_accuracy": {
+          "linear_rule": 0.975,
+          "memory": 0.975,
+          "planning": 0.9375,
+          "threshold_rule": 0.9
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.946875,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 733,
+        "avg_organs_per_step": 2.290625,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.42734375,
+        "sparse_efficiency_score": 0.791015625,
+        "mode_counts": {
+          "full": 131,
+          "top1": 169,
+          "top2": 20
+        },
+        "mode_usage": {
+          "full": 0.409375,
+          "top1": 0.528125,
+          "top2": 0.0625
+        },
+        "avg_confidence_gap": 0.371875,
+        "avg_best_router_score": 0.8109375,
+        "adaptive_efficiency_score": 0.8223046875,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.6603740883901987,
+            "linear_organ": 4.166354579517896,
+            "threshold_organ": 3.8129676706440425,
+            "planner_organ": 3.909865371034772
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.5,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": true,
+              "target": 3,
+              "prediction": 3,
+              "family": "memory",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 6,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.9125,
+        "accuracy": 0.95625,
+        "total_reward": 292.0,
+        "organ_usage": {
+          "planner_organ": 188,
+          "memory_organ": 144,
+          "threshold_organ": 179,
+          "linear_organ": 199
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9875,
+          "planning": 0.95,
+          "threshold_rule": 0.9
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9562499999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 710,
+        "avg_organs_per_step": 2.21875,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.4453125,
+        "sparse_efficiency_score": 0.8029687499999999,
+        "mode_counts": {
+          "top1": 178,
+          "full": 124,
+          "top2": 18
+        },
+        "mode_usage": {
+          "full": 0.3875,
+          "top1": 0.55625,
+          "top2": 0.05625
+        },
+        "avg_confidence_gap": 0.365625,
+        "avg_best_router_score": 0.8234375,
+        "adaptive_efficiency_score": 0.832890625,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.6700896620353616,
+            "linear_organ": 4.119428306586478,
+            "threshold_organ": 3.765535553585242,
+            "planner_organ": 3.97953558638974
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 1.0,
+                "linear_organ": 1.0,
+                "threshold_organ": 1.0,
+                "planner_organ": 1.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 1.0,
+              "second_score": 1.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "planning",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 7,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.8625,
+        "accuracy": 0.93125,
+        "total_reward": 276.0,
+        "organ_usage": {
+          "threshold_organ": 178,
+          "memory_organ": 154,
+          "linear_organ": 198,
+          "planner_organ": 193
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.95,
+          "planning": 0.925,
+          "threshold_rule": 0.8625
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9312499999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 723,
+        "avg_organs_per_step": 2.259375,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.43515625,
+        "sparse_efficiency_score": 0.782421875,
+        "mode_counts": {
+          "top2": 28,
+          "full": 125,
+          "top1": 167
+        },
+        "mode_usage": {
+          "full": 0.390625,
+          "top1": 0.521875,
+          "top2": 0.0875
+        },
+        "avg_confidence_gap": 0.375,
+        "avg_best_router_score": 0.809375,
+        "adaptive_efficiency_score": 0.8141015625,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.4853195612227936,
+            "linear_organ": 3.9096419907033146,
+            "threshold_organ": 3.632365025129131,
+            "planner_organ": 3.848782930835303
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ"
+            ],
+            "num_outputs": 2,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "compute_mode": "top2",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.5,
+              "best_score": 0.5,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 8,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.90625,
+        "accuracy": 0.953125,
+        "total_reward": 290.0,
+        "organ_usage": {
+          "linear_organ": 190,
+          "planner_organ": 181,
+          "memory_organ": 147,
+          "threshold_organ": 187
+        },
+        "family_accuracy": {
+          "linear_rule": 0.975,
+          "memory": 0.9875,
+          "planning": 0.9625,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.953125,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 705,
+        "avg_organs_per_step": 2.203125,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.44921875,
+        "sparse_efficiency_score": 0.8019531249999999,
+        "mode_counts": {
+          "top1": 175,
+          "top2": 25,
+          "full": 120
+        },
+        "mode_usage": {
+          "full": 0.375,
+          "top1": 0.546875,
+          "top2": 0.078125
+        },
+        "avg_confidence_gap": 0.3859375,
+        "avg_best_router_score": 0.815625,
+        "adaptive_efficiency_score": 0.8318359375,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.8490989948673473,
+            "linear_organ": 4.286071259305294,
+            "threshold_organ": 3.8975149441267893,
+            "planner_organ": 4.083556675102277
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "top1",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 1.0,
+                "planner_organ": 0.5
+              },
+              "confidence_gap": 0.5,
+              "best_score": 1.0,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": false,
+              "target": 3,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 9,
+        "router": "adaptive_compute_mode_router"
+      }
+    ],
+    "adaptive_conservative": [
+      {
+        "avg_reward": 0.83125,
+        "accuracy": 0.915625,
+        "total_reward": 266.0,
+        "organ_usage": {
+          "threshold_organ": 183,
+          "linear_organ": 215,
+          "planner_organ": 206,
+          "memory_organ": 142
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9625,
+          "planning": 0.9125,
+          "threshold_rule": 0.8
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9156250000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 746,
+        "avg_organs_per_step": 2.33125,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.41718750000000004,
+        "sparse_efficiency_score": 0.7660937499999999,
+        "mode_counts": {
+          "top1": 178,
+          "full": 142
+        },
+        "mode_usage": {
+          "full": 0.44375,
+          "top1": 0.55625
+        },
+        "avg_confidence_gap": 0.375,
+        "avg_best_router_score": 0.8203125,
+        "adaptive_efficiency_score": 0.7661197916666667,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.334665848565385,
+            "linear_organ": 3.923201971199364,
+            "threshold_organ": 3.549799980964402,
+            "planner_organ": 3.6881089327460628
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.5,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 3,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 0,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.89375,
+        "accuracy": 0.946875,
+        "total_reward": 286.0,
+        "organ_usage": {
+          "threshold_organ": 201,
+          "memory_organ": 146,
+          "linear_organ": 209,
+          "planner_organ": 199
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9875,
+          "planning": 0.925,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9468750000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 755,
+        "avg_organs_per_step": 2.359375,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.41015625,
+        "sparse_efficiency_score": 0.785859375,
+        "mode_counts": {
+          "full": 145,
+          "top1": 175
+        },
+        "mode_usage": {
+          "full": 0.453125,
+          "top1": 0.546875
+        },
+        "avg_confidence_gap": 0.3828125,
+        "avg_best_router_score": 0.8171875,
+        "adaptive_efficiency_score": 0.7846744791666667,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.8084193326877402,
+            "linear_organ": 4.338994432413888,
+            "threshold_organ": 3.937773835235123,
+            "planner_organ": 4.125002786675638
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "planner_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9,
+              "compute_mode": "top1",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 1.0
+              },
+              "confidence_gap": 1.0,
+              "best_score": 1.0,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 1,
+              "prediction": 1,
+              "family": "planning",
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 1,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.91875,
+        "accuracy": 0.959375,
+        "total_reward": 294.0,
+        "organ_usage": {
+          "linear_organ": 209,
+          "threshold_organ": 184,
+          "memory_organ": 138,
+          "planner_organ": 194
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.975,
+          "planning": 0.95,
+          "threshold_rule": 0.925
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9593749999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 725,
+        "avg_organs_per_step": 2.265625,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.43359375,
+        "sparse_efficiency_score": 0.8016406249999999,
+        "mode_counts": {
+          "top1": 185,
+          "full": 135
+        },
+        "mode_usage": {
+          "full": 0.421875,
+          "top1": 0.578125
+        },
+        "avg_confidence_gap": 0.3890625,
+        "avg_best_router_score": 0.834375,
+        "adaptive_efficiency_score": 0.7986588541666667,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.683720562186376,
+            "linear_organ": 4.268240055029489,
+            "threshold_organ": 4.014215815706158,
+            "planner_organ": 4.064970024258476
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "threshold_organ",
+              "linear_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.5,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 2,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.88125,
+        "accuracy": 0.940625,
+        "total_reward": 282.0,
+        "organ_usage": {
+          "linear_organ": 215,
+          "memory_organ": 144,
+          "threshold_organ": 196,
+          "planner_organ": 194
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 0.9875,
+          "planning": 0.9,
+          "threshold_rule": 0.875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.940625,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 749,
+        "avg_organs_per_step": 2.340625,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.41484374999999996,
+        "sparse_efficiency_score": 0.782890625,
+        "mode_counts": {
+          "top1": 177,
+          "full": 143
+        },
+        "mode_usage": {
+          "full": 0.446875,
+          "top1": 0.553125
+        },
+        "avg_confidence_gap": 0.390625,
+        "avg_best_router_score": 0.8265625,
+        "adaptive_efficiency_score": 0.7817838541666666,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.495633229791213,
+            "linear_organ": 4.07143444494166,
+            "threshold_organ": 3.6632646847390133,
+            "planner_organ": 3.928928556911966
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ",
+              "memory_organ",
+              "linear_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.5,
+              "best_score": 0.5,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 3,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.85625,
+        "accuracy": 0.928125,
+        "total_reward": 274.0,
+        "organ_usage": {
+          "linear_organ": 213,
+          "memory_organ": 142,
+          "threshold_organ": 190,
+          "planner_organ": 201
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.925,
+          "planning": 0.925,
+          "threshold_rule": 0.875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9281250000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 746,
+        "avg_organs_per_step": 2.33125,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.41718750000000004,
+        "sparse_efficiency_score": 0.7748437499999999,
+        "mode_counts": {
+          "top1": 178,
+          "full": 142
+        },
+        "mode_usage": {
+          "full": 0.44375,
+          "top1": 0.55625
+        },
+        "avg_confidence_gap": 0.3953125,
+        "avg_best_router_score": 0.796875,
+        "adaptive_efficiency_score": 0.7742447916666666,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.5814560095865855,
+            "linear_organ": 4.149415125189225,
+            "threshold_organ": 3.652062354258471,
+            "planner_organ": 3.790780589528756
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "top1",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 1.0,
+                "planner_organ": 0.5
+              },
+              "confidence_gap": 0.5,
+              "best_score": 1.0,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 4,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.9,
+        "accuracy": 0.95,
+        "total_reward": 288.0,
+        "organ_usage": {
+          "memory_organ": 135,
+          "linear_organ": 201,
+          "planner_organ": 197,
+          "threshold_organ": 189
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 0.9875,
+          "planning": 0.925,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.95,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 722,
+        "avg_organs_per_step": 2.25625,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.4359375,
+        "sparse_efficiency_score": 0.7957812499999999,
+        "mode_counts": {
+          "full": 134,
+          "top1": 186
+        },
+        "mode_usage": {
+          "full": 0.41875,
+          "top1": 0.58125
+        },
+        "avg_confidence_gap": 0.415625,
+        "avg_best_router_score": 0.828125,
+        "adaptive_efficiency_score": 0.7931510416666666,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.5598309362253495,
+            "linear_organ": 4.132415289163217,
+            "threshold_organ": 3.777380690062206,
+            "planner_organ": 4.009325326878709
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.0,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 5,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.9,
+        "accuracy": 0.95,
+        "total_reward": 288.0,
+        "organ_usage": {
+          "threshold_organ": 196,
+          "planner_organ": 204,
+          "memory_organ": 152,
+          "linear_organ": 221
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.975,
+          "planning": 0.9375,
+          "threshold_rule": 0.9
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.95,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 773,
+        "avg_organs_per_step": 2.415625,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.39609375,
+        "sparse_efficiency_score": 0.7838281249999999,
+        "mode_counts": {
+          "full": 151,
+          "top1": 169
+        },
+        "mode_usage": {
+          "full": 0.471875,
+          "top1": 0.528125
+        },
+        "avg_confidence_gap": 0.371875,
+        "avg_best_router_score": 0.8109375,
+        "adaptive_efficiency_score": 0.7831901041666666,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.7321471416500263,
+            "linear_organ": 4.247271858436448,
+            "threshold_organ": 3.9116767059562703,
+            "planner_organ": 4.02455733190523
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.5,
+                "threshold_organ": 0.5,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 0.5,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": true,
+              "target": 3,
+              "prediction": 3,
+              "family": "memory",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 6,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.9125,
+        "accuracy": 0.95625,
+        "total_reward": 292.0,
+        "organ_usage": {
+          "planner_organ": 197,
+          "memory_organ": 144,
+          "threshold_organ": 191,
+          "linear_organ": 214
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 0.9875,
+          "planning": 0.95,
+          "threshold_rule": 0.9
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9562499999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 746,
+        "avg_organs_per_step": 2.33125,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.41718750000000004,
+        "sparse_efficiency_score": 0.7945312499999999,
+        "mode_counts": {
+          "top1": 178,
+          "full": 142
+        },
+        "mode_usage": {
+          "full": 0.44375,
+          "top1": 0.55625
+        },
+        "avg_confidence_gap": 0.365625,
+        "avg_best_router_score": 0.8234375,
+        "adaptive_efficiency_score": 0.7925260416666666,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.6700896620353616,
+            "linear_organ": 4.205138504605822,
+            "threshold_organ": 3.861196762417887,
+            "planner_organ": 4.037813562590087
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 1.0,
+                "linear_organ": 1.0,
+                "threshold_organ": 1.0,
+                "planner_organ": 1.0
+              },
+              "confidence_gap": 0.0,
+              "best_score": 1.0,
+              "second_score": 1.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "planning",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 7,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.875,
+        "accuracy": 0.9375,
+        "total_reward": 280.0,
+        "organ_usage": {
+          "threshold_organ": 198,
+          "memory_organ": 154,
+          "linear_organ": 221,
+          "planner_organ": 206
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 0.95,
+          "planning": 0.925,
+          "threshold_rule": 0.875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9375,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 779,
+        "avg_organs_per_step": 2.434375,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.39140624999999996,
+        "sparse_efficiency_score": 0.773671875,
+        "mode_counts": {
+          "full": 153,
+          "top1": 167
+        },
+        "mode_usage": {
+          "full": 0.478125,
+          "top1": 0.521875
+        },
+        "avg_confidence_gap": 0.375,
+        "avg_best_router_score": 0.809375,
+        "adaptive_efficiency_score": 0.7738932291666667,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.5575916648725414,
+            "linear_organ": 3.9983814192504443,
+            "threshold_organ": 3.822058242571983,
+            "planner_organ": 3.9309779605635424
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ",
+              "linear_organ",
+              "threshold_organ",
+              "planner_organ"
+            ],
+            "num_outputs": 4,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95,
+              "compute_mode": "full",
+              "router_scores": {
+                "memory_organ": 0.5,
+                "linear_organ": 0.0,
+                "threshold_organ": 0.0,
+                "planner_organ": 0.0
+              },
+              "confidence_gap": 0.5,
+              "best_score": 0.5,
+              "second_score": 0.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 8,
+        "router": "adaptive_compute_mode_router"
+      },
+      {
+        "avg_reward": 0.91875,
+        "accuracy": 0.959375,
+        "total_reward": 294.0,
+        "organ_usage": {
+          "linear_organ": 211,
+          "planner_organ": 196,
+          "memory_organ": 147,
+          "threshold_organ": 201
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 0.9875,
+          "planning": 0.9625,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9593750000000001,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 755,
+        "avg_organs_per_step": 2.359375,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.41015625,
+        "sparse_efficiency_score": 0.794609375,
+        "mode_counts": {
+          "top1": 175,
+          "full": 145
+        },
+        "mode_usage": {
+          "full": 0.453125,
+          "top1": 0.546875
+        },
+        "avg_confidence_gap": 0.3859375,
+        "avg_best_router_score": 0.815625,
+        "adaptive_efficiency_score": 0.7927994791666667,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.939146560378301,
+            "linear_organ": 4.408584550278933,
+            "threshold_organ": 3.997729939936721,
+            "planner_organ": 4.266418421991481
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0,
+              "compute_mode": "top1",
+              "router_scores": {
+                "memory_organ": 0.0,
+                "linear_organ": 0.0,
+                "threshold_organ": 1.0,
+                "planner_organ": 0.5
+              },
+              "confidence_gap": 0.5,
+              "best_score": 1.0,
+              "second_score": 0.5
+            },
+            "last_info": {
+              "correct": false,
+              "target": 3,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 9,
+        "router": "adaptive_compute_mode_router"
+      }
+    ],
+    "oracle": [
+      {
+        "avg_reward": 0.9125,
+        "accuracy": 0.95625,
+        "total_reward": 292.0,
+        "organ_usage": {
+          "threshold_organ": 80,
+          "linear_organ": 80,
+          "memory_organ": 80,
+          "planner_organ": 80
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 1.0,
+          "planning": 1.0,
+          "threshold_rule": 0.8375
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9562499999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.8943749999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.209907144944749,
+            "linear_organ": 3.159923441954829,
+            "threshold_organ": 2.397244448498844,
+            "planner_organ": 3.209907144944749
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 3,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 0,
+        "router": "family_oracle_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.94375,
+        "accuracy": 0.971875,
+        "total_reward": 302.0,
+        "organ_usage": {
+          "threshold_organ": 80,
+          "memory_organ": 80,
+          "linear_organ": 80,
+          "planner_organ": 80
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 1.0,
+          "planning": 1.0,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.971875,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.9053125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.209907144944749,
+            "linear_organ": 3.209907144944749,
+            "threshold_organ": 2.5577864209727763,
+            "planner_organ": 3.209907144944749
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "planner_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9
+            },
+            "last_info": {
+              "correct": true,
+              "target": 1,
+              "prediction": 1,
+              "family": "planning",
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 1,
+        "router": "family_oracle_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.96875,
+        "accuracy": 0.984375,
+        "total_reward": 310.0,
+        "organ_usage": {
+          "linear_organ": 80,
+          "memory_organ": 80,
+          "threshold_organ": 80,
+          "planner_organ": 80
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 1.0,
+          "planning": 1.0,
+          "threshold_rule": 0.95
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.984375,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.9140624999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.209907144944749,
+            "linear_organ": 3.1423342400387213,
+            "threshold_organ": 2.972808285127701,
+            "planner_organ": 3.209907144944749
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 2,
+        "router": "family_oracle_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.94375,
+        "accuracy": 0.971875,
+        "total_reward": 302.0,
+        "organ_usage": {
+          "linear_organ": 80,
+          "threshold_organ": 80,
+          "planner_organ": 80,
+          "memory_organ": 80
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 1.0,
+          "planning": 1.0,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.971875,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.9053125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.209907144944749,
+            "linear_organ": 3.209907144944749,
+            "threshold_organ": 2.5692361067383844,
+            "planner_organ": 3.209907144944749
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 3,
+        "router": "family_oracle_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.94375,
+        "accuracy": 0.971875,
+        "total_reward": 302.0,
+        "organ_usage": {
+          "linear_organ": 80,
+          "planner_organ": 80,
+          "threshold_organ": 80,
+          "memory_organ": 80
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 1.0,
+          "planning": 1.0,
+          "threshold_rule": 0.9
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9718749999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.9053125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.209907144944749,
+            "linear_organ": 3.1395623754447928,
+            "threshold_organ": 2.6145445539252963,
+            "planner_organ": 3.209907144944749
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            },
+            "last_info": {
+              "correct": false,
+              "target": 0,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 4,
+        "router": "family_oracle_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.9625,
+        "accuracy": 0.98125,
+        "total_reward": 308.0,
+        "organ_usage": {
+          "memory_organ": 80,
+          "threshold_organ": 80,
+          "planner_organ": 80,
+          "linear_organ": 80
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 1.0,
+          "planning": 1.0,
+          "threshold_rule": 0.925
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.98125,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.9118749999999999,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.209907144944749,
+            "linear_organ": 3.209907144944749,
+            "threshold_organ": 2.786411357702701,
+            "planner_organ": 3.209907144944749
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 2,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            },
+            "last_info": {
+              "correct": true,
+              "target": 2,
+              "prediction": 2,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 5,
+        "router": "family_oracle_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.95625,
+        "accuracy": 0.978125,
+        "total_reward": 306.0,
+        "organ_usage": {
+          "planner_organ": 80,
+          "memory_organ": 80,
+          "threshold_organ": 80,
+          "linear_organ": 80
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 1.0,
+          "planning": 1.0,
+          "threshold_rule": 0.925
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.9781249999999999,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.9096875,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.209907144944749,
+            "linear_organ": 3.157347496192192,
+            "threshold_organ": 2.796094389082131,
+            "planner_organ": 3.209907144944749
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 3,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            },
+            "last_info": {
+              "correct": true,
+              "target": 3,
+              "prediction": 3,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 6,
+        "router": "family_oracle_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.95,
+        "accuracy": 0.975,
+        "total_reward": 304.0,
+        "organ_usage": {
+          "planner_organ": 80,
+          "threshold_organ": 80,
+          "memory_organ": 80,
+          "linear_organ": 80
+        },
+        "family_accuracy": {
+          "linear_rule": 0.9875,
+          "memory": 1.0,
+          "planning": 1.0,
+          "threshold_rule": 0.9125
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.975,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.9075,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.209907144944749,
+            "linear_organ": 3.1313393308640283,
+            "threshold_organ": 2.734927277343042,
+            "planner_organ": 3.209907144944749
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "planner_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "planning",
+              "chosen_organ": "planner_organ",
+              "confidence": 0.9
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 7,
+        "router": "family_oracle_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.94375,
+        "accuracy": 0.971875,
+        "total_reward": 302.0,
+        "organ_usage": {
+          "memory_organ": 80,
+          "linear_organ": 80,
+          "threshold_organ": 80,
+          "planner_organ": 80
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 1.0,
+          "planning": 1.0,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.971875,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.9053125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": 1.0,
+          "organ_energy": {
+            "memory_organ": 3.209907144944749,
+            "linear_organ": 3.209907144944749,
+            "threshold_organ": 2.600812343148455,
+            "planner_organ": 3.209907144944749
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "memory_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 0,
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            },
+            "last_info": {
+              "correct": true,
+              "target": 0,
+              "prediction": 0,
+              "family": "memory",
+              "chosen_organ": "memory_organ",
+              "confidence": 0.95
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 8,
+        "router": "family_oracle_anti_leak_router"
+      },
+      {
+        "avg_reward": 0.94375,
+        "accuracy": 0.971875,
+        "total_reward": 302.0,
+        "organ_usage": {
+          "linear_organ": 80,
+          "memory_organ": 80,
+          "planner_organ": 80,
+          "threshold_organ": 80
+        },
+        "family_accuracy": {
+          "linear_rule": 1.0,
+          "memory": 1.0,
+          "planning": 1.0,
+          "threshold_rule": 0.8875
+        },
+        "family_top_organ": {
+          "linear_rule": "linear_organ",
+          "memory": "memory_organ",
+          "planning": "planner_organ",
+          "threshold_rule": "threshold_organ"
+        },
+        "task_diversity": 0.971875,
+        "families": [
+          "linear_rule",
+          "memory",
+          "planning",
+          "threshold_rule"
+        ],
+        "organ_calls": 320,
+        "avg_organs_per_step": 1.0,
+        "full_organ_count": 4,
+        "compute_saving_vs_full": 0.75,
+        "sparse_efficiency_score": 0.9053125,
+        "final_state": {
+          "step": 320,
+          "energy": 1.0,
+          "reward": -1.0,
+          "organ_energy": {
+            "memory_organ": 3.209907144944749,
+            "linear_organ": 3.209907144944749,
+            "threshold_organ": 2.5960567990328194,
+            "planner_organ": 3.209907144944749
+          },
+          "memory_size": 128,
+          "router_feedback": {
+            "selected": [
+              "threshold_organ"
+            ],
+            "num_outputs": 1,
+            "last_action": {
+              "prediction": 1,
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            },
+            "last_info": {
+              "correct": false,
+              "target": 3,
+              "prediction": 1,
+              "family": "threshold_rule",
+              "chosen_organ": "threshold_organ",
+              "confidence": 1.0
+            }
+          },
+          "context": {}
+        },
+        "steps": 320,
+        "engine": {
+          "energy_decay": 1.0,
+          "reward_gain": 0.0,
+          "organ_cost": 0.0,
+          "max_memory": 128
+        },
+        "seed": 9,
+        "router": "family_oracle_anti_leak_router"
+      }
+    ]
+  }
+}

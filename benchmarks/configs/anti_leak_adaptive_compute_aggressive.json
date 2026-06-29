@@ -1,0 +1,67 @@
+{
+  "benchmark": "SAGE-v1.7-adaptive-compute-router-aggressive",
+  "version": "v1.7",
+  "goal": "Aggressive sparse setting: prefer Top1/Top2 more often.",
+  "seed": 0,
+  "max_steps": 512,
+  "output_path": "results/v1_7_adaptive_compute_router_aggressive.json",
+  "interpretation_guardrail": "This benchmark tests adaptive compute routing on a synthetic task, not AGI.",
+  "state": {
+    "energy": 1.0
+  },
+  "engine": {
+    "energy_decay": 1.0,
+    "reward_gain": 0.0,
+    "organ_cost": 0.0,
+    "max_memory": 128
+  },
+  "organs": [
+    {
+      "module": "benchmarks.tasks.adaptive_compute_routing_task",
+      "class": "MemoryOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.adaptive_compute_routing_task",
+      "class": "LinearOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.adaptive_compute_routing_task",
+      "class": "ThresholdOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.adaptive_compute_routing_task",
+      "class": "PlannerOrgan",
+      "params": {}
+    }
+  ],
+  "router": {
+    "module": "benchmarks.tasks.adaptive_compute_routing_task",
+    "class": "AdaptiveComputeModeRouter",
+    "params": {
+      "top1_score_threshold": 0.8,
+      "top1_gap_threshold": 0.2,
+      "full_score_threshold": 0.35,
+      "full_gap_threshold": 0.05,
+      "low_energy_threshold": 0.35
+    }
+  },
+  "environment": {
+    "module": "benchmarks.tasks.adaptive_compute_routing_task",
+    "class": "AntiLeakRoutingEnvironment",
+    "params": {
+      "episodes_per_family": 40,
+      "support_size": 6,
+      "seed": 0
+    }
+  },
+  "metric": {
+    "module": "benchmarks.tasks.adaptive_compute_routing_task",
+    "class": "AdaptiveComputeMetric",
+    "params": {
+      "full_organ_count": 4
+    }
+  }
+}
