@@ -1,0 +1,228 @@
+{
+  "benchmark": "SAGE-v1.7.1-calibrated-adaptive-balanced",
+  "goal": "Increase Top2 usage while keeping near-Full accuracy.",
+  "version": "v1.7.1",
+  "config_path": "benchmarks\\configs\\anti_leak_adaptive_calibrated_balanced.json",
+  "seed": 0,
+  "components": {
+    "organs": [
+      "memory_organ",
+      "linear_organ",
+      "threshold_organ",
+      "planner_organ"
+    ],
+    "router": "calibrated_adaptive_compute_mode_router",
+    "environment": "anti_leak_routing_environment",
+    "metric": "organ_lifecycle_metric"
+  },
+  "interpretation_guardrail": "Synthetic benchmark evidence only. Organ lifecycle is recommendation-only, not automatic deletion.",
+  "result": {
+    "avg_reward": 0.7875,
+    "accuracy": 0.89375,
+    "total_reward": 126.0,
+    "organ_usage": {
+      "linear_organ": 81,
+      "planner_organ": 78,
+      "threshold_organ": 64,
+      "memory_organ": 99
+    },
+    "family_accuracy": {
+      "linear_rule": 0.975,
+      "memory": 0.9,
+      "planning": 0.925,
+      "threshold_rule": 0.775
+    },
+    "family_top_organ": {
+      "linear_rule": "linear_organ",
+      "memory": "memory_organ",
+      "planning": "planner_organ",
+      "threshold_rule": "threshold_organ"
+    },
+    "task_diversity": 0.8937499999999999,
+    "families": [
+      "linear_rule",
+      "memory",
+      "planning",
+      "threshold_rule"
+    ],
+    "organ_calls": 322,
+    "avg_organs_per_step": 2.0125,
+    "full_organ_count": 4,
+    "compute_saving_vs_full": 0.49687499999999996,
+    "sparse_efficiency_score": 0.7746875,
+    "mode_counts": {
+      "top2": 123,
+      "top1": 24,
+      "full": 13
+    },
+    "mode_usage": {
+      "full": 0.08125,
+      "top1": 0.15,
+      "top2": 0.76875
+    },
+    "avg_confidence_gap": 0.4125,
+    "avg_best_router_score": 0.81875,
+    "adaptive_efficiency_score": 0.8051562499999999,
+    "organ_lifecycle": {
+      "memory_organ": {
+        "status": "active",
+        "selected_count": 99,
+        "chosen_count": 38,
+        "success_count": 38,
+        "failure_count": 0,
+        "usage_ratio_over_selected_calls": 0.30745341614906835,
+        "usage_ratio_over_steps": 0.61875,
+        "chosen_ratio_over_steps": 0.2375,
+        "chosen_success_rate": 1.0,
+        "recommendation": "keep_active",
+        "can_delete": false,
+        "delete_policy": "never_auto_delete; archive_or_disable_only_after_human_approval"
+      },
+      "linear_organ": {
+        "status": "active_monitor",
+        "selected_count": 81,
+        "chosen_count": 49,
+        "success_count": 44,
+        "failure_count": 5,
+        "usage_ratio_over_selected_calls": 0.2515527950310559,
+        "usage_ratio_over_steps": 0.50625,
+        "chosen_ratio_over_steps": 0.30625,
+        "chosen_success_rate": 0.8979591836734694,
+        "recommendation": "monitor",
+        "can_delete": false,
+        "delete_policy": "never_auto_delete; archive_or_disable_only_after_human_approval"
+      },
+      "threshold_organ": {
+        "status": "active_monitor",
+        "selected_count": 64,
+        "chosen_count": 37,
+        "success_count": 31,
+        "failure_count": 6,
+        "usage_ratio_over_selected_calls": 0.19875776397515527,
+        "usage_ratio_over_steps": 0.4,
+        "chosen_ratio_over_steps": 0.23125,
+        "chosen_success_rate": 0.8378378378378378,
+        "recommendation": "monitor",
+        "can_delete": false,
+        "delete_policy": "never_auto_delete; archive_or_disable_only_after_human_approval"
+      },
+      "planner_organ": {
+        "status": "active_monitor",
+        "selected_count": 78,
+        "chosen_count": 36,
+        "success_count": 30,
+        "failure_count": 6,
+        "usage_ratio_over_selected_calls": 0.2422360248447205,
+        "usage_ratio_over_steps": 0.4875,
+        "chosen_ratio_over_steps": 0.225,
+        "chosen_success_rate": 0.8333333333333334,
+        "recommendation": "monitor",
+        "can_delete": false,
+        "delete_policy": "never_auto_delete; archive_or_disable_only_after_human_approval"
+      }
+    },
+    "family_specialization_v1_7_1": {
+      "linear_rule": {
+        "top_chosen_organ": "linear_organ",
+        "top_chosen_ratio": 1.0,
+        "top_success_when_chosen": 0.975,
+        "chosen_distribution": {
+          "linear_organ": 40
+        }
+      },
+      "threshold_rule": {
+        "top_chosen_organ": "threshold_organ",
+        "top_chosen_ratio": 0.875,
+        "top_success_when_chosen": 0.8571428571428571,
+        "chosen_distribution": {
+          "threshold_organ": 35,
+          "linear_organ": 3,
+          "planner_organ": 2
+        }
+      },
+      "planning": {
+        "top_chosen_organ": "planner_organ",
+        "top_chosen_ratio": 0.75,
+        "top_success_when_chosen": 1.0,
+        "chosen_distribution": {
+          "planner_organ": 30,
+          "threshold_organ": 2,
+          "memory_organ": 3,
+          "linear_organ": 5
+        }
+      },
+      "memory": {
+        "top_chosen_organ": "memory_organ",
+        "top_chosen_ratio": 0.875,
+        "top_success_when_chosen": 1.0,
+        "chosen_distribution": {
+          "memory_organ": 35,
+          "planner_organ": 4,
+          "linear_organ": 1
+        }
+      }
+    },
+    "lifecycle_policy": {
+      "auto_delete": false,
+      "auto_disable": false,
+      "recommend_only": true,
+      "allowed_transitions_later": [
+        "active",
+        "dormant",
+        "candidate",
+        "archived",
+        "quarantined"
+      ]
+    },
+    "final_state": {
+      "step": 160,
+      "energy": 1.0,
+      "reward": 1.0,
+      "organ_energy": {
+        "memory_organ": 3.0869835451560577,
+        "linear_organ": 2.690642431485025,
+        "threshold_organ": 2.3790298616383048,
+        "planner_organ": 2.6583580565219385
+      },
+      "memory_size": 128,
+      "router_feedback": {
+        "selected": [
+          "planner_organ",
+          "memory_organ"
+        ],
+        "num_outputs": 2,
+        "last_action": {
+          "prediction": 0,
+          "chosen_organ": "planner_organ",
+          "confidence": 0.9,
+          "compute_mode": "top2",
+          "router_scores": {
+            "memory_organ": 0.5,
+            "linear_organ": 0.5,
+            "threshold_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "confidence_gap": 0.5,
+          "best_score": 1.0,
+          "second_score": 0.5
+        },
+        "last_info": {
+          "correct": true,
+          "target": 0,
+          "prediction": 0,
+          "family": "planning",
+          "chosen_organ": "planner_organ",
+          "confidence": 0.9
+        }
+      },
+      "context": {}
+    },
+    "steps": 160,
+    "engine": {
+      "energy_decay": 1.0,
+      "reward_gain": 0.0,
+      "organ_cost": 0.0,
+      "max_memory": 128
+    }
+  }
+}

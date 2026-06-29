@@ -1,0 +1,67 @@
+{
+  "benchmark": "SAGE-v1.7.1-calibrated-adaptive-safe",
+  "version": "v1.7.1",
+  "goal": "Safer variant: use Full more often when evidence is weak.",
+  "seed": 0,
+  "max_steps": 512,
+  "output_path": "results/v1_7_1_calibrated_safe.json",
+  "interpretation_guardrail": "Synthetic benchmark evidence only. Organ lifecycle is recommendation-only, not automatic deletion.",
+  "state": {
+    "energy": 1.0
+  },
+  "engine": {
+    "energy_decay": 1.0,
+    "reward_gain": 0.0,
+    "organ_cost": 0.0,
+    "max_memory": 128
+  },
+  "organs": [
+    {
+      "module": "benchmarks.tasks.adaptive_compute_lifecycle_task",
+      "class": "MemoryOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.adaptive_compute_lifecycle_task",
+      "class": "LinearOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.adaptive_compute_lifecycle_task",
+      "class": "ThresholdOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.adaptive_compute_lifecycle_task",
+      "class": "PlannerOrgan",
+      "params": {}
+    }
+  ],
+  "router": {
+    "module": "benchmarks.tasks.adaptive_compute_lifecycle_task",
+    "class": "CalibratedAdaptiveComputeModeRouter",
+    "params": {
+      "top1_score_threshold": 1.0,
+      "top1_second_score_max": 0.25,
+      "full_best_score_below": 0.6,
+      "low_energy_threshold": 0.35,
+      "low_energy_allow_full": false
+    }
+  },
+  "environment": {
+    "module": "benchmarks.tasks.adaptive_compute_lifecycle_task",
+    "class": "AntiLeakRoutingEnvironment",
+    "params": {
+      "episodes_per_family": 40,
+      "support_size": 6,
+      "seed": 0
+    }
+  },
+  "metric": {
+    "module": "benchmarks.tasks.adaptive_compute_lifecycle_task",
+    "class": "OrganLifecycleMetric",
+    "params": {
+      "full_organ_count": 4
+    }
+  }
+}
