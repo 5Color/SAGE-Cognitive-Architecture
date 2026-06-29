@@ -1,0 +1,61 @@
+{
+  "benchmark": "SAGE-v1.6.1-config-runner-bias-only-negative-control",
+  "goal": "Negative control: route only a weak bias organ to confirm config changes affect behavior.",
+  "version": "v1.6.1",
+  "config_path": "benchmarks\\configs\\parity_smoke_bias_only.json",
+  "seed": 0,
+  "components": {
+    "organs": [
+      "parity_organ",
+      "bias_organ"
+    ],
+    "router": "energy_aware_router",
+    "environment": "parity_environment",
+    "metric": "parity_metric"
+  },
+  "interpretation_guardrail": "This is a config-runner smoke/refactor test, not an intelligence or AGI benchmark.",
+  "result": {
+    "avg_reward": 0.0,
+    "accuracy": 0.5,
+    "total_reward": 0.0,
+    "organ_usage": {
+      "bias_organ": 6
+    },
+    "final_state": {
+      "step": 6,
+      "energy": 0.036594199847907787,
+      "reward": -1.0,
+      "organ_energy": {
+        "parity_organ": 1.0,
+        "bias_organ": 0.940009801396
+      },
+      "memory_size": 6,
+      "router_feedback": {
+        "selected": [
+          "bias_organ"
+        ],
+        "num_outputs": 1,
+        "last_action": {
+          "prediction": 0,
+          "chosen_organ": "bias_organ",
+          "confidence": 0.4
+        },
+        "last_info": {
+          "target": 1,
+          "prediction": 0,
+          "correct": false,
+          "chosen_organ": "bias_organ",
+          "confidence": 0.4
+        }
+      },
+      "context": {}
+    },
+    "steps": 6,
+    "engine": {
+      "energy_decay": 0.995,
+      "reward_gain": 0.08,
+      "organ_cost": 0.01,
+      "max_memory": 128
+    }
+  }
+}

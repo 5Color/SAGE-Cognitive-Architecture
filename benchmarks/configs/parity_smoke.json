@@ -1,0 +1,50 @@
+{
+  "benchmark": "SAGE-v1.6.1-config-runner-parity-smoke",
+  "goal": "Run a SAGE parity smoke task through JSON config and dynamic component loading.",
+  "seed": 0,
+  "max_steps": 64,
+  "output_path": "results/v1_6_1_config_runner_smoke.json",
+  "state": {
+    "energy": 1.0
+  },
+  "engine": {
+    "energy_decay": 0.995,
+    "reward_gain": 0.08,
+    "organ_cost": 0.01,
+    "max_memory": 128
+  },
+  "organs": [
+    {
+      "module": "benchmarks.tasks.parity_task",
+      "class": "ParityOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.parity_task",
+      "class": "BiasOrgan",
+      "params": {
+        "bias": 0
+      }
+    }
+  ],
+  "router": {
+    "module": "benchmarks.tasks.parity_task",
+    "class": "EnergyAwareRouter",
+    "params": {
+      "min_energy_for_specialist": 0.2
+    }
+  },
+  "environment": {
+    "module": "benchmarks.tasks.parity_task",
+    "class": "ParityEnvironment",
+    "params": {
+      "length": 32,
+      "start": 0
+    }
+  },
+  "metric": {
+    "module": "benchmarks.tasks.parity_task",
+    "class": "ParityMetric",
+    "params": {}
+  }
+}

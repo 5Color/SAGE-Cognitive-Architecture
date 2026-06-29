@@ -1,0 +1,63 @@
+{
+  "benchmark": "SAGE-v1.6.1-config-runner-parity-smoke",
+  "goal": "Run a SAGE parity smoke task through JSON config and dynamic component loading.",
+  "version": "v1.6.1",
+  "config_path": "benchmarks\\configs\\parity_smoke.json",
+  "seed": 0,
+  "components": {
+    "organs": [
+      "parity_organ",
+      "bias_organ"
+    ],
+    "router": "energy_aware_router",
+    "environment": "parity_environment",
+    "metric": "parity_metric"
+  },
+  "interpretation_guardrail": "This is a config-runner smoke/refactor test, not an intelligence or AGI benchmark.",
+  "result": {
+    "avg_reward": 1.0,
+    "accuracy": 1.0,
+    "total_reward": 32.0,
+    "organ_usage": {
+      "parity_organ": 32,
+      "bias_organ": 32
+    },
+    "final_state": {
+      "step": 32,
+      "energy": 2.630179544396183,
+      "reward": 1.0,
+      "organ_energy": {
+        "parity_organ": 2.1000786561685856,
+        "bias_organ": 2.1000786561685856
+      },
+      "memory_size": 32,
+      "router_feedback": {
+        "selected": [
+          "parity_organ",
+          "bias_organ"
+        ],
+        "num_outputs": 2,
+        "last_action": {
+          "prediction": 1,
+          "chosen_organ": "parity_organ",
+          "confidence": 0.9
+        },
+        "last_info": {
+          "target": 1,
+          "prediction": 1,
+          "correct": true,
+          "chosen_organ": "parity_organ",
+          "confidence": 0.9
+        }
+      },
+      "context": {}
+    },
+    "steps": 32,
+    "engine": {
+      "energy_decay": 0.995,
+      "reward_gain": 0.08,
+      "organ_cost": 0.01,
+      "max_memory": 128
+    }
+  }
+}

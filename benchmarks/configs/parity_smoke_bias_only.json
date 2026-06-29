@@ -1,0 +1,50 @@
+{
+  "benchmark": "SAGE-v1.6.1-config-runner-bias-only-negative-control",
+  "goal": "Negative control: route only a weak bias organ to confirm config changes affect behavior.",
+  "seed": 0,
+  "max_steps": 64,
+  "output_path": "results/v1_6_1_config_runner_bias_only.json",
+  "state": {
+    "energy": 0.1
+  },
+  "engine": {
+    "energy_decay": 0.995,
+    "reward_gain": 0.08,
+    "organ_cost": 0.01,
+    "max_memory": 128
+  },
+  "organs": [
+    {
+      "module": "benchmarks.tasks.parity_task",
+      "class": "ParityOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.parity_task",
+      "class": "BiasOrgan",
+      "params": {
+        "bias": 0
+      }
+    }
+  ],
+  "router": {
+    "module": "benchmarks.tasks.parity_task",
+    "class": "EnergyAwareRouter",
+    "params": {
+      "min_energy_for_specialist": 999.0
+    }
+  },
+  "environment": {
+    "module": "benchmarks.tasks.parity_task",
+    "class": "ParityEnvironment",
+    "params": {
+      "length": 32,
+      "start": 0
+    }
+  },
+  "metric": {
+    "module": "benchmarks.tasks.parity_task",
+    "class": "ParityMetric",
+    "params": {}
+  }
+}
