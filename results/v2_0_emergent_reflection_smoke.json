@@ -8,8 +8,8 @@
   "top_second_gap": 0.0163,
   "mean_novelty": 0.514,
   "mean_reuse_value": 0.77,
-  "memory_inbox_count_before": 9,
-  "memory_inbox_count_after": 10,
+  "memory_inbox_count_before": 11,
+  "memory_inbox_count_after": 12,
   "result_detail_path": "results/v2_0_emergent_reflection_smoke_detail.json",
   "reflection_log_path": "logs/v2_0_emergent_reflection_smoke.md",
   "safety_policy": {

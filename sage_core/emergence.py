@@ -229,23 +229,62 @@ class CuriosityOrgan(BaseReflectionOrgan):
             },
         )
 
+@dataclass
+class ReflectionPolicy:
+    name: str = "exploratory"
+    confidence: float = 0.25
+    novelty: float = 0.29
+    reuse_value: float = 0.20
+    agreement_bonus: float = 0.14
+    cost: float = 0.08
+    risk: float = 0.08
+    contradiction_penalty_per_flag: float = 0.12
 
+    @classmethod
+    def load(cls, path: str | Path | None) -> "ReflectionPolicy":
+        if path is None:
+            return cls()
+
+        p = Path(path)
+        if not p.exists():
+            return cls()
+
+        data = json.loads(p.read_text(encoding="utf-8"))
+        weights = data.get("weights", {})
+
+        return cls(
+            name=data.get("name", "exploratory"),
+            confidence=float(weights.get("confidence", 0.25)),
+            novelty=float(weights.get("novelty", 0.29)),
+            reuse_value=float(weights.get("reuse_value", 0.20)),
+            agreement_bonus=float(weights.get("agreement_bonus", 0.14)),
+            cost=float(weights.get("cost", 0.08)),
+            risk=float(weights.get("risk", 0.08)),
+            contradiction_penalty_per_flag=float(data.get("contradiction_penalty_per_flag", 0.12)),
+        )
+
+    def to_jsonable(self) -> Dict[str, Any]:
+        return asdict(self)
+        
 class EmergentAggregator:
     """Selects a reflection from multiple organ candidates.
 
     This is not a neural model.
     It is a transparent scoring function for v2.0.
     """
+    def __init__(self, policy: ReflectionPolicy | None = None) -> None:
+        self.policy = policy or ReflectionPolicy()
 
     def score(self, candidate: ReflectionCandidate, agreement_bonus: float) -> float:
-        contradiction_penalty = 0.12 * len(candidate.contradiction_flags)
+        p = self.policy
+        contradiction_penalty = p.contradiction_penalty_per_flag * len(candidate.contradiction_flags)
         raw = (
-            0.25 * candidate.confidence
-            + 0.29 * candidate.novelty
-            + 0.20 * candidate.reuse_value
-            + 0.14 * agreement_bonus
-            - 0.08 * candidate.cost
-            - 0.08 * candidate.risk
+            p.confidence * candidate.confidence
+            + p.novelty * candidate.novelty
+            + p.reuse_value * candidate.reuse_value
+            + p.agreement_bonus * agreement_bonus
+            - p.cost * candidate.cost
+            - p.risk * candidate.risk
             - contradiction_penalty
         )
         return round(max(0.0, min(1.0, raw)), 6)
@@ -301,6 +340,14 @@ class EmergentAggregator:
             "top_second_gap": round(top_score - second_score, 6),
             "mean_novelty": round(sum(c.novelty for c in candidates) / max(1, len(candidates)), 6),
             "mean_reuse_value": round(sum(c.reuse_value for c in candidates) / max(1, len(candidates)), 6),
+            "policy_name": self.policy.name,
+            "policy_weight_sum": round(
+                self.policy.confidence
+                + self.policy.novelty
+                + self.policy.reuse_value
+                + self.policy.agreement_bonus,
+                6,
+            ),
         }
 
         if selected is None:

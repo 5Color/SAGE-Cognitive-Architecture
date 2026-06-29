@@ -1,11 +1,12 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
+from email import policy
 from pathlib import Path
 from typing import Any, Dict
 import json
 
-from sage_core.emergence import EmergentAggregator, EmergentContext, build_default_reflection_organs
+from sage_core.emergence import EmergentAggregator, EmergentContext, ReflectionPolicy, build_default_reflection_organs
 from sage_core.memory_store import MemoryStore
 from sage_core.runtime_state import SAGERuntimeState
 
@@ -18,6 +19,7 @@ class EmergentReflectionConfig:
     reflection_log_path: str = "logs/emergent_reflection.md"
     result_path: str = "results/v2_0_emergent_reflection.json"
     create_memory_proposal: bool = True
+    reflection_policy_path: str = "configs/reflection_policy_exploratory.json"
 
     @classmethod
     def load(cls, path: str | Path) -> "EmergentReflectionConfig":
@@ -129,8 +131,10 @@ No network action, shell action, organ deletion, or organ disabling was performe
 
         organs = build_default_reflection_organs()
         candidates = [organ.propose(ctx) for organ in organs]
-        aggregated = EmergentAggregator().aggregate(candidates)
+        policy = ReflectionPolicy.load(self.config.reflection_policy_path)
+        aggregated = EmergentAggregator(policy=policy).aggregate(candidates)
         result = aggregated.to_jsonable()
+        result["reflection_policy"] = policy.to_jsonable()
 
         if self.config.create_memory_proposal and result.get("selected"):
             selected = result["selected"]
