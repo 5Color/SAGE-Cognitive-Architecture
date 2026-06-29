@@ -1,0 +1,3449 @@
+{
+  "benchmark": "SAGE-v1.5-neural-ecosystem-router",
+  "goal": "Test whether a neural router can learn to call scaffold cognitive organs instead of relying on hand-coded family-specific organ routing.",
+  "interpretation_guardrail": "This is not an AGI claim. The organs remain scaffolded; v1.5 only tests learned organ selection and energy-biased routing.",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "task_families": [
+    "episodic_memory",
+    "affine_rule",
+    "threshold_rule",
+    "language_action",
+    "grid_planning",
+    "world_dynamics"
+  ],
+  "organs": [
+    "memory_organ",
+    "algebra_organ",
+    "concept_organ",
+    "planner_organ"
+  ],
+  "routers": [
+    "RandomRouter",
+    "FamilyOracleRouter",
+    "NeuralRouter",
+    "NeuralRouterEnergy"
+  ],
+  "specialized_oracle": {
+    "episodic_memory": "memory_organ",
+    "affine_rule": "algebra_organ",
+    "threshold_rule": "concept_organ",
+    "language_action": "concept_organ",
+    "grid_planning": "planner_organ",
+    "world_dynamics": "planner_organ"
+  },
+  "config": {
+    "train_episodes": 40,
+    "eval_episodes": 20,
+    "queries_per_episode": 18,
+    "support_per_episode": 6,
+    "hidden_dim": 96,
+    "epochs": 8,
+    "lr": 0.002,
+    "batch_size": 256,
+    "seed": 0,
+    "device": "cpu",
+    "energy_bias": 0.35,
+    "energy_lr": 0.08,
+    "energy_decay": 0.995,
+    "min_energy": 0.05,
+    "max_energy": 3.0
+  },
+  "runs": [
+    {
+      "seed": 0,
+      "router": "RandomRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 0.5833,
+          "affine_rule": 0.4611,
+          "threshold_rule": 0.8139,
+          "language_action": 0.3833,
+          "grid_planning": 0.5722,
+          "world_dynamics": 0.5861
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 0.2556,
+          "affine_rule": 0.2444,
+          "threshold_rule": 0.2306,
+          "language_action": 0.2333,
+          "grid_planning": 0.2278,
+          "world_dynamics": 0.2611
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 0.5667,
+        "router_acc": 0.2421,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.4333,
+        "random_gain": 0.0,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.2421,
+            "algebra_organ": 0.2546,
+            "concept_organ": 0.25,
+            "planner_organ": 0.2532
+          },
+          "usage_entropy": 0.9999,
+          "usage_max": 0.2546,
+          "usage_min": 0.2421,
+          "collapse_score": 0.2546
+        },
+        "organ_specialization": 0.2541,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.2556,
+            "algebra_organ": 0.2278,
+            "concept_organ": 0.2361,
+            "planner_organ": 0.2806
+          },
+          "affine_rule": {
+            "memory_organ": 0.2417,
+            "algebra_organ": 0.2444,
+            "concept_organ": 0.25,
+            "planner_organ": 0.2639
+          },
+          "threshold_rule": {
+            "memory_organ": 0.25,
+            "algebra_organ": 0.2583,
+            "concept_organ": 0.2306,
+            "planner_organ": 0.2611
+          },
+          "language_action": {
+            "memory_organ": 0.2306,
+            "algebra_organ": 0.3111,
+            "concept_organ": 0.2333,
+            "planner_organ": 0.225
+          },
+          "grid_planning": {
+            "memory_organ": 0.2306,
+            "algebra_organ": 0.2528,
+            "concept_organ": 0.2889,
+            "planner_organ": 0.2278
+          },
+          "world_dynamics": {
+            "memory_organ": 0.2444,
+            "algebra_organ": 0.2333,
+            "concept_organ": 0.2611,
+            "planner_organ": 0.2611
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": 0.9976,
+          "affine_rule": 0.9996,
+          "threshold_rule": 0.9992,
+          "language_action": 0.9931,
+          "grid_planning": 0.9966,
+          "world_dynamics": 0.9992
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "planner_organ",
+          "affine_rule": "planner_organ",
+          "threshold_rule": "planner_organ",
+          "language_action": "algebra_organ",
+          "grid_planning": "concept_organ",
+          "world_dynamics": "concept_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 0.5908,
+          "algebra_organ": 0.4873,
+          "concept_organ": 0.6222,
+          "planner_organ": 0.5686
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 92,
+            "algebra_organ": 82,
+            "concept_organ": 85,
+            "planner_organ": 101
+          },
+          "algebra_organ": {
+            "memory_organ": 87,
+            "algebra_organ": 88,
+            "concept_organ": 90,
+            "planner_organ": 95
+          },
+          "concept_organ": {
+            "memory_organ": 173,
+            "algebra_organ": 205,
+            "concept_organ": 167,
+            "planner_organ": 175
+          },
+          "planner_organ": {
+            "memory_organ": 171,
+            "algebra_organ": 175,
+            "concept_organ": 198,
+            "planner_organ": 176
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 0,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 0,
+      "router": "FamilyOracleRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.4333,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 0,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 0,
+      "router": "NeuralRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.4333,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 0,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 0,
+      "router": "NeuralRouterEnergy",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.4333,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 0.05,
+          "algebra_organ": 0.05,
+          "concept_organ": 0.0812,
+          "planner_organ": 3.0
+        },
+        "energy_mean": 0.7953,
+        "energy_std": 1.4699,
+        "energy_range": 2.95
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 0,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 1,
+      "router": "RandomRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 0.5861,
+          "affine_rule": 0.45,
+          "threshold_rule": 0.7861,
+          "language_action": 0.4333,
+          "grid_planning": 0.6194,
+          "world_dynamics": 0.5056
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 0.2444,
+          "affine_rule": 0.2389,
+          "threshold_rule": 0.2806,
+          "language_action": 0.2778,
+          "grid_planning": 0.2778,
+          "world_dynamics": 0.2444
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 0.5634,
+        "router_acc": 0.2606,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.4366,
+        "random_gain": 0.0,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.2287,
+            "algebra_organ": 0.2606,
+            "concept_organ": 0.2565,
+            "planner_organ": 0.2542
+          },
+          "usage_entropy": 0.9991,
+          "usage_max": 0.2606,
+          "usage_min": 0.2287,
+          "collapse_score": 0.2606
+        },
+        "organ_specialization": 0.2544,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.2444,
+            "algebra_organ": 0.2722,
+            "concept_organ": 0.2556,
+            "planner_organ": 0.2278
+          },
+          "affine_rule": {
+            "memory_organ": 0.2306,
+            "algebra_organ": 0.2389,
+            "concept_organ": 0.2667,
+            "planner_organ": 0.2639
+          },
+          "threshold_rule": {
+            "memory_organ": 0.2139,
+            "algebra_organ": 0.2722,
+            "concept_organ": 0.2806,
+            "planner_organ": 0.2333
+          },
+          "language_action": {
+            "memory_organ": 0.2111,
+            "algebra_organ": 0.2333,
+            "concept_organ": 0.2778,
+            "planner_organ": 0.2778
+          },
+          "grid_planning": {
+            "memory_organ": 0.2444,
+            "algebra_organ": 0.2444,
+            "concept_organ": 0.2333,
+            "planner_organ": 0.2778
+          },
+          "world_dynamics": {
+            "memory_organ": 0.2278,
+            "algebra_organ": 0.3028,
+            "concept_organ": 0.225,
+            "planner_organ": 0.2444
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": 0.9985,
+          "affine_rule": 0.9986,
+          "threshold_rule": 0.9956,
+          "language_action": 0.9951,
+          "grid_planning": 0.9984,
+          "world_dynamics": 0.9945
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "algebra_organ",
+          "affine_rule": "concept_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "algebra_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 0.6032,
+          "algebra_organ": 0.4689,
+          "concept_organ": 0.6119,
+          "planner_organ": 0.5756
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 88,
+            "algebra_organ": 98,
+            "concept_organ": 92,
+            "planner_organ": 82
+          },
+          "algebra_organ": {
+            "memory_organ": 83,
+            "algebra_organ": 86,
+            "concept_organ": 96,
+            "planner_organ": 95
+          },
+          "concept_organ": {
+            "memory_organ": 153,
+            "algebra_organ": 182,
+            "concept_organ": 201,
+            "planner_organ": 184
+          },
+          "planner_organ": {
+            "memory_organ": 170,
+            "algebra_organ": 197,
+            "concept_organ": 165,
+            "planner_organ": 188
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 1,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 1,
+      "router": "FamilyOracleRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.4366,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 1,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 1,
+      "router": "NeuralRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.4366,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 1,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 1,
+      "router": "NeuralRouterEnergy",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.4366,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 0.05,
+          "algebra_organ": 0.05,
+          "concept_organ": 0.0812,
+          "planner_organ": 3.0
+        },
+        "energy_mean": 0.7953,
+        "energy_std": 1.4699,
+        "energy_range": 2.95
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 1,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 2,
+      "router": "RandomRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 0.5139,
+          "affine_rule": 0.5056,
+          "threshold_rule": 0.7944,
+          "language_action": 0.4056,
+          "grid_planning": 0.5639,
+          "world_dynamics": 0.5944
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 0.2389,
+          "affine_rule": 0.2972,
+          "threshold_rule": 0.2361,
+          "language_action": 0.2611,
+          "grid_planning": 0.2583,
+          "world_dynamics": 0.25
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 0.563,
+        "router_acc": 0.2569,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.437,
+        "random_gain": 0.0,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.2505,
+            "algebra_organ": 0.2491,
+            "concept_organ": 0.2495,
+            "planner_organ": 0.2509
+          },
+          "usage_entropy": 1.0,
+          "usage_max": 0.2509,
+          "usage_min": 0.2491,
+          "collapse_score": 0.2509
+        },
+        "organ_specialization": 0.4519,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.2389,
+            "algebra_organ": 0.2222,
+            "concept_organ": 0.2722,
+            "planner_organ": 0.2667
+          },
+          "affine_rule": {
+            "memory_organ": 0.2806,
+            "algebra_organ": 0.2972,
+            "concept_organ": 0.2,
+            "planner_organ": 0.2222
+          },
+          "threshold_rule": {
+            "memory_organ": 0.2194,
+            "algebra_organ": 0.2556,
+            "concept_organ": 0.2361,
+            "planner_organ": 0.2889
+          },
+          "language_action": {
+            "memory_organ": 0.2694,
+            "algebra_organ": 0.25,
+            "concept_organ": 0.2611,
+            "planner_organ": 0.2194
+          },
+          "grid_planning": {
+            "memory_organ": 0.2306,
+            "algebra_organ": 0.25,
+            "concept_organ": 0.2611,
+            "planner_organ": 0.2583
+          },
+          "world_dynamics": {
+            "memory_organ": 0.2639,
+            "algebra_organ": 0.2194,
+            "concept_organ": 0.2667,
+            "planner_organ": 0.25
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": 0.9976,
+          "affine_rule": 0.9906,
+          "threshold_rule": 0.9962,
+          "language_action": 0.9979,
+          "grid_planning": 0.9992,
+          "world_dynamics": 0.9979
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "concept_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "planner_organ",
+          "language_action": "memory_organ",
+          "grid_planning": "concept_organ",
+          "world_dynamics": "concept_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 0.5619,
+          "algebra_organ": 0.5093,
+          "concept_organ": 0.6011,
+          "planner_organ": 0.5793
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 86,
+            "algebra_organ": 80,
+            "concept_organ": 98,
+            "planner_organ": 96
+          },
+          "algebra_organ": {
+            "memory_organ": 101,
+            "algebra_organ": 107,
+            "concept_organ": 72,
+            "planner_organ": 80
+          },
+          "concept_organ": {
+            "memory_organ": 176,
+            "algebra_organ": 182,
+            "concept_organ": 179,
+            "planner_organ": 183
+          },
+          "planner_organ": {
+            "memory_organ": 178,
+            "algebra_organ": 169,
+            "concept_organ": 190,
+            "planner_organ": 183
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 2,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 2,
+      "router": "FamilyOracleRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.437,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 2,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 2,
+      "router": "NeuralRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.437,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 2,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 2,
+      "router": "NeuralRouterEnergy",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.437,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 0.05,
+          "algebra_organ": 0.05,
+          "concept_organ": 0.0812,
+          "planner_organ": 3.0
+        },
+        "energy_mean": 0.7953,
+        "energy_std": 1.4699,
+        "energy_range": 2.95
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 2,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 3,
+      "router": "RandomRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 0.5417,
+          "affine_rule": 0.45,
+          "threshold_rule": 0.8111,
+          "language_action": 0.4556,
+          "grid_planning": 0.6139,
+          "world_dynamics": 0.5417
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 0.2556,
+          "affine_rule": 0.2194,
+          "threshold_rule": 0.2528,
+          "language_action": 0.2833,
+          "grid_planning": 0.275,
+          "world_dynamics": 0.2389
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 0.569,
+        "router_acc": 0.2542,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.431,
+        "random_gain": 0.0,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.2398,
+            "algebra_organ": 0.2412,
+            "concept_organ": 0.275,
+            "planner_organ": 0.244
+          },
+          "usage_entropy": 0.9988,
+          "usage_max": 0.275,
+          "usage_min": 0.2398,
+          "collapse_score": 0.275
+        },
+        "organ_specialization": 0.2544,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.2556,
+            "algebra_organ": 0.2222,
+            "concept_organ": 0.2806,
+            "planner_organ": 0.2417
+          },
+          "affine_rule": {
+            "memory_organ": 0.2306,
+            "algebra_organ": 0.2194,
+            "concept_organ": 0.3056,
+            "planner_organ": 0.2444
+          },
+          "threshold_rule": {
+            "memory_organ": 0.2306,
+            "algebra_organ": 0.2583,
+            "concept_organ": 0.2528,
+            "planner_organ": 0.2583
+          },
+          "language_action": {
+            "memory_organ": 0.2583,
+            "algebra_organ": 0.2528,
+            "concept_organ": 0.2833,
+            "planner_organ": 0.2056
+          },
+          "grid_planning": {
+            "memory_organ": 0.2389,
+            "algebra_organ": 0.2472,
+            "concept_organ": 0.2389,
+            "planner_organ": 0.275
+          },
+          "world_dynamics": {
+            "memory_organ": 0.225,
+            "algebra_organ": 0.2472,
+            "concept_organ": 0.2889,
+            "planner_organ": 0.2389
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": 0.9974,
+          "affine_rule": 0.9938,
+          "threshold_rule": 0.9992,
+          "language_action": 0.9953,
+          "grid_planning": 0.9988,
+          "world_dynamics": 0.9968
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "concept_organ",
+          "affine_rule": "concept_organ",
+          "threshold_rule": "algebra_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "concept_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 0.6042,
+          "algebra_organ": 0.5067,
+          "concept_organ": 0.5741,
+          "planner_organ": 0.5901
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 92,
+            "algebra_organ": 80,
+            "concept_organ": 101,
+            "planner_organ": 87
+          },
+          "algebra_organ": {
+            "memory_organ": 83,
+            "algebra_organ": 79,
+            "concept_organ": 110,
+            "planner_organ": 88
+          },
+          "concept_organ": {
+            "memory_organ": 176,
+            "algebra_organ": 184,
+            "concept_organ": 193,
+            "planner_organ": 167
+          },
+          "planner_organ": {
+            "memory_organ": 167,
+            "algebra_organ": 178,
+            "concept_organ": 190,
+            "planner_organ": 185
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 3,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 3,
+      "router": "FamilyOracleRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.431,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 3,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 3,
+      "router": "NeuralRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.431,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 3,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 3,
+      "router": "NeuralRouterEnergy",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.431,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 0.05,
+          "algebra_organ": 0.05,
+          "concept_organ": 0.0812,
+          "planner_organ": 3.0
+        },
+        "energy_mean": 0.7953,
+        "energy_std": 1.4699,
+        "energy_range": 2.95
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 3,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 4,
+      "router": "RandomRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 0.5861,
+          "affine_rule": 0.4556,
+          "threshold_rule": 0.825,
+          "language_action": 0.4333,
+          "grid_planning": 0.6167,
+          "world_dynamics": 0.5833
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 0.2639,
+          "affine_rule": 0.2583,
+          "threshold_rule": 0.2583,
+          "language_action": 0.25,
+          "grid_planning": 0.3306,
+          "world_dynamics": 0.25
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 0.5833,
+        "router_acc": 0.2685,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.4167,
+        "random_gain": 0.0,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.2509,
+            "algebra_organ": 0.2394,
+            "concept_organ": 0.2542,
+            "planner_organ": 0.2556
+          },
+          "usage_entropy": 0.9998,
+          "usage_max": 0.2556,
+          "usage_min": 0.2394,
+          "collapse_score": 0.2556
+        },
+        "organ_specialization": 0.2547,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 0.2639,
+            "algebra_organ": 0.2639,
+            "concept_organ": 0.2667,
+            "planner_organ": 0.2056
+          },
+          "affine_rule": {
+            "memory_organ": 0.2222,
+            "algebra_organ": 0.2583,
+            "concept_organ": 0.2583,
+            "planner_organ": 0.2611
+          },
+          "threshold_rule": {
+            "memory_organ": 0.2667,
+            "algebra_organ": 0.25,
+            "concept_organ": 0.2583,
+            "planner_organ": 0.225
+          },
+          "language_action": {
+            "memory_organ": 0.2583,
+            "algebra_organ": 0.2306,
+            "concept_organ": 0.25,
+            "planner_organ": 0.2611
+          },
+          "grid_planning": {
+            "memory_organ": 0.2389,
+            "algebra_organ": 0.2194,
+            "concept_organ": 0.2111,
+            "planner_organ": 0.3306
+          },
+          "world_dynamics": {
+            "memory_organ": 0.2556,
+            "algebra_organ": 0.2139,
+            "concept_organ": 0.2806,
+            "planner_organ": 0.25
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": 0.996,
+          "affine_rule": 0.9985,
+          "threshold_rule": 0.9986,
+          "language_action": 0.9992,
+          "grid_planning": 0.9876,
+          "world_dynamics": 0.9967
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "concept_organ",
+          "affine_rule": "planner_organ",
+          "threshold_rule": "memory_organ",
+          "language_action": "planner_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "concept_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 0.5978,
+          "algebra_organ": 0.5145,
+          "concept_organ": 0.6084,
+          "planner_organ": 0.6087
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 95,
+            "algebra_organ": 95,
+            "concept_organ": 96,
+            "planner_organ": 74
+          },
+          "algebra_organ": {
+            "memory_organ": 80,
+            "algebra_organ": 93,
+            "concept_organ": 93,
+            "planner_organ": 94
+          },
+          "concept_organ": {
+            "memory_organ": 189,
+            "algebra_organ": 173,
+            "concept_organ": 183,
+            "planner_organ": 175
+          },
+          "planner_organ": {
+            "memory_organ": 178,
+            "algebra_organ": 156,
+            "concept_organ": 177,
+            "planner_organ": 209
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 4,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 4,
+      "router": "FamilyOracleRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.4167,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 4,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 4,
+      "router": "NeuralRouter",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.4167,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "energy_mean": 1.0,
+        "energy_std": 0.0,
+        "energy_range": 0.0
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 4,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    },
+    {
+      "seed": 4,
+      "router": "NeuralRouterEnergy",
+      "metrics": {
+        "task_family_accuracy": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "router_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "oracle_accuracy_by_family": {
+          "episodic_memory": 1.0,
+          "affine_rule": 1.0,
+          "threshold_rule": 1.0,
+          "language_action": 1.0,
+          "grid_planning": 1.0,
+          "world_dynamics": 1.0
+        },
+        "task_acc": 1.0,
+        "router_acc": 1.0,
+        "oracle_task_acc": 1.0,
+        "oracle_gap": 0.0,
+        "random_gain": 0.4167,
+        "organ_usage": {
+          "usage_vector": {
+            "memory_organ": 0.1667,
+            "algebra_organ": 0.1667,
+            "concept_organ": 0.3333,
+            "planner_organ": 0.3333
+          },
+          "usage_entropy": 0.9591,
+          "usage_max": 0.3333,
+          "usage_min": 0.1667,
+          "collapse_score": 0.3333
+        },
+        "organ_specialization": 1.0,
+        "organ_usage_by_family": {
+          "episodic_memory": {
+            "memory_organ": 1.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "affine_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 1.0,
+            "concept_organ": 0.0,
+            "planner_organ": 0.0
+          },
+          "threshold_rule": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "language_action": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 1.0,
+            "planner_organ": 0.0
+          },
+          "grid_planning": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          },
+          "world_dynamics": {
+            "memory_organ": 0.0,
+            "algebra_organ": 0.0,
+            "concept_organ": 0.0,
+            "planner_organ": 1.0
+          }
+        },
+        "organ_usage_entropy_by_family": {
+          "episodic_memory": -0.0,
+          "affine_rule": -0.0,
+          "threshold_rule": -0.0,
+          "language_action": -0.0,
+          "grid_planning": -0.0,
+          "world_dynamics": -0.0
+        },
+        "organ_top_by_family": {
+          "episodic_memory": "memory_organ",
+          "affine_rule": "algebra_organ",
+          "threshold_rule": "concept_organ",
+          "language_action": "concept_organ",
+          "grid_planning": "planner_organ",
+          "world_dynamics": "planner_organ"
+        },
+        "chosen_organ_accuracy": {
+          "memory_organ": 1.0,
+          "algebra_organ": 1.0,
+          "concept_organ": 1.0,
+          "planner_organ": 1.0
+        },
+        "router_confusion_matrix": {
+          "memory_organ": {
+            "memory_organ": 360,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "algebra_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 360,
+            "concept_organ": 0,
+            "planner_organ": 0
+          },
+          "concept_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 720,
+            "planner_organ": 0
+          },
+          "planner_organ": {
+            "memory_organ": 0,
+            "algebra_organ": 0,
+            "concept_organ": 0,
+            "planner_organ": 720
+          }
+        },
+        "final_energy_vector": {
+          "memory_organ": 0.05,
+          "algebra_organ": 0.05,
+          "concept_organ": 0.0812,
+          "planner_organ": 3.0
+        },
+        "energy_mean": 0.7953,
+        "energy_std": 1.4699,
+        "energy_range": 2.95
+      },
+      "config": {
+        "train_episodes": 40,
+        "eval_episodes": 20,
+        "queries_per_episode": 18,
+        "support_per_episode": 6,
+        "hidden_dim": 96,
+        "epochs": 8,
+        "lr": 0.002,
+        "batch_size": 256,
+        "seed": 4,
+        "device": "cpu",
+        "energy_bias": 0.35,
+        "energy_lr": 0.08,
+        "energy_decay": 0.995,
+        "min_energy": 0.05,
+        "max_energy": 3.0
+      }
+    }
+  ],
+  "summary": {
+    "RandomRouter": {
+      "task_acc": {
+        "mean": 0.56908,
+        "std": 0.008323280603223734,
+        "n": 5
+      },
+      "router_acc": {
+        "mean": 0.25646,
+        "std": 0.009664522750762194,
+        "n": 5
+      },
+      "oracle_gap": {
+        "mean": 0.43092,
+        "std": 0.0083232806032237,
+        "n": 5
+      },
+      "random_gain": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "organ_usage_entropy": {
+        "mean": 0.99952,
+        "std": 0.000535723809439155,
+        "n": 5
+      },
+      "organ_specialization": {
+        "mean": 0.2939,
+        "std": 0.08832493985279584,
+        "n": 5
+      },
+      "collapse_score": {
+        "mean": 0.25934,
+        "std": 0.009414244526248516,
+        "n": 5
+      },
+      "energy_std": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "energy_range": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5
+      }
+    },
+    "FamilyOracleRouter": {
+      "task_acc": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "router_acc": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "oracle_gap": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "random_gain": {
+        "mean": 0.43092,
+        "std": 0.0083232806032237,
+        "n": 5
+      },
+      "organ_usage_entropy": {
+        "mean": 0.9591,
+        "std": 0.0,
+        "n": 5
+      },
+      "organ_specialization": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "collapse_score": {
+        "mean": 0.3333,
+        "std": 0.0,
+        "n": 5
+      },
+      "energy_std": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "energy_range": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5
+      }
+    },
+    "NeuralRouter": {
+      "task_acc": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "router_acc": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "oracle_gap": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "random_gain": {
+        "mean": 0.43092,
+        "std": 0.0083232806032237,
+        "n": 5
+      },
+      "organ_usage_entropy": {
+        "mean": 0.9591,
+        "std": 0.0,
+        "n": 5
+      },
+      "organ_specialization": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "collapse_score": {
+        "mean": 0.3333,
+        "std": 0.0,
+        "n": 5
+      },
+      "energy_std": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "energy_range": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5
+      }
+    },
+    "NeuralRouterEnergy": {
+      "task_acc": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "router_acc": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "oracle_gap": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "random_gain": {
+        "mean": 0.43092,
+        "std": 0.0083232806032237,
+        "n": 5
+      },
+      "organ_usage_entropy": {
+        "mean": 0.9591,
+        "std": 0.0,
+        "n": 5
+      },
+      "organ_specialization": {
+        "mean": 1.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "collapse_score": {
+        "mean": 0.3333,
+        "std": 0.0,
+        "n": 5
+      },
+      "energy_std": {
+        "mean": 1.4699,
+        "std": 0.0,
+        "n": 5
+      },
+      "energy_range": {
+        "mean": 2.95,
+        "std": 0.0,
+        "n": 5
+      }
+    }
+  }
+}
