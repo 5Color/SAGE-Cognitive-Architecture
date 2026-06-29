@@ -1,0 +1,61 @@
+{
+  "benchmark": "SAGE-v1.6.3-anti-leak-full-evidence-reference",
+  "version": "v1.6.3",
+  "goal": "Full evidence reference: activate all organs, then aggregate.",
+  "seed": 0,
+  "max_steps": 512,
+  "output_path": "results/v1_6_3_anti_leak_sparse_full_evidence.json",
+  "interpretation_guardrail": "This benchmark tests sparse/config-runner routing behavior, not AGI.",
+  "state": {
+    "energy": 1.0
+  },
+  "engine": {
+    "energy_decay": 1.0,
+    "reward_gain": 0.0,
+    "organ_cost": 0.0,
+    "max_memory": 128
+  },
+  "organs": [
+    {
+      "module": "benchmarks.tasks.sparse_anti_leak_routing_task",
+      "class": "MemoryOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.sparse_anti_leak_routing_task",
+      "class": "LinearOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.sparse_anti_leak_routing_task",
+      "class": "ThresholdOrgan",
+      "params": {}
+    },
+    {
+      "module": "benchmarks.tasks.sparse_anti_leak_routing_task",
+      "class": "PlannerOrgan",
+      "params": {}
+    }
+  ],
+  "router": {
+    "module": "benchmarks.tasks.sparse_anti_leak_routing_task",
+    "class": "EvidenceAntiLeakRouter",
+    "params": {}
+  },
+  "environment": {
+    "module": "benchmarks.tasks.sparse_anti_leak_routing_task",
+    "class": "AntiLeakRoutingEnvironment",
+    "params": {
+      "episodes_per_family": 40,
+      "support_size": 6,
+      "seed": 0
+    }
+  },
+  "metric": {
+    "module": "benchmarks.tasks.sparse_anti_leak_routing_task",
+    "class": "SparseAntiLeakRoutingMetric",
+    "params": {
+      "full_organ_count": 4
+    }
+  }
+}

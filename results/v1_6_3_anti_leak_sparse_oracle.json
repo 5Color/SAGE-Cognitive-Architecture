@@ -1,0 +1,93 @@
+{
+  "benchmark": "SAGE-v1.6.3-anti-leak-sparse-oracle",
+  "goal": "Upper-bound control using hidden family label with one organ call per step.",
+  "version": "v1.6.3",
+  "config_path": "benchmarks\\configs\\anti_leak_sparse_oracle.json",
+  "seed": 0,
+  "components": {
+    "organs": [
+      "memory_organ",
+      "linear_organ",
+      "threshold_organ",
+      "planner_organ"
+    ],
+    "router": "family_oracle_anti_leak_router",
+    "environment": "anti_leak_routing_environment",
+    "metric": "sparse_anti_leak_routing_metric"
+  },
+  "interpretation_guardrail": "This benchmark tests sparse/config-runner routing behavior, not AGI.",
+  "result": {
+    "avg_reward": 0.925,
+    "accuracy": 0.9625,
+    "total_reward": 148.0,
+    "organ_usage": {
+      "linear_organ": 40,
+      "threshold_organ": 40,
+      "planner_organ": 40,
+      "memory_organ": 40
+    },
+    "family_accuracy": {
+      "linear_rule": 0.975,
+      "memory": 1.0,
+      "planning": 1.0,
+      "threshold_rule": 0.875
+    },
+    "family_top_organ": {
+      "linear_rule": "linear_organ",
+      "memory": "memory_organ",
+      "planning": "planner_organ",
+      "threshold_rule": "threshold_organ"
+    },
+    "task_diversity": 0.9625,
+    "families": [
+      "linear_rule",
+      "memory",
+      "planning",
+      "threshold_rule"
+    ],
+    "organ_calls": 160,
+    "avg_organs_per_step": 1.0,
+    "full_organ_count": 4,
+    "compute_saving_vs_full": 0.75,
+    "sparse_efficiency_score": 0.8987499999999999,
+    "final_state": {
+      "step": 160,
+      "energy": 1.0,
+      "reward": 1.0,
+      "organ_energy": {
+        "memory_organ": 2.324112965721277,
+        "linear_organ": 2.25376819622132,
+        "threshold_organ": 1.943264291789466,
+        "planner_organ": 2.324112965721277
+      },
+      "memory_size": 128,
+      "router_feedback": {
+        "selected": [
+          "planner_organ"
+        ],
+        "num_outputs": 1,
+        "last_action": {
+          "prediction": 0,
+          "chosen_organ": "planner_organ",
+          "confidence": 0.9
+        },
+        "last_info": {
+          "correct": true,
+          "target": 0,
+          "prediction": 0,
+          "family": "planning",
+          "chosen_organ": "planner_organ",
+          "confidence": 0.9
+        }
+      },
+      "context": {}
+    },
+    "steps": 160,
+    "engine": {
+      "energy_decay": 1.0,
+      "reward_gain": 0.0,
+      "organ_cost": 0.0,
+      "max_memory": 128
+    }
+  }
+}

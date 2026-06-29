@@ -1,9 +1,10 @@
-# SAGE v1.6.1 - Config Runner
+# SAGE Config Runner
 #
-# Goal:
+# v1.6.1:
 # - Run SAGE experiments from JSON config.
-# - Avoid copy-pasting the same benchmark loop.
-# - Keep sage_core as the experiment subject and benchmarks as the experiment lab.
+#
+# v1.6.3 patch:
+# - version is now read from config instead of being hard-coded.
 #
 # 실행 예시:
 # python run_experiment.py --config benchmarks/configs/parity_smoke.json
@@ -15,7 +16,7 @@ import importlib
 import json
 import random
 from pathlib import Path
-from typing import Any, Dict, Mapping
+from typing import Any, Mapping
 
 from sage_core import SAGEEngine, SAGEState
 
@@ -26,15 +27,7 @@ def load_class(module_name: str, class_name: str) -> type:
 
 
 def build_component(spec: Mapping[str, Any]) -> Any:
-    """Build one component from config.
-
-    spec example:
-    {
-      "module": "benchmarks.tasks.parity_task",
-      "class": "ParityEnvironment",
-      "params": {"length": 32}
-    }
-    """
+    """Build one component from config."""
     cls = load_class(str(spec["module"]), str(spec["class"]))
     params = dict(spec.get("params", {}))
     return cls(**params)
@@ -42,6 +35,7 @@ def build_component(spec: Mapping[str, Any]) -> Any:
 
 def set_seed(seed: int) -> None:
     random.seed(seed)
+
     try:
         import numpy as np
         np.random.seed(seed)
@@ -98,7 +92,7 @@ def main() -> None:
     output = {
         "benchmark": config.get("benchmark", config_path.stem),
         "goal": config.get("goal", ""),
-        "version": "v1.6.1",
+        "version": config.get("version", "unknown"),
         "config_path": str(config_path),
         "seed": seed,
         "components": {
@@ -107,26 +101,33 @@ def main() -> None:
             "environment": environment.name,
             "metric": metric.name,
         },
-        "interpretation_guardrail": (
-            "This is a config-runner smoke/refactor test, not an intelligence or AGI benchmark."
+        "interpretation_guardrail": config.get(
+            "interpretation_guardrail",
+            "This is a config-runner experiment, not an intelligence or AGI benchmark.",
         ),
         "result": result,
     }
 
-    out_path = Path(args.out or config.get("output_path", "results/v1_6_1_config_runner_smoke.json"))
+    out_path = Path(args.out or config.get("output_path", "results/run_experiment_output.json"))
     out_path.parent.mkdir(parents=True, exist_ok=True)
     out_path.write_text(json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8")
 
-    print("=== SAGE v1.6.1 Config Runner ===")
+    print("=== SAGE Config Runner ===")
     print(f"benchmark={output['benchmark']}")
+    print(f"version={output['version']}")
     print(f"seed={seed}")
     print(f"router={router.name}")
     print(f"environment={environment.name}")
     print(f"accuracy={result.get('accuracy', 0.0):.4f}")
     print(f"avg_reward={result.get('avg_reward', 0.0):.4f}")
+    print(f"task_diversity={result.get('task_diversity', result.get('accuracy', 0.0)):.4f}")
     print(f"steps={result.get('steps', 0)}")
     print(f"final_energy={result.get('final_state', {}).get('energy', 0.0):.4f}")
     print(f"organ_usage={result.get('organ_usage', {})}")
+    if "avg_organs_per_step" in result:
+        print(f"avg_organs_per_step={result['avg_organs_per_step']:.4f}")
+    if "compute_saving_vs_full" in result:
+        print(f"compute_saving_vs_full={result['compute_saving_vs_full']:.4f}")
     print(f"Saved: {out_path}")
 
 
