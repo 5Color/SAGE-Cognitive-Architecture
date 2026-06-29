@@ -10,3 +10,6 @@ checkpoints/
 *.log
 .DS_Store
 .vscode/
+runtime_state/
+memory/approved/
+memory/rejected/
