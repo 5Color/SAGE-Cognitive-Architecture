@@ -1,0 +1,15 @@
+{
+  "memory_root": "memory",
+  "memory_summary_path": "memory/summaries/latest_memory_summary.md",
+  "chat_log_dir": "logs/chat",
+  "output_path": "results/v2_9_local_chat_context_result.json",
+  "write_memory_candidates": true,
+  "max_summary_chars": 4000,
+  "max_turns_saved": 200,
+  "allow_command_consolidate": true,
+  "allow_command_summarize": true,
+  "use_memory_context_manager": true,
+  "memory_context_config_path": "configs/memory_context_manager.json",
+  "max_context_preview_chars": 2500,
+  "note": "v2.9 Local Chat Loop with Memory Context Manager integration. Local-only, no shell/network/git/delete actions."
+}

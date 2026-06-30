@@ -32,7 +32,7 @@ class LocalChatLoopConfig:
     memory_root: str = "memory"
     memory_summary_path: str = "memory/summaries/latest_memory_summary.md"
     chat_log_dir: str = "logs/chat"
-    output_path: str = "results/v2_7_local_chat_loop_result.json"
+    output_path: str = "results/v2_9_local_chat_context_result.json"
 
     write_memory_candidates: bool = True
     max_summary_chars: int = 4000
@@ -40,6 +40,11 @@ class LocalChatLoopConfig:
 
     allow_command_consolidate: bool = True
     allow_command_summarize: bool = True
+
+    # v2.9
+    use_memory_context_manager: bool = True
+    memory_context_config_path: str = "configs/memory_context_manager.json"
+    max_context_preview_chars: int = 2500
 
     def to_jsonable(self) -> Dict[str, Any]:
         return asdict(self)
@@ -55,6 +60,8 @@ class LocalChatTurn:
     analysis_summary: Dict[str, Any]
     memory_hits: List[Dict[str, Any]]
     memory_summary_used: bool
+    memory_context_used: bool = False
+    memory_context_stats: Dict[str, Any] = field(default_factory=dict)
     memory_candidate_path: Optional[str] = None
 
     def to_jsonable(self) -> Dict[str, Any]:
@@ -63,10 +70,10 @@ class LocalChatTurn:
 
 @dataclass
 class LocalChatLoopReport:
-    version: str = "v2.7.1"
+    version: str = "v2.9"
     created_at: str = field(default_factory=utc_now)
     loop_name: str = "local_chat_loop"
-    mode: str = "local_cli_interaction"
+    mode: str = "local_cli_with_memory_context"
     config: Dict[str, Any] = field(default_factory=dict)
     turn_count: int = 0
     latest_turn: Optional[Dict[str, Any]] = None
@@ -78,6 +85,7 @@ class LocalChatLoopReport:
         "file_delete": False,
         "git_actions": False,
         "memory_candidate_write": True,
+        "memory_context_bundle_write": True,
         "memory_auto_consolidation_only_by_explicit_command": True,
         "source_memory_delete": False,
     })
@@ -90,8 +98,8 @@ class LocalChatLoopReport:
 class LocalChatLoop:
     """SAGE local chat loop.
 
-    v2.7.1 adds lightweight conversational persona handling:
-    greeting / identity / capabilities / help.
+    v2.9 integrates Memory Context Manager:
+    user input -> CPU Language Core -> query-specific context bundle -> response.
     """
 
     MEMORY_IMPORTANCE_TERMS = (
@@ -115,13 +123,14 @@ class LocalChatLoop:
         user_input = normalize_text(user_input)
         core_result = self.core.run(user_input, retrieve_memory=True).to_jsonable()
         summary = self._read_memory_summary()
+        context_bundle = self._build_memory_context(user_input)
 
-        response = self._compose_chat_response(user_input, core_result, summary)
+        response = self._compose_chat_response(user_input, core_result, summary, context_bundle)
         turn_id = short_hash(utc_now() + "\n" + user_input + "\n" + response)
 
         candidate_path = None
         if self.config.write_memory_candidates and self._should_write_memory_candidate(user_input, core_result):
-            candidate_path = self._write_memory_candidate(turn_id, user_input, response, core_result)
+            candidate_path = self._write_memory_candidate(turn_id, user_input, response, core_result, context_bundle)
 
         analysis = core_result.get("analysis", {})
         analysis_summary = {
@@ -141,6 +150,8 @@ class LocalChatLoop:
             analysis_summary=analysis_summary,
             memory_hits=core_result.get("memory_hits", []),
             memory_summary_used=bool(summary),
+            memory_context_used=bool(context_bundle and context_bundle.get("passed")),
+            memory_context_stats=context_bundle.get("stats", {}) if context_bundle else {},
             memory_candidate_path=candidate_path,
         )
 
@@ -150,18 +161,21 @@ class LocalChatLoop:
         return turn
 
     def run_command(self, command: str) -> Dict[str, Any]:
-        command = command.strip().lower()
+        command = command.strip()
+        lowered = command.lower()
 
-        if command == "/status":
+        if lowered == "/status":
             return {
                 "command": command,
                 "stage_counts": self._stage_counts(),
                 "summary_exists": Path(self.config.memory_summary_path).exists(),
+                "context_manager_enabled": self.config.use_memory_context_manager,
+                "context_bundle_exists": Path("results/v2_8_memory_context_bundle.json").exists(),
                 "turn_count": len(self.turns),
                 "chat_log_path": str(self.chat_log_path).replace("\\", "/"),
             }
 
-        if command == "/summary":
+        if lowered == "/summary":
             summary = self._read_memory_summary()
             return {
                 "command": command,
@@ -169,19 +183,39 @@ class LocalChatLoop:
                 "summary_preview": summary[:2500],
             }
 
-        if command == "/help":
+        if lowered.startswith("/context"):
+            query = command[len("/context"):].strip() or "SAGE 현재 상태와 다음 단계"
+            bundle = self._build_memory_context(query)
+            return {
+                "command": "/context",
+                "query": query,
+                "enabled": self.config.use_memory_context_manager,
+                "passed": bundle.get("passed") if bundle else False,
+                "inferred_topics": bundle.get("inferred_topics", []) if bundle else [],
+                "stats": bundle.get("stats", {}) if bundle else {},
+                "selected_memory_items": [
+                    {
+                        "stage": item.get("stage"),
+                        "path": item.get("path"),
+                        "score": item.get("score"),
+                    }
+                    for item in (bundle.get("selected_memory_items", []) if bundle else [])[:6]
+                ],
+            }
+
+        if lowered == "/help":
             return {
                 "command": command,
-                "known_commands": ["/status", "/summary", "/consolidate", "/summarize", "/help", "/exit"],
+                "known_commands": ["/status", "/summary", "/context <query>", "/consolidate", "/summarize", "/help", "/exit"],
                 "description": "SAGE local chat loop commands.",
             }
 
-        if command == "/consolidate":
+        if lowered == "/consolidate":
             if not self.config.allow_command_consolidate:
                 return {"command": command, "allowed": False, "reason": "command_disabled"}
             return self._run_consolidation_command()
 
-        if command == "/summarize":
+        if lowered == "/summarize":
             if not self.config.allow_command_summarize:
                 return {"command": command, "allowed": False, "reason": "command_disabled"}
             return self._run_summarizer_command()
@@ -190,10 +224,54 @@ class LocalChatLoop:
             "command": command,
             "allowed": False,
             "reason": "unknown_command",
-            "known_commands": ["/status", "/summary", "/consolidate", "/summarize", "/help", "/exit"],
+            "known_commands": ["/status", "/summary", "/context <query>", "/consolidate", "/summarize", "/help", "/exit"],
         }
 
-    def _compose_chat_response(self, user_input: str, core_result: Dict[str, Any], summary: str) -> str:
+    def _build_memory_context(self, query: str) -> Dict[str, Any]:
+        if not self.config.use_memory_context_manager:
+            return {}
+
+        try:
+            from sage_core.memory_context_manager import MemoryContextConfig, MemoryContextManager
+        except Exception as exc:
+            return {
+                "passed": False,
+                "error": f"memory_context_manager_unavailable: {type(exc).__name__}: {exc}",
+                "stats": {},
+            }
+
+        config_path = Path(self.config.memory_context_config_path)
+        if config_path.exists():
+            try:
+                data = json.loads(config_path.read_text(encoding="utf-8"))
+                allowed = set(MemoryContextConfig.__dataclass_fields__.keys())
+                filtered = {k: v for k, v in data.items() if k in allowed}
+                base = {k: getattr(MemoryContextConfig(), k) for k in allowed}
+                context_config = MemoryContextConfig(**{**base, **filtered})
+            except Exception:
+                context_config = MemoryContextConfig(
+                    memory_root=self.config.memory_root,
+                    memory_summary_path=self.config.memory_summary_path,
+                )
+        else:
+            context_config = MemoryContextConfig(
+                memory_root=self.config.memory_root,
+                memory_summary_path=self.config.memory_summary_path,
+            )
+
+        context_config.memory_root = self.config.memory_root
+        context_config.memory_summary_path = self.config.memory_summary_path
+
+        manager = MemoryContextManager(context_config)
+        return manager.build_context(query).to_jsonable()
+
+    def _compose_chat_response(
+        self,
+        user_input: str,
+        core_result: Dict[str, Any],
+        summary: str,
+        context_bundle: Dict[str, Any],
+    ) -> str:
         state = core_result.get("state", {})
         topics = state.get("topics", [])
         intent = state.get("intent", "unknown")
@@ -210,7 +288,11 @@ class LocalChatLoop:
         lines.append("")
         lines.append(core_response)
 
-        if summary:
+        if context_bundle and context_bundle.get("passed"):
+            lines.append("")
+            lines.append("Memory context 참고:")
+            lines.extend(self._format_context_bundle(context_bundle))
+        elif summary:
             lines.append("")
             lines.append("Memory summary 참고:")
             lines.append(self._summary_focus_line(summary, topics))
@@ -224,20 +306,49 @@ class LocalChatLoop:
         lines.append("")
         convo_intent = self._conversation_intent(user_input)
         if convo_intent in {"greeting", "identity", "capability"}:
-            lines.append("도움말: `/status`, `/summary`, `/consolidate`, `/summarize`, `/exit` 명령을 사용할 수 있습니다.")
+            lines.append("도움말: `/status`, `/context SAGE 현재 진행상황`, `/summary`, `/consolidate`, `/summarize`, `/exit` 명령을 사용할 수 있습니다.")
         elif intent in {"request_next_step", "summary_request"}:
-            lines.append("다음 행동 제안: 필요한 경우 `/consolidate` 후 `/summarize`를 실행해서 memory lifecycle을 갱신할 수 있습니다.")
+            lines.append("다음 행동 제안: `/context <질문>`으로 관련 기억 bundle을 확인하고, 필요하면 `/consolidate` 후 `/summarize`를 실행할 수 있습니다.")
         else:
-            lines.append("다음 행동 제안: `/status`로 현재 memory/chat 상태를 확인할 수 있습니다.")
+            lines.append("다음 행동 제안: `/status` 또는 `/context <질문>`으로 현재 memory/context 상태를 확인할 수 있습니다.")
 
         return "\n".join(lines)
+
+    def _format_context_bundle(self, bundle: Dict[str, Any]) -> List[str]:
+        lines: List[str] = []
+        topics = bundle.get("inferred_topics", [])
+        stats = bundle.get("stats", {})
+        lines.append(f"- inferred_topics: {', '.join(topics) if topics else 'none'}")
+        lines.append(
+            f"- selected: summary {stats.get('summary_snippet_count', 0)}개, "
+            f"memory {stats.get('memory_item_count', 0)}개"
+        )
+
+        snippets = bundle.get("selected_summary_snippets", [])
+        if snippets:
+            lines.append("- summary snippet:")
+            first = snippets[0]
+            text = first.get("text", "")
+            lines.append(f"  · {first.get('heading')} · score {first.get('score')}: {text[:350]}")
+
+        items = bundle.get("selected_memory_items", [])
+        if items:
+            lines.append("- selected memory:")
+            for item in items[:3]:
+                lines.append(f"  · [{item.get('stage')}] {item.get('path')} · score {item.get('score')}")
+
+        return lines
 
     def _conversation_intent(self, text: str) -> str:
         lowered = text.lower().strip()
         compact = re.sub(r"\s+", "", lowered)
 
-        greetings = {"안녕", "안녕하세요", "ㅎㅇ", "하이", "hello", "hi", "hey"}
-        if compact.rstrip("?!.") in greetings:
+        greetings = {
+            "안녕", "안녕하세요", "ㅎㅇ", "하이", "헬로", "hello", "hi", "hey",
+            "ㅎㅇㅎㅇ", "ㅎㅇㅎㅇㅎㅇ",
+        }
+        cleaned = compact.rstrip("?!.~ㅋㅎ")
+        if cleaned in greetings or re.fullmatch(r"(ㅎㅇ)+", cleaned):
             return "greeting"
 
         if any(k in compact for k in ["넌누구", "너는누구", "정체가뭐", "너뭐야", "sage가뭐", "세이지가뭐"]):
@@ -255,9 +366,9 @@ class LocalChatLoop:
 
         if convo_intent == "greeting":
             return (
-                "안녕. 나는 SAGE의 로컬 대화 루프야.\n"
-                "아직 일반 LLM이 아니라, CPU Language Core와 memory system을 연결해서 "
-                "입력을 상태로 바꾸고, 승인된 기억과 요약을 참고해 응답하는 실험용 인터페이스야."
+                "ㅎㅇ. 나는 SAGE의 로컬 대화 루프야.\n"
+                "지금은 일반 LLM이 아니라, CPU Language Core와 memory context manager를 연결해서 "
+                "입력을 상태로 바꾸고 관련 기억을 골라 응답하는 실험용 인터페이스야."
             )
 
         if convo_intent == "identity":
@@ -270,9 +381,9 @@ class LocalChatLoop:
 
         if convo_intent == "capability":
             return (
-                "지금 할 수 있는 일은 로컬 대화, 입력 상태 분석, approved memory 검색, "
-                "memory summary 참고, 대화 기반 memory candidate 생성이야.\n"
-                "명령어는 `/status`, `/summary`, `/consolidate`, `/summarize`, `/exit`를 지원해.\n"
+                "지금 할 수 있는 일은 로컬 대화, 입력 상태 분석, memory context bundle 생성, "
+                "approved/validated/provisional memory 선택, 대화 기반 memory candidate 생성이야.\n"
+                "명령어는 `/status`, `/context <질문>`, `/summary`, `/consolidate`, `/summarize`, `/exit`를 지원해.\n"
                 "네트워크, git, 파일 삭제, 임의 shell 실행은 하지 않아."
             )
 
@@ -316,6 +427,9 @@ class LocalChatLoop:
         if signals.get("has_technical_terms") or signals.get("positive_momentum"):
             return True
 
+        if self._conversation_intent(user_input) in {"identity", "capability"}:
+            return True
+
         return False
 
     def _write_memory_candidate(
@@ -324,18 +438,21 @@ class LocalChatLoop:
         user_input: str,
         response: str,
         core_result: Dict[str, Any],
+        context_bundle: Dict[str, Any],
     ) -> str:
         inbox = self.memory_root / "inbox"
         inbox.mkdir(parents=True, exist_ok=True)
 
         payload = {
             "created_at": utc_now(),
-            "version": "v2.7.1",
+            "version": "v2.9",
             "type": "local_chat_turn_memory_candidate",
             "turn_id": turn_id,
             "content": {
                 "user_input": user_input,
                 "state": core_result.get("state", {}),
+                "context_stats": context_bundle.get("stats", {}) if context_bundle else {},
+                "inferred_context_topics": context_bundle.get("inferred_topics", []) if context_bundle else [],
                 "response_summary": response[:1200],
             },
             "safety_note": "Candidate only. Memory consolidation decides whether it becomes provisional/validated/approved/rejected.",

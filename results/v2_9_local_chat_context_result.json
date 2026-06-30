@@ -1,0 +1,79 @@
+{
+  "version": "v2.9",
+  "created_at": "2026-06-30T04:31:40.953089+00:00",
+  "loop_name": "local_chat_loop",
+  "mode": "local_cli_with_memory_context",
+  "config": {
+    "memory_root": "memory",
+    "memory_summary_path": "memory/summaries/latest_memory_summary.md",
+    "chat_log_dir": "logs/chat",
+    "output_path": "results/v2_9_local_chat_context_result.json",
+    "write_memory_candidates": true,
+    "max_summary_chars": 4000,
+    "max_turns_saved": 200,
+    "allow_command_consolidate": true,
+    "allow_command_summarize": true,
+    "use_memory_context_manager": true,
+    "memory_context_config_path": "configs/memory_context_manager.json",
+    "max_context_preview_chars": 2500
+  },
+  "turn_count": 6,
+  "latest_turn": {
+    "turn_id": "268d0e0ff2ba",
+    "created_at": "2026-06-30T04:31:40.947370+00:00",
+    "user_input": "꽝꽝나물",
+    "response": "SAGE local loop response\n\n입력 내용을 상태로 변환했습니다.\n언어 분석: syllable 4개, word 1개, chunk 1개.\n관련 approved memory는 아직 찾지 못했습니다.\n추천 출력 전략: 먼저 state JSON을 만들고, 그다음 Composer가 짧은 한국어 응답을 생성합니다.\n\nMemory context 참고:\n- inferred_topics: none\n- selected: summary 6개, memory 1개\n- summary snippet:\n  · Top Topics · score 1.2: - architecture: 3 - reflection: 3 - benchmark: 1 - memory: 1\n- selected memory:\n  · [approved] memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json · score 0.56\n\n다음 행동 제안: `/status` 또는 `/context <질문>`으로 현재 memory/context 상태를 확인할 수 있습니다.",
+    "state": {
+      "intent": "statement",
+      "topics": [],
+      "signals": {
+        "has_question_mark": false,
+        "has_korean": true,
+        "has_technical_terms": false,
+        "urgency_hint": false,
+        "positive_momentum": false
+      },
+      "confidence": 0.55
+    },
+    "analysis_summary": {
+      "char_count": 4,
+      "word_count": 1,
+      "chunk_count": 1,
+      "chunk_tokens": [
+        "꽝꽝나물"
+      ],
+      "compression": {
+        "word_vs_syllable": 0.25,
+        "chunk_vs_syllable": 0.25,
+        "chunk_vs_word": 1.0
+      }
+    },
+    "memory_hits": [],
+    "memory_summary_used": true,
+    "memory_context_used": true,
+    "memory_context_stats": {
+      "query_char_count": 4,
+      "query_term_count": 1,
+      "summary_snippet_count": 6,
+      "memory_item_count": 1,
+      "context_char_count": 1518,
+      "stage_counts": {
+        "approved": 1
+      }
+    },
+    "memory_candidate_path": null
+  },
+  "chat_log_path": "logs/chat/sage_chat_2026-06-30T04-30-44-341622+00-00.jsonl",
+  "safety_policy": {
+    "local_only": true,
+    "network_actions": false,
+    "arbitrary_shell_actions": false,
+    "file_delete": false,
+    "git_actions": false,
+    "memory_candidate_write": true,
+    "memory_context_bundle_write": true,
+    "memory_auto_consolidation_only_by_explicit_command": true,
+    "source_memory_delete": false
+  },
+  "passed": true
+}

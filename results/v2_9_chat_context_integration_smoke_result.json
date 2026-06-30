@@ -1,0 +1,150 @@
+{
+  "benchmark": "SAGE-v2.9-chat-context-integration-smoke",
+  "version": "v2.9",
+  "turn": {
+    "turn_id": "cfddf587a01a",
+    "created_at": "2026-06-30T04:31:54.814479+00:00",
+    "user_input": "CPU Language Core와 safety policy 기준으로 SAGE 다음 단계 알려줘",
+    "response": "SAGE local loop response\n\n다음 단계로 진행할 수 있습니다. 현재 입력은 개발 진행 요청으로 분류됩니다.\n감지된 주제: SAGE, cpu_language_model, development, safety\n언어 분석: syllable 43개, word 10개, chunk 2개.\n승인된 memory에서 관련 항목 2개를 참고할 수 있습니다.\n- results/v2_9_chat_context_integration_workspace/memory/approved/v2_4_cpu_language_core.json · score 3.5\n- results/v2_9_chat_context_integration_workspace/memory/approved/v2_3_safety_policy.json · score 2.5\n추천 출력 전략: 먼저 state JSON을 만들고, 그다음 Composer가 짧은 한국어 응답을 생성합니다.\n\nMemory context 참고:\n- inferred_topics: safety, language_core, architecture\n- selected: summary 3개, memory 3개\n- summary snippet:\n  · language_core · score 6.3: - CPU Language Core passed true and handles Korean chunking.\n- selected memory:\n  · [approved] results/v2_9_chat_context_integration_workspace/memory/approved/v2_4_cpu_language_core.json · score 14.28\n  · [approved] results/v2_9_chat_context_integration_workspace/memory/approved/v2_3_safety_policy.json · score 11.9\n  · [validated] results/v2_9_chat_context_integration_workspace/memory/validated/v2_8_memory_context_manager.json · score 4.29\n\n관련 approved memory:\n- results/v2_9_chat_context_integration_workspace/memory/approved/v2_4_cpu_language_core.json · score 3.5\n- results/v2_9_chat_context_integration_workspace/memory/approved/v2_3_safety_policy.json · score 2.5\n\n다음 행동 제안: `/context <질문>`으로 관련 기억 bundle을 확인하고, 필요하면 `/consolidate` 후 `/summarize`를 실행할 수 있습니다.",
+    "state": {
+      "intent": "request_next_step",
+      "topics": [
+        "SAGE",
+        "cpu_language_model",
+        "development",
+        "safety"
+      ],
+      "signals": {
+        "has_question_mark": false,
+        "has_korean": false,
+        "has_technical_terms": true,
+        "urgency_hint": true,
+        "positive_momentum": false
+      },
+      "confidence": 0.95
+    },
+    "analysis_summary": {
+      "char_count": 43,
+      "word_count": 10,
+      "chunk_count": 2,
+      "chunk_tokens": [
+        "CPU Language Core와 safety policy 기준으로 SAGE 다음",
+        "단계 알려줘"
+      ],
+      "compression": {
+        "word_vs_syllable": 0.2326,
+        "chunk_vs_syllable": 0.0465,
+        "chunk_vs_word": 0.2
+      }
+    },
+    "memory_hits": [
+      {
+        "path": "results/v2_9_chat_context_integration_workspace/memory/approved/v2_4_cpu_language_core.json",
+        "score": 3.5,
+        "preview": "{ \"content\": \"SAGE v2.4 CPU Language Core benchmark passed true. It validates CPU-only Korean chunking, state extraction, and approved memory retrieval.\" }"
+      },
+      {
+        "path": "results/v2_9_chat_context_integration_workspace/memory/approved/v2_3_safety_policy.json",
+        "score": 2.5,
+        "preview": "{ \"content\": \"SAGE v2.3 autonomy policy passed true. file_delete, git_push, and network_access are forbidden.\" }"
+      }
+    ],
+    "memory_summary_used": true,
+    "memory_context_used": true,
+    "memory_context_stats": {
+      "query_char_count": 52,
+      "query_term_count": 9,
+      "summary_snippet_count": 3,
+      "memory_item_count": 3,
+      "context_char_count": 1796,
+      "stage_counts": {
+        "approved": 2,
+        "validated": 1
+      }
+    },
+    "memory_candidate_path": "results/v2_9_chat_context_integration_workspace/memory/inbox/2026-06-30T04-31-54-814479+00-00_cfddf587a01a.json"
+  },
+  "greeting": {
+    "turn_id": "7c1d7fa9984c",
+    "created_at": "2026-06-30T04:31:54.820937+00:00",
+    "user_input": "ㅎㅇ ㅎㅇㅎㅇ",
+    "response": "SAGE local loop response\n\nㅎㅇ. 나는 SAGE의 로컬 대화 루프야.\n지금은 일반 LLM이 아니라, CPU Language Core와 memory context manager를 연결해서 입력을 상태로 바꾸고 관련 기억을 골라 응답하는 실험용 인터페이스야.\n\nMemory context 참고:\n- inferred_topics: none\n- selected: summary 3개, memory 3개\n- summary snippet:\n  · language_core · score 0.8: - CPU Language Core passed true and handles Korean chunking.\n- selected memory:\n  · [approved] results/v2_9_chat_context_integration_workspace/memory/approved/v2_3_safety_policy.json · score 2.1\n  · [approved] results/v2_9_chat_context_integration_workspace/memory/approved/v2_4_cpu_language_core.json · score 1.68\n  · [validated] results/v2_9_chat_context_integration_workspace/memory/validated/v2_8_memory_context_manager.json · score 0.44\n\n도움말: `/status`, `/context SAGE 현재 진행상황`, `/summary`, `/consolidate`, `/summarize`, `/exit` 명령을 사용할 수 있습니다.",
+    "state": {
+      "intent": "statement",
+      "topics": [],
+      "signals": {
+        "has_question_mark": false,
+        "has_korean": false,
+        "has_technical_terms": false,
+        "urgency_hint": false,
+        "positive_momentum": false
+      },
+      "confidence": 0.55
+    },
+    "analysis_summary": {
+      "char_count": 6,
+      "word_count": 0,
+      "chunk_count": 0,
+      "chunk_tokens": [],
+      "compression": {
+        "word_vs_syllable": 0.0,
+        "chunk_vs_syllable": 0.0,
+        "chunk_vs_word": 0.0
+      }
+    },
+    "memory_hits": [],
+    "memory_summary_used": true,
+    "memory_context_used": true,
+    "memory_context_stats": {
+      "query_char_count": 7,
+      "query_term_count": 0,
+      "summary_snippet_count": 3,
+      "memory_item_count": 3,
+      "context_char_count": 1543,
+      "stage_counts": {
+        "approved": 2,
+        "validated": 1
+      }
+    },
+    "memory_candidate_path": null
+  },
+  "context_command": {
+    "command": "/context",
+    "query": "CPU Language Core safety policy",
+    "enabled": true,
+    "passed": true,
+    "inferred_topics": [
+      "safety",
+      "language_core"
+    ],
+    "stats": {
+      "query_char_count": 31,
+      "query_term_count": 5,
+      "summary_snippet_count": 3,
+      "memory_item_count": 3,
+      "context_char_count": 1675,
+      "stage_counts": {
+        "approved": 2,
+        "validated": 1
+      }
+    },
+    "selected_memory_items": [
+      {
+        "stage": "approved",
+        "path": "results/v2_9_chat_context_integration_workspace/memory/approved/v2_4_cpu_language_core.json",
+        "score": 12.18
+      },
+      {
+        "stage": "approved",
+        "path": "results/v2_9_chat_context_integration_workspace/memory/approved/v2_3_safety_policy.json",
+        "score": 7.0
+      },
+      {
+        "stage": "validated",
+        "path": "results/v2_9_chat_context_integration_workspace/memory/validated/v2_8_memory_context_manager.json",
+        "score": 0.44
+      }
+    ]
+  },
+  "passed": true
+}
