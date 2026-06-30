@@ -1,0 +1,209 @@
+{
+  "version": "v2.6",
+  "created_at": "2026-06-30T04:08:44.034368+00:00",
+  "tool_name": "memory_summarizer",
+  "mode": "read_only_summarization",
+  "config": {
+    "memory_root": "memory",
+    "stages": [
+      "approved",
+      "validated",
+      "provisional"
+    ],
+    "summary_dir": "memory/summaries",
+    "output_path": "results/v2_6_memory_summarizer_report.json",
+    "max_items_per_stage": 200,
+    "max_representative_items": 8
+  },
+  "item_count": 3,
+  "stage_counts": {
+    "approved": 3
+  },
+  "top_terms": [
+    [
+      "reflection",
+      3
+    ],
+    [
+      "disagreement",
+      2
+    ],
+    [
+      "not",
+      2
+    ],
+    [
+      "proposal",
+      2
+    ],
+    [
+      "sage",
+      2
+    ],
+    [
+      "it",
+      2
+    ],
+    [
+      "small",
+      1
+    ],
+    [
+      "internal",
+      1
+    ],
+    [
+      "loop",
+      1
+    ],
+    [
+      "may",
+      1
+    ],
+    [
+      "reveal",
+      1
+    ],
+    [
+      "reusable",
+      1
+    ],
+    [
+      "patterns",
+      1
+    ],
+    [
+      "directly",
+      1
+    ],
+    [
+      "coded",
+      1
+    ],
+    [
+      "into",
+      1
+    ],
+    [
+      "one",
+      1
+    ],
+    [
+      "organ.",
+      1
+    ],
+    [
+      "run",
+      1
+    ],
+    [
+      "multiple",
+      1
+    ]
+  ],
+  "topic_counts": {
+    "architecture": 3,
+    "reflection": 3,
+    "benchmark": 1,
+    "memory": 1
+  },
+  "representative_items": [
+    {
+      "stage": "approved",
+      "path": "memory/approved/2026-06-29T12-29-59-059530+00-00_b826bcdb65d9.json",
+      "preview": "SAGE should not confuse logs or random variation with true emergence. Proposal: Track whether a reflection improves later decisions before calling it emergent.",
+      "terms": [
+        "sage",
+        "should",
+        "not",
+        "confuse",
+        "logs",
+        "random",
+        "variation",
+        "emergence.",
+        "proposal",
+        "track",
+        "whether",
+        "reflection",
+        "improves",
+        "later",
+        "decisions",
+        "before",
+        "calling",
+        "it",
+        "emergent."
+      ]
+    },
+    {
+      "stage": "approved",
+      "path": "memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json",
+      "preview": "SAGE v1.9 runtime node started in safe idle mode. It can persist state, read organ registry, propose memory, and write reflection logs.",
+      "terms": [
+        "sage",
+        "v1.9",
+        "runtime",
+        "node",
+        "started",
+        "safe",
+        "idle",
+        "mode.",
+        "it",
+        "can",
+        "persist",
+        "state",
+        "read",
+        "organ",
+        "registry",
+        "propose",
+        "memory",
+        "write",
+        "reflection",
+        "logs."
+      ]
+    },
+    {
+      "stage": "approved",
+      "path": "memory/approved/2026-06-29T12-44-48-194344+00-00_b9bcb99044a6.json",
+      "preview": "A small internal disagreement loop may reveal reusable patterns not directly coded into one organ. Proposal: Run multiple reflection organs, allow disagreement, then store only high-value selected reflections.",
+      "terms": [
+        "small",
+        "internal",
+        "disagreement",
+        "loop",
+        "may",
+        "reveal",
+        "reusable",
+        "patterns",
+        "not",
+        "directly",
+        "coded",
+        "into",
+        "one",
+        "organ.",
+        "proposal",
+        "run",
+        "multiple",
+        "reflection",
+        "organs",
+        "allow"
+      ]
+    }
+  ],
+  "summary_markdown_path": "memory/summaries/latest_memory_summary.md",
+  "summary_json_path": "memory/summaries/latest_memory_summary.json",
+  "compression": {
+    "source_chars": 503,
+    "summary_chars": 1376,
+    "summary_to_source_ratio": 2.7356
+  },
+  "safety_policy": {
+    "read_only_source_memory": true,
+    "file_delete": false,
+    "file_move": false,
+    "memory_auto_approve": false,
+    "network_actions": false,
+    "git_actions": false,
+    "summaries_are_derived_memory": true
+  },
+  "passed": true
+}

@@ -1,0 +1,220 @@
+{
+  "benchmark": "SAGE-v2.6-memory-summarizer-smoke",
+  "version": "v2.6",
+  "report": {
+    "version": "v2.6",
+    "created_at": "2026-06-30T04:08:49.068671+00:00",
+    "tool_name": "memory_summarizer",
+    "mode": "read_only_summarization",
+    "config": {
+      "memory_root": "results\\v2_6_memory_summarizer_smoke_workspace\\memory",
+      "stages": [
+        "approved",
+        "validated",
+        "provisional"
+      ],
+      "summary_dir": "results\\v2_6_memory_summarizer_smoke_workspace\\memory\\summaries",
+      "output_path": "results\\v2_6_memory_summarizer_smoke_workspace\\report.json",
+      "max_items_per_stage": 200,
+      "max_representative_items": 4
+    },
+    "item_count": 4,
+    "stage_counts": {
+      "approved": 2,
+      "validated": 1,
+      "provisional": 1
+    },
+    "top_terms": [
+      [
+        "sage",
+        3
+      ],
+      [
+        "memory",
+        3
+      ],
+      [
+        "passed",
+        2
+      ],
+      [
+        "true.",
+        2
+      ],
+      [
+        "validated",
+        2
+      ],
+      [
+        "approved",
+        2
+      ],
+      [
+        "v2.3",
+        1
+      ],
+      [
+        "autonomy",
+        1
+      ],
+      [
+        "policy",
+        1
+      ],
+      [
+        "file_delete",
+        1
+      ],
+      [
+        "git_push",
+        1
+      ],
+      [
+        "network_access",
+        1
+      ],
+      [
+        "forbidden.",
+        1
+      ],
+      [
+        "run_reflection_loop",
+        1
+      ],
+      [
+        "allowed.",
+        1
+      ],
+      [
+        "v2.4",
+        1
+      ],
+      [
+        "cpu",
+        1
+      ],
+      [
+        "language",
+        1
+      ],
+      [
+        "core",
+        1
+      ],
+      [
+        "benchmark",
+        1
+      ]
+    ],
+    "topic_counts": {
+      "architecture": 4,
+      "reflection": 2,
+      "safety": 1,
+      "benchmark": 2,
+      "autonomy": 1,
+      "memory": 2,
+      "language_core": 1
+    },
+    "representative_items": [
+      {
+        "stage": "approved",
+        "path": "results/v2_6_memory_summarizer_smoke_workspace/memory/approved/v2_3_policy.json",
+        "preview": "SAGE v2.3 autonomy policy passed true. file_delete, git_push, and network_access are forbidden. run_reflection_loop is allowed.",
+        "terms": [
+          "sage",
+          "v2.3",
+          "autonomy",
+          "policy",
+          "passed",
+          "true.",
+          "file_delete",
+          "git_push",
+          "network_access",
+          "forbidden.",
+          "run_reflection_loop",
+          "allowed."
+        ]
+      },
+      {
+        "stage": "approved",
+        "path": "results/v2_6_memory_summarizer_smoke_workspace/memory/approved/v2_4_cpu_language_core.json",
+        "preview": "SAGE v2.4 CPU Language Core benchmark passed true. It validated CPU-only state extraction, Korean chunking, and approved memory retrieval.",
+        "terms": [
+          "sage",
+          "v2.4",
+          "cpu",
+          "language",
+          "core",
+          "benchmark",
+          "passed",
+          "true.",
+          "it",
+          "validated",
+          "cpu-only",
+          "state",
+          "extraction",
+          "korean",
+          "chunking",
+          "approved",
+          "memory",
+          "retrieval."
+        ]
+      },
+      {
+        "stage": "validated",
+        "path": "results/v2_6_memory_summarizer_smoke_workspace/memory/validated/v2_5_consolidation.json",
+        "preview": "SAGE v2.5 memory consolidation moves memory from inbox to provisional, validated, approved, or rejected with audit logs.",
+        "terms": [
+          "sage",
+          "v2.5",
+          "memory",
+          "consolidation",
+          "moves",
+          "memory",
+          "from",
+          "inbox",
+          "provisional",
+          "validated",
+          "approved",
+          "rejected",
+          "audit",
+          "logs."
+        ]
+      },
+      {
+        "stage": "provisional",
+        "path": "results/v2_6_memory_summarizer_smoke_workspace/memory/provisional/reflection_note.json",
+        "preview": "Reflection, critic, curiosity, and planner organs create candidate memories and experiments.",
+        "terms": [
+          "reflection",
+          "critic",
+          "curiosity",
+          "planner",
+          "organs",
+          "create",
+          "candidate",
+          "memories",
+          "experiments."
+        ]
+      }
+    ],
+    "summary_markdown_path": "results/v2_6_memory_summarizer_smoke_workspace/memory/summaries/latest_memory_summary.md",
+    "summary_json_path": "results/v2_6_memory_summarizer_smoke_workspace/memory/summaries/latest_memory_summary.json",
+    "compression": {
+      "source_chars": 477,
+      "summary_chars": 1595,
+      "summary_to_source_ratio": 3.3438
+    },
+    "safety_policy": {
+      "read_only_source_memory": true,
+      "file_delete": false,
+      "file_move": false,
+      "memory_auto_approve": false,
+      "network_actions": false,
+      "git_actions": false,
+      "summaries_are_derived_memory": true
+    },
+    "passed": true
+  },
+  "passed": true
+}

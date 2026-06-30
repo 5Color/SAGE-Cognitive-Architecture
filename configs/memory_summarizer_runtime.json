@@ -1,0 +1,4 @@
+{
+  "config_path": "configs/memory_summarizer.json",
+  "note": "Runtime wrapper config for SAGE v2.6 memory summarizer."
+}

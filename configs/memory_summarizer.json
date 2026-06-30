@@ -1,0 +1,13 @@
+{
+  "memory_root": "memory",
+  "stages": [
+    "approved",
+    "validated",
+    "provisional"
+  ],
+  "summary_dir": "memory/summaries",
+  "output_path": "results/v2_6_memory_summarizer_report.json",
+  "max_items_per_stage": 200,
+  "max_representative_items": 8,
+  "note": "Read-only source memory summarizer. Writes derived summaries only."
+}
