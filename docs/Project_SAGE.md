@@ -1,5 +1,29 @@
 # Project SAGE
 
+## Project Definition
+
+SAGE is a modular autonomous architecture prototype for experimenting with AGI-related components.
+
+It is not a claim of AGI and not a production autonomous agent. It is a research workspace for testing whether multiple specialized organs, shared state, memory proposals, reflection loops, experiment planning, stability probes, safe continuous runtime, and runtime guards can cooperate in a controlled and inspectable way.
+
+The project is organized around cautious iteration:
+
+- Results are recorded before conclusions are made.
+- Reflection and planning are constrained by explicit policies.
+- Memory proposals remain unapproved in `memory/inbox/` until a human approves them.
+- Approved memory belongs in `memory/approved/`.
+- Rejected memory belongs in `memory/rejected/`.
+- SAGE must not auto-approve memory, auto-delete experiment history, auto-commit, or push without human instruction.
+
+Current direction before v2.0.6:
+
+- Preserve experiment history.
+- Keep source modules stable.
+- Improve organization without breaking imports.
+- Separate active runtime/config surfaces from archival docs and logs.
+
+---
+
 ## 1. Project Name
 
 **SAGE**는 **Self-organizing Adaptive Generative Ecosystem**의 약자이다.

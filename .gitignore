@@ -1,15 +1,29 @@
 .venv/
 __pycache__/
 *.pyc
-*.pth
-*.pt
-*.onnx
-runs/
-logs/
-checkpoints/
-*.log
+runtime_state/
+
+# Generated logs
+logs/*
+!logs/.gitkeep
+
+# Human-reviewed memory lanes
+memory/approved/*
+!memory/approved/.gitkeep
+memory/rejected/*
+!memory/rejected/.gitkeep
+
+# Python caches/build outputs
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local/editor/system files
 .DS_Store
 .vscode/
-runtime_state/
-memory/approved/
-memory/rejected/
+*.log
