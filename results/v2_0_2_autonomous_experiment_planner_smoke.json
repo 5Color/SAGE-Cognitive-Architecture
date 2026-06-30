@@ -1,0 +1,19 @@
+{
+  "benchmark": "SAGE-v2.0.2-autonomous-experiment-planner",
+  "version": "v2.0.2",
+  "observation_count": 2,
+  "proposal_count": 3,
+  "selected_proposal_title": "Stability Probe for Reflection Selection",
+  "selected_requires_human_approval": true,
+  "proposal_files_count": 4,
+  "safety_policy": {
+    "network_actions": false,
+    "shell_actions": false,
+    "auto_delete_files": false,
+    "auto_disable_organs": false,
+    "auto_approve_memory": false,
+    "git_actions": false,
+    "human_approval_required": true
+  },
+  "passed": true
+}

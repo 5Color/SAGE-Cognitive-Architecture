@@ -1,0 +1,8 @@
+{
+  "result_root": ".",
+  "output_path": "results/v2_0_2_autonomous_experiment_plan.json",
+  "inbox_dir": "experiments/inbox",
+  "selected_proposal_path": "experiments/inbox/selected_next_experiment.json",
+  "min_gap_for_stability": 0.03,
+  "max_memory_inbox_before_review": 12
+}

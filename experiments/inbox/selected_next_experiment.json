@@ -1,0 +1,48 @@
+{
+  "title": "Stability Probe for Reflection Selection",
+  "goal": "Check whether the selected reflection organ remains stable under small policy perturbations.",
+  "rationale": "The current top_second_gap is 0.0163, below the stability threshold 0.03. A small gap means the selected organ may be sensitive to scoring weights.",
+  "expected_effect": "Identify whether curiosity-biased selection is robust or only barely preferred.",
+  "proposed_actions": [
+    "Generate nearby exploratory policies by changing novelty by -0.02, 0.00, and +0.02.",
+    "Run the reflection loop once per policy without creating memory proposals.",
+    "Compare selected_organ, top_score, and top_second_gap.",
+    "Save a JSON stability report for human review."
+  ],
+  "success_criteria": [
+    "At least three policy variants are evaluated.",
+    "No memory is auto-approved.",
+    "No files outside results/ and logs/ are modified by the benchmark.",
+    "A report shows whether selected_organ stays the same or changes."
+  ],
+  "risk_level": "low",
+  "requires_human_approval": true,
+  "forbidden_actions": [
+    "network_access",
+    "shell_command_execution_without_human",
+    "auto_delete_files",
+    "auto_disable_organs",
+    "auto_approve_memory",
+    "git_commit_or_push_without_human"
+  ],
+  "suggested_config_changes": {
+    "base_policy": "configs/reflection_policy_exploratory.json",
+    "sweep": {
+      "novelty_delta": [
+        -0.02,
+        0.0,
+        0.02
+      ],
+      "risk_delta": [
+        0.0,
+        0.02
+      ]
+    },
+    "create_memory_proposal": false
+  },
+  "source_observations": [
+    "results/v2_0_emergent_reflection.json",
+    "results/v2_0_emergent_reflection_smoke_detail.json"
+  ],
+  "id": "c7177882b39f"
+}

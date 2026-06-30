@@ -1,0 +1,53 @@
+{
+  "title": "Policy Diversity Repair",
+  "goal": "Ensure reflection policies can produce meaningfully different selected organs.",
+  "rationale": "A configurable policy system should be able to switch behavior. Current unique selected organs: []. selected_by_policy={}.",
+  "expected_effect": "Make conservative, exploratory, balanced, and memory-focused modes easier to distinguish.",
+  "proposed_actions": [
+    "Review reflection_policy_*.json files.",
+    "Increase separation between novelty-focused and reuse-focused policies.",
+    "Run benchmark_v2_0_1_reflection_policy_config again.",
+    "Check that at least two different selected organs appear."
+  ],
+  "success_criteria": [
+    "Policy benchmark passes.",
+    "At least two unique selected organs appear.",
+    "Exploratory policy selects curiosity_organ.",
+    "At least one conservative or balanced policy selects critic_organ."
+  ],
+  "risk_level": "low",
+  "requires_human_approval": true,
+  "forbidden_actions": [
+    "network_access",
+    "shell_command_execution_without_human",
+    "auto_delete_files",
+    "auto_disable_organs",
+    "auto_approve_memory",
+    "git_commit_or_push_without_human"
+  ],
+  "suggested_config_changes": {
+    "exploratory": {
+      "increase": "novelty",
+      "decrease": "reuse_value"
+    },
+    "conservative": {
+      "increase": [
+        "confidence",
+        "reuse_value"
+      ],
+      "decrease": "novelty"
+    },
+    "memory_focused": {
+      "increase": "reuse_value",
+      "increase_penalty": [
+        "cost",
+        "risk"
+      ]
+    }
+  },
+  "source_observations": [
+    "results/v2_0_emergent_reflection.json",
+    "results/v2_0_emergent_reflection_smoke_detail.json"
+  ],
+  "id": "1aeb1bb9105e"
+}
