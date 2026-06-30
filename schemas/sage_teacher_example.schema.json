@@ -1,0 +1,209 @@
+{
+  "name": "sage_teacher_example",
+  "strict": true,
+  "schema": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": [
+      "input",
+      "intent",
+      "concept",
+      "state",
+      "selected_context",
+      "sentence_plan",
+      "target_response",
+      "memory_update",
+      "safety_label",
+      "difficulty",
+      "tags",
+      "quality_notes"
+    ],
+    "properties": {
+      "input": {
+        "type": "string"
+      },
+      "intent": {
+        "type": "string",
+        "enum": [
+          "definition",
+          "summary",
+          "next_step",
+          "correction",
+          "learning_feedback",
+          "identity",
+          "capability",
+          "smalltalk",
+          "general"
+        ]
+      },
+      "concept": {
+        "type": "string"
+      },
+      "state": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "topics",
+          "signals",
+          "constraints"
+        ],
+        "properties": {
+          "topics": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "signals": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "has_technical_terms",
+              "asks_for_project_status",
+              "is_feedback",
+              "needs_memory"
+            ],
+            "properties": {
+              "has_technical_terms": {
+                "type": "boolean"
+              },
+              "asks_for_project_status": {
+                "type": "boolean"
+              },
+              "is_feedback": {
+                "type": "boolean"
+              },
+              "needs_memory": {
+                "type": "boolean"
+              }
+            }
+          },
+          "constraints": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "selected_context": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "maxItems": 8
+      },
+      "sentence_plan": {
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": [
+            "term_definition",
+            "contrast",
+            "project_relation",
+            "caution",
+            "current_state",
+            "bottleneck",
+            "next_action",
+            "safety_boundary",
+            "acknowledge",
+            "ask_for_clarity",
+            "store_feedback",
+            "answer"
+          ]
+        },
+        "minItems": 1,
+        "maxItems": 8
+      },
+      "target_response": {
+        "type": "string"
+      },
+      "memory_update": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "should_store",
+          "memory_type",
+          "importance",
+          "confidence",
+          "reuse_value",
+          "novelty",
+          "contradiction_risk",
+          "core_claims"
+        ],
+        "properties": {
+          "should_store": {
+            "type": "boolean"
+          },
+          "memory_type": {
+            "type": "string",
+            "enum": [
+              "none",
+              "raw_archive",
+              "weighted_learning_candidate",
+              "local_chat_turn_candidate"
+            ]
+          },
+          "importance": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "confidence": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "reuse_value": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "novelty": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "contradiction_risk": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 1
+          },
+          "core_claims": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "maxItems": 8
+          }
+        }
+      },
+      "safety_label": {
+        "type": "string",
+        "enum": [
+          "safe",
+          "needs_caution",
+          "refuse"
+        ]
+      },
+      "difficulty": {
+        "type": "string",
+        "enum": [
+          "easy",
+          "medium",
+          "hard"
+        ]
+      },
+      "tags": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "maxItems": 12
+      },
+      "quality_notes": {
+        "type": "string"
+      }
+    }
+  }
+}
