@@ -1,0 +1,6 @@
+{
+  "memory_root": "memory",
+  "output_path": "results/v2_4_cpu_language_core_result.json",
+  "retrieve_memory": true,
+  "note": "CPU-only architecture probe. No external model, no network, approved memory read-only."
+}

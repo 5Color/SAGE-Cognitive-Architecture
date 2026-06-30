@@ -1,0 +1,114 @@
+{
+  "version": "v2.4",
+  "created_at": "2026-06-30T03:42:44.118825+00:00",
+  "engine_name": "cpu_language_core_architecture_probe",
+  "input_text": "다음 단계 ㄱㄱ. SAGE 현재 진행상황을 요약하고 CPU 언어모델 구조를 검증해줘.",
+  "analysis": {
+    "input_text": "다음 단계 ㄱㄱ. SAGE 현재 진행상황을 요약하고 CPU 언어모델 구조를 검증해줘.",
+    "char_count": 37,
+    "syllable_tokens": [
+      "다",
+      "음",
+      "단",
+      "계",
+      "ㄱ",
+      "ㄱ",
+      ".",
+      "S",
+      "A",
+      "G",
+      "E",
+      "현",
+      "재",
+      "진",
+      "행",
+      "상",
+      "황",
+      "을",
+      "요",
+      "약",
+      "하",
+      "고",
+      "C",
+      "P",
+      "U",
+      "언",
+      "어",
+      "모",
+      "델",
+      "구",
+      "조",
+      "를",
+      "검",
+      "증",
+      "해",
+      "줘",
+      "."
+    ],
+    "word_tokens": [
+      "다음",
+      "단계",
+      ".",
+      "SAGE",
+      "현재",
+      "진행상황을",
+      "요약하고",
+      "CPU",
+      "언어모델",
+      "구조를",
+      "검증해줘."
+    ],
+    "chunk_tokens": [
+      "다음",
+      "단계 . SAGE 현재 진행상황을 요약하고",
+      "CPU 언어모델 구조를 검증해줘."
+    ],
+    "hangul_ratio": 0.7027,
+    "latin_ratio": 0.1892,
+    "compression": {
+      "word_vs_syllable": 0.2973,
+      "chunk_vs_syllable": 0.0811,
+      "chunk_vs_word": 0.2727
+    }
+  },
+  "state": {
+    "intent": "summary_request",
+    "topics": [
+      "SAGE",
+      "cpu_language_model",
+      "development",
+      "summary"
+    ],
+    "signals": {
+      "has_question_mark": false,
+      "has_korean": true,
+      "has_technical_terms": true,
+      "urgency_hint": true,
+      "positive_momentum": true
+    },
+    "confidence": 0.95
+  },
+  "memory_hits": [
+    {
+      "path": "memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json",
+      "score": 1.5,
+      "preview": "{ \"id\": \"3fd9b5f26bb4\", \"created_at\": \"2026-06-29T12:15:32.621720+00:00\", \"status\": \"inbox\", \"source\": \"runtime_v1_9\", \"importance\": 0.55, \"content\": \"SAGE v1.9 runtime node started in safe idle mode. It can persist state, read organ registry, propose memory, and write reflection logs.\", \"evidence\": { \"registry_summary\": { \"exists\": true, \"num_organs\": 4, \"status_counts\": { \"active_monitor\": 2, \"core_active\": 1, \"active\": 1 },"
+    },
+    {
+      "path": "memory/approved/2026-06-29T12-29-59-059530+00-00_b826bcdb65d9.json",
+      "score": 1.5,
+      "preview": "{ \"id\": \"b826bcdb65d9\", \"created_at\": \"2026-06-29T12:29:59.059530+00:00\", \"status\": \"inbox\", \"source\": \"emergent_reflection_v2_0\", \"importance\": 0.62, \"content\": \"SAGE should not confuse logs or random variation with true emergence. Proposal: Track whether a reflection improves later decisions before calling it emergent.\", \"evidence\": { \"emergence_metrics\": { \"candidate_count\": 5.0, \"organ_diversity\": 1.0, \"mean_candidate_score\": 0.48708, \"top_score\": 0."
+    }
+  ],
+  "response": "현재 요청은 SAGE 진행상황을 요약하고 다음 검증 단계로 넘기려는 것으로 보입니다.\n감지된 주제: SAGE, cpu_language_model, development, summary\n언어 분석: syllable 37개, word 11개, chunk 3개.\n승인된 memory에서 관련 항목 2개를 참고할 수 있습니다.\n- memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json · score 1.5\n- memory/approved/2026-06-29T12-29-59-059530+00-00_b826bcdb65d9.json · score 1.5\n추천 출력 전략: 먼저 state JSON을 만들고, 그다음 Composer가 짧은 한국어 응답을 생성합니다.",
+  "safety_policy": {
+    "cpu_only": true,
+    "external_model_required": false,
+    "network_actions": false,
+    "memory_read_only": true,
+    "memory_auto_approve": false,
+    "file_delete": false,
+    "core_code_auto_modify": false
+  },
+  "passed": true
+}

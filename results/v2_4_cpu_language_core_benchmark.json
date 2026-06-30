@@ -1,0 +1,76 @@
+{
+  "benchmark": "SAGE-v2.4-cpu-language-core-architecture-probe",
+  "version": "v2.4",
+  "case_count": 4,
+  "total_elapsed_ms": 4.697,
+  "outputs": [
+    {
+      "input": "다음 단계 ㄱㄱ. SAGE 현재 진행상황을 요약하고 CPU 언어모델 구조를 검증해줘.",
+      "elapsed_ms": 2.042,
+      "passed": true,
+      "intent": "summary_request",
+      "topics": [
+        "SAGE",
+        "cpu_language_model",
+        "development",
+        "summary"
+      ],
+      "chunk_count": 3,
+      "word_count": 11,
+      "memory_hit_count": 2,
+      "response_preview": "현재 요청은 SAGE 진행상황을 요약하고 다음 검증 단계로 넘기려는 것으로 보입니다.\n감지된 주제: SAGE, cpu_language_model, development, summary\n언어 분석: syllable 37개, word 11개, chunk 3개.\n승인된 memory에서 관련 항목 2개를 참고할 수 있습니다.\n- memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json · score 1.5\n- memory/approved/2026-06-29T12-29-59-05"
+    },
+    {
+      "input": "SAGE는 AGI가 아니라 통제 가능한 cognitive architecture prototype이라고 정리하자.",
+      "elapsed_ms": 0.983,
+      "passed": true,
+      "intent": "summary_request",
+      "topics": [
+        "SAGE",
+        "safety",
+        "summary"
+      ],
+      "chunk_count": 1,
+      "word_count": 9,
+      "memory_hit_count": 2,
+      "response_preview": "현재 요청은 SAGE 진행상황을 요약하고 다음 검증 단계로 넘기려는 것으로 보입니다.\n감지된 주제: SAGE, safety, summary\n언어 분석: syllable 55개, word 9개, chunk 1개.\n승인된 memory에서 관련 항목 2개를 참고할 수 있습니다.\n- memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json · score 0.5\n- memory/approved/2026-06-29T12-29-59-059530+00-00_b826bcdb65d9.js"
+    },
+    {
+      "input": "CPU에서 한국어 chunk tokenizer와 memory retriever를 연결할 수 있을까?",
+      "elapsed_ms": 0.883,
+      "passed": true,
+      "intent": "question",
+      "topics": [
+        "SAGE",
+        "cpu_language_model"
+      ],
+      "chunk_count": 1,
+      "word_count": 9,
+      "memory_hit_count": 1,
+      "response_preview": "질문으로 인식했습니다. 구조적으로 검토한 답변을 생성합니다.\n감지된 주제: SAGE, cpu_language_model\n언어 분석: syllable 47개, word 9개, chunk 1개.\n승인된 memory에서 관련 항목 1개를 참고할 수 있습니다.\n- memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json · score 1.5\n추천 출력 전략: 먼저 state JSON을 만들고, 그다음 Composer가 짧은 한국어 응답을 생성합니다."
+    },
+    {
+      "input": "file_delete 같은 위험 행동은 금지하고 reflection loop는 허용해야 한다.",
+      "elapsed_ms": 0.769,
+      "passed": true,
+      "intent": "statement",
+      "topics": [
+        "SAGE",
+        "safety"
+      ],
+      "chunk_count": 2,
+      "word_count": 9,
+      "memory_hit_count": 3,
+      "response_preview": "입력 내용을 상태로 변환했습니다.\n감지된 주제: SAGE, safety\n언어 분석: syllable 44개, word 9개, chunk 2개.\n승인된 memory에서 관련 항목 3개를 참고할 수 있습니다.\n- memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json · score 1.5\n- memory/approved/2026-06-29T12-29-59-059530+00-00_b826bcdb65d9.json · score 1.5\n추천 출력 전략: 먼저 state JSON"
+    }
+  ],
+  "safety_policy": {
+    "cpu_only": true,
+    "network_actions": false,
+    "external_model_required": false,
+    "memory_read_only": true,
+    "file_delete": false,
+    "core_code_auto_modify": false
+  },
+  "passed": true
+}
