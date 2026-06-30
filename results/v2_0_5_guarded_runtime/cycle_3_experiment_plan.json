@@ -1,0 +1,192 @@
+{
+  "version": "v2.0.2",
+  "created_at": "2026-06-30T01:14:38.321868+00:00",
+  "planner_name": "autonomous_experiment_planner",
+  "observations": [
+    {
+      "source_path": "results/v2_0_emergent_reflection.json",
+      "kind": "reflection_result",
+      "summary": "Reflection result selected curiosity_organ with policy exploratory and top_second_gap 0.0163.",
+      "metrics": {
+        "selected_organ": "curiosity_organ",
+        "policy_name": "exploratory",
+        "top_score": 0.5378,
+        "top_second_gap": 0.0163,
+        "candidate_count": 5.0,
+        "organ_diversity": 1.0,
+        "mean_novelty": 0.514,
+        "mean_reuse_value": 0.77,
+        "memory_inbox_count_before": 10,
+        "memory_inbox_count_after": 11
+      }
+    },
+    {
+      "source_path": "results/v2_0_emergent_reflection_smoke_detail.json",
+      "kind": "reflection_result",
+      "summary": "Reflection result selected curiosity_organ with policy exploratory and top_second_gap 0.0163.",
+      "metrics": {
+        "selected_organ": "curiosity_organ",
+        "policy_name": "exploratory",
+        "top_score": 0.5378,
+        "top_second_gap": 0.0163,
+        "candidate_count": 5.0,
+        "organ_diversity": 1.0,
+        "mean_novelty": 0.514,
+        "mean_reuse_value": 0.77,
+        "memory_inbox_count_before": 11,
+        "memory_inbox_count_after": 12
+      }
+    }
+  ],
+  "proposals": [
+    {
+      "title": "Stability Probe for Reflection Selection",
+      "goal": "Check whether the selected reflection organ remains stable under small policy perturbations.",
+      "rationale": "The current top_second_gap is 0.0163, below the stability threshold 0.03. A small gap means the selected organ may be sensitive to scoring weights.",
+      "expected_effect": "Identify whether curiosity-biased selection is robust or only barely preferred.",
+      "proposed_actions": [
+        "Generate nearby exploratory policies by changing novelty by -0.02, 0.00, and +0.02.",
+        "Run the reflection loop once per policy without creating memory proposals.",
+        "Compare selected_organ, top_score, and top_second_gap.",
+        "Save a JSON stability report for human review."
+      ],
+      "success_criteria": [
+        "At least three policy variants are evaluated.",
+        "No memory is auto-approved.",
+        "No files outside results/ and logs/ are modified by the benchmark.",
+        "A report shows whether selected_organ stays the same or changes."
+      ],
+      "risk_level": "low",
+      "requires_human_approval": true,
+      "forbidden_actions": [
+        "network_access",
+        "shell_command_execution_without_human",
+        "auto_delete_files",
+        "auto_disable_organs",
+        "auto_approve_memory",
+        "git_commit_or_push_without_human"
+      ],
+      "suggested_config_changes": {
+        "base_policy": "configs/reflection_policy_exploratory.json",
+        "sweep": {
+          "novelty_delta": [
+            -0.02,
+            0.0,
+            0.02
+          ],
+          "risk_delta": [
+            0.0,
+            0.02
+          ]
+        },
+        "create_memory_proposal": false
+      },
+      "source_observations": [
+        "results/v2_0_emergent_reflection.json",
+        "results/v2_0_emergent_reflection_smoke_detail.json"
+      ],
+      "id": "c7177882b39f"
+    },
+    {
+      "title": "Policy Diversity Repair",
+      "goal": "Ensure reflection policies can produce meaningfully different selected organs.",
+      "rationale": "A configurable policy system should be able to switch behavior. Current unique selected organs: []. selected_by_policy={}.",
+      "expected_effect": "Make conservative, exploratory, balanced, and memory-focused modes easier to distinguish.",
+      "proposed_actions": [
+        "Review reflection_policy_*.json files.",
+        "Increase separation between novelty-focused and reuse-focused policies.",
+        "Run benchmark_v2_0_1_reflection_policy_config again.",
+        "Check that at least two different selected organs appear."
+      ],
+      "success_criteria": [
+        "Policy benchmark passes.",
+        "At least two unique selected organs appear.",
+        "Exploratory policy selects curiosity_organ.",
+        "At least one conservative or balanced policy selects critic_organ."
+      ],
+      "risk_level": "low",
+      "requires_human_approval": true,
+      "forbidden_actions": [
+        "network_access",
+        "shell_command_execution_without_human",
+        "auto_delete_files",
+        "auto_disable_organs",
+        "auto_approve_memory",
+        "git_commit_or_push_without_human"
+      ],
+      "suggested_config_changes": {
+        "exploratory": {
+          "increase": "novelty",
+          "decrease": "reuse_value"
+        },
+        "conservative": {
+          "increase": [
+            "confidence",
+            "reuse_value"
+          ],
+          "decrease": "novelty"
+        },
+        "memory_focused": {
+          "increase": "reuse_value",
+          "increase_penalty": [
+            "cost",
+            "risk"
+          ]
+        }
+      },
+      "source_observations": [
+        "results/v2_0_emergent_reflection.json",
+        "results/v2_0_emergent_reflection_smoke_detail.json"
+      ],
+      "id": "1aeb1bb9105e"
+    },
+    {
+      "title": "Experiment Planner Self-Check",
+      "goal": "Validate that SAGE can propose the next experiment without executing it.",
+      "rationale": "v2.0.2 should introduce controlled autonomy: proposal generation without unsafe action execution.",
+      "expected_effect": "Establish the first autonomous planning loop while preserving human approval.",
+      "proposed_actions": [
+        "Read existing result JSON files.",
+        "Generate ranked next-experiment proposals.",
+        "Save proposals to experiments/inbox/.",
+        "Do not run the proposed experiments automatically."
+      ],
+      "success_criteria": [
+        "At least two proposals are generated.",
+        "Every proposal has requires_human_approval=true.",
+        "Safety policy disables network, shell, deletion, memory approval, and git actions.",
+        "One selected proposal is recommended for human review."
+      ],
+      "risk_level": "low",
+      "requires_human_approval": true,
+      "forbidden_actions": [
+        "network_access",
+        "shell_command_execution_without_human",
+        "auto_delete_files",
+        "auto_disable_organs",
+        "auto_approve_memory",
+        "git_commit_or_push_without_human"
+      ],
+      "suggested_config_changes": {
+        "autonomy_level": "proposal_only",
+        "human_approval_required": true
+      },
+      "source_observations": [
+        "results/v2_0_emergent_reflection.json",
+        "results/v2_0_emergent_reflection_smoke_detail.json"
+      ],
+      "id": "2bd4c391531c"
+    }
+  ],
+  "selected_proposal_id": "c7177882b39f",
+  "final_note": "SAGE generated next-experiment proposals but did not execute them. Human approval is required before any experiment is run.",
+  "safety_policy": {
+    "network_actions": false,
+    "shell_actions": false,
+    "auto_delete_files": false,
+    "auto_disable_organs": false,
+    "auto_approve_memory": false,
+    "git_actions": false,
+    "human_approval_required": true
+  }
+}

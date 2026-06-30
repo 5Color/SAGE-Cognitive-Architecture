@@ -1,0 +1,15 @@
+{
+  "max_cycles": 10,
+  "interval_seconds": 1.0,
+  "max_failures": 2,
+  "max_memory_inbox_growth": 8,
+  "max_result_files_growth": 120,
+  "max_experiment_inbox_growth": 80,
+  "stop_file_path": "runtime_control/STOP",
+  "output_dir": "results/v2_0_5_guarded_runtime",
+  "summary_path": "results/v2_0_5_guarded_runtime/summary.json",
+  "run_reflection": true,
+  "run_experiment_planner": true,
+  "run_stability_probe": true,
+  "create_memory_proposal_each_cycle": false
+}

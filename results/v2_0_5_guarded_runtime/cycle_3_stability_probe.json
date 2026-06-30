@@ -1,0 +1,89 @@
+{
+  "version": "v2.0.3",
+  "benchmark": "SAGE-v2.0.3-reflection-stability-probe",
+  "base_policy_path": "configs/reflection_policy_exploratory.json",
+  "target_organ": "curiosity_organ",
+  "variant_count": 6,
+  "selected_counts": {
+    "curiosity_organ": 6
+  },
+  "target_selected_count": 6,
+  "target_selected_rate": 1.0,
+  "min_top_second_gap": 0.0065,
+  "max_top_second_gap": 0.0233,
+  "mean_top_second_gap": 0.0149,
+  "variants": [
+    {
+      "name": "stability_novelty_m0_02_risk_p0_00",
+      "policy_path": "configs\\generated\\v2_0_5_cycle_3_stability_probe\\stability_novelty_m0_02_risk_p0_00.json",
+      "result_path": "results\\v2_0_5_guarded_runtime\\cycle_3_stability_variants\\stability_novelty_m0_02_risk_p0_00.json",
+      "selected_organ": "curiosity_organ",
+      "top_score": 0.5198,
+      "top_second_gap": 0.0093,
+      "mean_candidate_score": 0.46766,
+      "passed_safety": true
+    },
+    {
+      "name": "stability_novelty_m0_02_risk_p0_02",
+      "policy_path": "configs\\generated\\v2_0_5_cycle_3_stability_probe\\stability_novelty_m0_02_risk_p0_02.json",
+      "result_path": "results\\v2_0_5_guarded_runtime\\cycle_3_stability_variants\\stability_novelty_m0_02_risk_p0_02.json",
+      "selected_organ": "curiosity_organ",
+      "top_score": 0.5154,
+      "top_second_gap": 0.0065,
+      "mean_candidate_score": 0.46562,
+      "passed_safety": true
+    },
+    {
+      "name": "stability_novelty_p0_00_risk_p0_00",
+      "policy_path": "configs\\generated\\v2_0_5_cycle_3_stability_probe\\stability_novelty_p0_00_risk_p0_00.json",
+      "result_path": "results\\v2_0_5_guarded_runtime\\cycle_3_stability_variants\\stability_novelty_p0_00_risk_p0_00.json",
+      "selected_organ": "curiosity_organ",
+      "top_score": 0.5378,
+      "top_second_gap": 0.0163,
+      "mean_candidate_score": 0.47794,
+      "passed_safety": true
+    },
+    {
+      "name": "stability_novelty_p0_00_risk_p0_02",
+      "policy_path": "configs\\generated\\v2_0_5_cycle_3_stability_probe\\stability_novelty_p0_00_risk_p0_02.json",
+      "result_path": "results\\v2_0_5_guarded_runtime\\cycle_3_stability_variants\\stability_novelty_p0_00_risk_p0_02.json",
+      "selected_organ": "curiosity_organ",
+      "top_score": 0.5334,
+      "top_second_gap": 0.0135,
+      "mean_candidate_score": 0.4759,
+      "passed_safety": true
+    },
+    {
+      "name": "stability_novelty_p0_02_risk_p0_00",
+      "policy_path": "configs\\generated\\v2_0_5_cycle_3_stability_probe\\stability_novelty_p0_02_risk_p0_00.json",
+      "result_path": "results\\v2_0_5_guarded_runtime\\cycle_3_stability_variants\\stability_novelty_p0_02_risk_p0_00.json",
+      "selected_organ": "curiosity_organ",
+      "top_score": 0.5558,
+      "top_second_gap": 0.0233,
+      "mean_candidate_score": 0.48822,
+      "passed_safety": true
+    },
+    {
+      "name": "stability_novelty_p0_02_risk_p0_02",
+      "policy_path": "configs\\generated\\v2_0_5_cycle_3_stability_probe\\stability_novelty_p0_02_risk_p0_02.json",
+      "result_path": "results\\v2_0_5_guarded_runtime\\cycle_3_stability_variants\\stability_novelty_p0_02_risk_p0_02.json",
+      "selected_organ": "curiosity_organ",
+      "top_score": 0.5514,
+      "top_second_gap": 0.0205,
+      "mean_candidate_score": 0.48618,
+      "passed_safety": true
+    }
+  ],
+  "interpretation": "Reflection selection is stable enough for this stage: curiosity_organ was selected in 6/6 variants.",
+  "safety_policy": {
+    "network_actions": false,
+    "shell_actions": false,
+    "auto_delete_files": false,
+    "auto_disable_organs": false,
+    "auto_approve_memory": false,
+    "create_memory_proposal": false,
+    "git_actions": false,
+    "human_approval_required": true
+  },
+  "passed": true
+}

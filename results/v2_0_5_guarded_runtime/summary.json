@@ -1,0 +1,137 @@
+{
+  "version": "v2.0.5",
+  "created_at": "2026-06-30T01:14:38.370912+00:00",
+  "guard_name": "runtime_guard_long_run_monitor",
+  "limits": {
+    "max_cycles": 3,
+    "max_failures": 2,
+    "max_memory_inbox_growth": 8,
+    "max_result_files_growth": 120,
+    "max_experiment_inbox_growth": 80,
+    "stop_file_path": "runtime_control/STOP"
+  },
+  "baseline": {
+    "created_at": "2026-06-30T01:14:38.205120+00:00",
+    "memory_inbox_count": 12,
+    "result_files_count": 83,
+    "experiment_inbox_count": 12,
+    "cycle_index": 0,
+    "failure_count": 0
+  },
+  "latest": {
+    "created_at": "2026-06-30T01:14:38.369494+00:00",
+    "memory_inbox_count": 12,
+    "result_files_count": 110,
+    "experiment_inbox_count": 15,
+    "cycle_index": 3,
+    "failure_count": 0
+  },
+  "cycles": [
+    {
+      "cycle_index": 1,
+      "started_at": "2026-06-30T01:14:38.210014+00:00",
+      "ended_at": "2026-06-30T01:14:38.257678+00:00",
+      "ok": true,
+      "actions": [
+        "run_reflection_loop",
+        "run_autonomous_experiment_planner",
+        "run_reflection_stability_probe",
+        "write_results_json",
+        "write_logs",
+        "write_experiments_inbox",
+        "write_generated_configs",
+        "monitor_runtime_growth",
+        "stop_file_check"
+      ],
+      "errors": [],
+      "memory_inbox_count": 12,
+      "result_files_count": 92,
+      "experiment_inbox_count": 13,
+      "stop_reason": null
+    },
+    {
+      "cycle_index": 2,
+      "started_at": "2026-06-30T01:14:38.257678+00:00",
+      "ended_at": "2026-06-30T01:14:38.311604+00:00",
+      "ok": true,
+      "actions": [
+        "run_reflection_loop",
+        "run_autonomous_experiment_planner",
+        "run_reflection_stability_probe",
+        "write_results_json",
+        "write_logs",
+        "write_experiments_inbox",
+        "write_generated_configs",
+        "monitor_runtime_growth",
+        "stop_file_check"
+      ],
+      "errors": [],
+      "memory_inbox_count": 12,
+      "result_files_count": 101,
+      "experiment_inbox_count": 14,
+      "stop_reason": null
+    },
+    {
+      "cycle_index": 3,
+      "started_at": "2026-06-30T01:14:38.311604+00:00",
+      "ended_at": "2026-06-30T01:14:38.369494+00:00",
+      "ok": true,
+      "actions": [
+        "run_reflection_loop",
+        "run_autonomous_experiment_planner",
+        "run_reflection_stability_probe",
+        "write_results_json",
+        "write_logs",
+        "write_experiments_inbox",
+        "write_generated_configs",
+        "monitor_runtime_growth",
+        "stop_file_check"
+      ],
+      "errors": [],
+      "memory_inbox_count": 12,
+      "result_files_count": 110,
+      "experiment_inbox_count": 15,
+      "stop_reason": null
+    }
+  ],
+  "cycles_completed": 3,
+  "failure_count": 0,
+  "stopped": true,
+  "stop_reason": "max_cycles_reached",
+  "safety_policy": {
+    "network_actions": false,
+    "arbitrary_shell_actions": false,
+    "file_delete": false,
+    "core_code_modification": false,
+    "auto_disable_organs": false,
+    "auto_delete_organs": false,
+    "auto_approve_memory": false,
+    "git_actions": false,
+    "human_approval_required": true,
+    "limited_whitelist_execution": true,
+    "guarded_long_run": true
+  },
+  "passed": true,
+  "allowed_actions": [
+    "run_reflection_loop",
+    "run_autonomous_experiment_planner",
+    "run_reflection_stability_probe",
+    "write_results_json",
+    "write_logs",
+    "write_experiments_inbox",
+    "write_generated_configs",
+    "monitor_runtime_growth",
+    "stop_file_check"
+  ],
+  "forbidden_actions": [
+    "network_access",
+    "arbitrary_shell_execution",
+    "file_delete",
+    "core_code_modification",
+    "organ_auto_disable",
+    "organ_auto_delete",
+    "memory_auto_approve",
+    "git_commit",
+    "git_push"
+  ]
+}
