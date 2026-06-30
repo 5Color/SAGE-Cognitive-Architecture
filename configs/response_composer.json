@@ -1,0 +1,8 @@
+{
+  "style": "plain_korean",
+  "include_context_note": true,
+  "max_context_items": 3,
+  "max_context_snippets": 2,
+  "avoid_debug_dump": true,
+  "note": "Symbolic sentence composer, not a neural LLM."
+}
