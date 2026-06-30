@@ -1,0 +1,35 @@
+{
+  "version": "v2.0.4",
+  "max_cycles": 3,
+  "cycle_interval_seconds": 5.0,
+  "stop_file": "runtime_control/STOP",
+  "output_dir": "results/v2_0_4_continuous_runtime",
+  "log_path": "logs/v2_0_4_safe_continuous_runtime.md",
+  "memory_root": "memory",
+  "max_memory_inbox": 20,
+  "create_memory_proposal": false,
+  "run_reflection": true,
+  "run_experiment_planner": true,
+  "run_stability_probe": true,
+  "stability_probe_every_n_cycles": 2,
+  "allowed_actions": [
+    "run_reflection_loop",
+    "run_autonomous_experiment_planner",
+    "run_reflection_stability_probe",
+    "write_results_json",
+    "write_logs",
+    "write_experiments_inbox",
+    "write_generated_configs"
+  ],
+  "forbidden_actions": [
+    "network_access",
+    "arbitrary_shell_execution",
+    "file_delete",
+    "core_code_modification",
+    "organ_auto_disable",
+    "organ_auto_delete",
+    "memory_auto_approve",
+    "git_commit",
+    "git_push"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "benchmark": "SAGE-v2.0.4-safe-continuous-runtime-smoke",
+  "version": "v2.0.4",
+  "cycles_requested": 2,
+  "cycles_completed": 2,
+  "stopped_by_file": false,
+  "action_names": [
+    "run_reflection_loop",
+    "run_autonomous_experiment_planner",
+    "run_reflection_stability_probe",
+    "run_reflection_loop",
+    "run_autonomous_experiment_planner",
+    "run_reflection_stability_probe"
+  ],
+  "safety_policy": {
+    "network_actions": false,
+    "arbitrary_shell_actions": false,
+    "file_delete": false,
+    "core_code_modification": false,
+    "auto_disable_organs": false,
+    "auto_delete_organs": false,
+    "auto_approve_memory": false,
+    "git_actions": false,
+    "human_approval_required": true,
+    "limited_whitelist_execution": true
+  },
+  "summary_path": "results/v2_0_4_continuous_runtime_smoke/summary.json",
+  "passed": true
+}
