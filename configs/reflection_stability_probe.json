@@ -1,0 +1,10 @@
+{
+  "base_policy_path": "configs/reflection_policy_exploratory.json",
+  "output_path": "results/v2_0_3_reflection_stability_probe.json",
+  "output_dir": "results/v2_0_3_stability_probe",
+  "variant_policy_dir": "configs/generated/stability_probe",
+  "target_organ": "curiosity_organ",
+  "novelty_deltas": [-0.02, 0.0, 0.02],
+  "risk_deltas": [0.0, 0.02],
+  "min_target_rate": 0.80
+}

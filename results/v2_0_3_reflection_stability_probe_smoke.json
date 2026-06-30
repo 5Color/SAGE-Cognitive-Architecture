@@ -1,0 +1,15 @@
+{
+  "benchmark": "SAGE-v2.0.3-reflection-stability-probe-smoke",
+  "version": "v2.0.3",
+  "target_organ": "curiosity_organ",
+  "variant_count": 6,
+  "selected_counts": {
+    "curiosity_organ": 6
+  },
+  "target_selected_rate": 1.0,
+  "min_top_second_gap": 0.0065,
+  "max_top_second_gap": 0.0233,
+  "mean_top_second_gap": 0.0149,
+  "passed_detail": true,
+  "passed": true
+}

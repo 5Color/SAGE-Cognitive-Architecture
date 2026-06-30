@@ -1,0 +1,12 @@
+{
+  "name": "stability_novelty_m0_02_risk_p0_02",
+  "weights": {
+    "confidence": 0.25,
+    "novelty": 0.27,
+    "reuse_value": 0.2,
+    "agreement_bonus": 0.14,
+    "cost": 0.08,
+    "risk": 0.1
+  },
+  "contradiction_penalty_per_flag": 0.12
+}
