@@ -1,0 +1,51 @@
+{
+  "version": "v2.5",
+  "created_at": "2026-06-30T03:50:28.073432+00:00",
+  "organ_name": "memory_consolidation_organ",
+  "mode": "bounded_auto_consolidation",
+  "config": {
+    "memory_root": "memory",
+    "output_path": "results/v2_5_memory_consolidation_report.json",
+    "audit_log_path": "memory/consolidation_log.jsonl",
+    "auto_move_to_provisional": true,
+    "auto_promote_to_validated": true,
+    "auto_approve_strict": true,
+    "min_provisional_score": 0.45,
+    "min_validated_score": 0.72,
+    "min_auto_approve_score": 0.88,
+    "allow_auto_approve_result_memories": true,
+    "allow_auto_approve_policy_memories": true,
+    "auto_reject_duplicates": true
+  },
+  "counts_before": {
+    "inbox": 0,
+    "provisional": 0,
+    "validated": 0,
+    "approved": 3,
+    "rejected": 9
+  },
+  "counts_after": {
+    "inbox": 0,
+    "provisional": 0,
+    "validated": 0,
+    "approved": 3,
+    "rejected": 9
+  },
+  "assessments": [],
+  "actions": [],
+  "selected_summary": [
+    "No memory candidates in memory/inbox."
+  ],
+  "safety_policy": {
+    "unbounded_auto_approve": false,
+    "bounded_auto_approve": true,
+    "file_delete": false,
+    "network_actions": false,
+    "arbitrary_shell_actions": false,
+    "core_code_auto_modify": false,
+    "git_actions": false,
+    "audit_log_required": true,
+    "risk_flag_blocks_auto_approval": true
+  },
+  "passed": true
+}

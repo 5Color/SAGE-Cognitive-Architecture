@@ -1,0 +1,4 @@
+{
+  "config_path": "configs/memory_consolidation.json",
+  "note": "Runtime wrapper config for v2.5 memory consolidation organ."
+}
