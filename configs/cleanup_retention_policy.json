@@ -1,0 +1,10 @@
+{
+  "output_path": "results/v2_0_6_cleanup_retention_policy.json",
+  "inbox_path": "experiments/inbox/v2_0_6_cleanup_retention_policy_proposal.json",
+  "max_result_json_files": 120,
+  "max_generated_config_dirs": 20,
+  "max_experiment_inbox_items": 30,
+  "max_memory_inbox_items": 20,
+  "max_log_markdown_files": 50,
+  "write_experiment_inbox_proposal": true
+}

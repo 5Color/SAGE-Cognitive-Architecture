@@ -1,0 +1,301 @@
+{
+  "version": "v2.0.6",
+  "created_at": "2026-06-30T01:41:52.906184+00:00",
+  "advisor_name": "cleanup_retention_policy_advisor",
+  "limits": {
+    "max_result_json_files": 1,
+    "max_generated_config_dirs": 1,
+    "max_experiment_inbox_items": 1,
+    "max_memory_inbox_items": 1,
+    "max_log_markdown_files": 1
+  },
+  "area_stats": [
+    {
+      "area": "results",
+      "path": "results",
+      "exists": true,
+      "file_count": 204,
+      "dir_count": 21,
+      "json_count": 204,
+      "markdown_count": 0,
+      "total_bytes": 4866316,
+      "examples": [
+        "results/v0_5_benchmark.json",
+        "results/v0_6_continual_benchmark.json",
+        "results/v0_7_state_replay_benchmark.json",
+        "results/v0_8_context_benchmark.json",
+        "results/v0_9_1_gate_scale_sweep.json",
+        "results/v0_9_context_gated_router_benchmark.json",
+        "results/v1_0_multiseed_benchmark.json",
+        "results/v1_1_adaptive_context_gate_benchmark.json",
+        "results/v1_2_organ_specialization_benchmark.json",
+        "results/v1_3_agi_readiness_benchmark.json"
+      ]
+    },
+    {
+      "area": "configs_generated",
+      "path": "configs/generated",
+      "exists": true,
+      "file_count": 78,
+      "dir_count": 13,
+      "json_count": 78,
+      "markdown_count": 0,
+      "total_bytes": 19929,
+      "examples": [
+        "configs/generated/stability_probe/stability_novelty_m0_02_risk_p0_00.json",
+        "configs/generated/stability_probe/stability_novelty_m0_02_risk_p0_02.json",
+        "configs/generated/stability_probe/stability_novelty_p0_00_risk_p0_00.json",
+        "configs/generated/stability_probe/stability_novelty_p0_00_risk_p0_02.json",
+        "configs/generated/stability_probe/stability_novelty_p0_02_risk_p0_00.json",
+        "configs/generated/stability_probe/stability_novelty_p0_02_risk_p0_02.json",
+        "configs/generated/v2_0_4_cycle_001_stability_probe/stability_novelty_m0_02_risk_p0_00.json",
+        "configs/generated/v2_0_4_cycle_001_stability_probe/stability_novelty_m0_02_risk_p0_02.json",
+        "configs/generated/v2_0_4_cycle_001_stability_probe/stability_novelty_p0_00_risk_p0_00.json",
+        "configs/generated/v2_0_4_cycle_001_stability_probe/stability_novelty_p0_00_risk_p0_02.json"
+      ]
+    },
+    {
+      "area": "experiments_inbox",
+      "path": "experiments/inbox",
+      "exists": true,
+      "file_count": 23,
+      "dir_count": 2,
+      "json_count": 23,
+      "markdown_count": 0,
+      "total_bytes": 38806,
+      "examples": [
+        "experiments/inbox/1aeb1bb9105e_policy_diversity_repair.json",
+        "experiments/inbox/2bd4c391531c_experiment_planner_self-check.json",
+        "experiments/inbox/c7177882b39f_stability_probe_for_reflection_selection.json",
+        "experiments/inbox/selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_10_selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_1_selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_2_selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_3_selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_4_selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_5_selected_next_experiment.json"
+      ]
+    },
+    {
+      "area": "memory_inbox",
+      "path": "memory/inbox",
+      "exists": true,
+      "file_count": 13,
+      "dir_count": 0,
+      "json_count": 12,
+      "markdown_count": 0,
+      "total_bytes": 9892,
+      "examples": [
+        "memory/inbox/.gitkeep",
+        "memory/inbox/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json",
+        "memory/inbox/2026-06-29T12-15-43-233124+00-00_192ebd7c728d.json",
+        "memory/inbox/2026-06-29T12-29-59-059530+00-00_b826bcdb65d9.json",
+        "memory/inbox/2026-06-29T12-30-02-592234+00-00_fd07196c40c6.json",
+        "memory/inbox/2026-06-29T12-42-40-370993+00-00_20bc9ac2e8f5.json",
+        "memory/inbox/2026-06-29T12-42-46-003274+00-00_d316623b3e28.json",
+        "memory/inbox/2026-06-29T12-44-48-194344+00-00_b9bcb99044a6.json",
+        "memory/inbox/2026-06-29T12-44-53-464149+00-00_6c74813ca13d.json",
+        "memory/inbox/2026-06-29T12-51-37-811332+00-00_08d3dbbc1a1d.json"
+      ]
+    },
+    {
+      "area": "logs",
+      "path": "logs",
+      "exists": true,
+      "file_count": 25,
+      "dir_count": 0,
+      "json_count": 0,
+      "markdown_count": 24,
+      "total_bytes": 157117,
+      "examples": [
+        "logs/.gitkeep",
+        "logs/daily_reflection.md",
+        "logs/emergent_reflection.md",
+        "logs/v1_9_runtime_smoke_reflection.md",
+        "logs/v2_0_3_stability_stability_novelty_m0_02_risk_p0_00.md",
+        "logs/v2_0_3_stability_stability_novelty_m0_02_risk_p0_02.md",
+        "logs/v2_0_3_stability_stability_novelty_p0_00_risk_p0_00.md",
+        "logs/v2_0_3_stability_stability_novelty_p0_00_risk_p0_02.md",
+        "logs/v2_0_3_stability_stability_novelty_p0_02_risk_p0_00.md",
+        "logs/v2_0_3_stability_stability_novelty_p0_02_risk_p0_02.md"
+      ]
+    },
+    {
+      "area": "docs",
+      "path": "docs",
+      "exists": true,
+      "file_count": 26,
+      "dir_count": 3,
+      "json_count": 0,
+      "markdown_count": 25,
+      "total_bytes": 124492,
+      "examples": [
+        "docs/Project_SAGE.md",
+        "docs/SAGE_v1_7_1_NOTE.md",
+        "docs/SAGE_v1_8_ORGAN_LIFECYCLE_MANAGER.md",
+        "docs/SAGE_v1_9_RUNTIME_NODE.md",
+        "docs/SAGE_v2_0_2_AUTONOMOUS_EXPERIMENT_PLANNER.md",
+        "docs/SAGE_v2_0_3_REFLECTION_STABILITY_PROBE.md",
+        "docs/SAGE_v2_0_4_SAFE_CONTINUOUS_RUNTIME.md",
+        "docs/SAGE_v2_0_5_RUNTIME_GUARD_LONG_RUN_MONITOR.md",
+        "docs/SAGE_v2_0_6_CLEANUP_RETENTION_POLICY.md",
+        "docs/SAGE_v2_0_EMERGENT_REFLECTION_LOOP.md"
+      ]
+    }
+  ],
+  "proposals": [
+    {
+      "proposal_id": "7a3c96b7aa31",
+      "area": "results",
+      "priority": "high",
+      "action_type": "archive_candidate",
+      "title": "Archive older result JSON files by version",
+      "rationale": "results/ contains 204 JSON files, above the configured limit of 1. This can make git status and manual review noisy. The advisor recommends archiving by version only after review.",
+      "suggested_target": "results/archive/<version>/",
+      "affected_paths": [
+        "results/v0_5_benchmark.json",
+        "results/v0_6_continual_benchmark.json",
+        "results/v0_7_state_replay_benchmark.json",
+        "results/v0_8_context_benchmark.json",
+        "results/v0_9_1_gate_scale_sweep.json",
+        "results/v0_9_context_gated_router_benchmark.json",
+        "results/v1_0_multiseed_benchmark.json",
+        "results/v1_1_adaptive_context_gate_benchmark.json",
+        "results/v1_2_organ_specialization_benchmark.json",
+        "results/v1_3_agi_readiness_benchmark.json"
+      ],
+      "destructive": false,
+      "requires_human_approval": true,
+      "execute_now": false
+    },
+    {
+      "proposal_id": "5ae89e85077d",
+      "area": "configs/generated",
+      "priority": "medium",
+      "action_type": "archive_candidate",
+      "title": "Archive generated config folders by run/version",
+      "rationale": "configs/generated/ contains 13 directories, above the configured limit of 1. Generated stability probe configs are useful history, but they should not be mixed with active configs forever.",
+      "suggested_target": "configs/generated/archive/<version_or_run>/",
+      "affected_paths": [
+        "configs/generated/stability_probe/stability_novelty_m0_02_risk_p0_00.json",
+        "configs/generated/stability_probe/stability_novelty_m0_02_risk_p0_02.json",
+        "configs/generated/stability_probe/stability_novelty_p0_00_risk_p0_00.json",
+        "configs/generated/stability_probe/stability_novelty_p0_00_risk_p0_02.json",
+        "configs/generated/stability_probe/stability_novelty_p0_02_risk_p0_00.json",
+        "configs/generated/stability_probe/stability_novelty_p0_02_risk_p0_02.json",
+        "configs/generated/v2_0_4_cycle_001_stability_probe/stability_novelty_m0_02_risk_p0_00.json",
+        "configs/generated/v2_0_4_cycle_001_stability_probe/stability_novelty_m0_02_risk_p0_02.json",
+        "configs/generated/v2_0_4_cycle_001_stability_probe/stability_novelty_p0_00_risk_p0_00.json",
+        "configs/generated/v2_0_4_cycle_001_stability_probe/stability_novelty_p0_00_risk_p0_02.json"
+      ],
+      "destructive": false,
+      "requires_human_approval": true,
+      "execute_now": false
+    },
+    {
+      "proposal_id": "72865fe2f794",
+      "area": "experiments/inbox",
+      "priority": "medium",
+      "action_type": "review_candidate",
+      "title": "Review old experiment proposals before archiving",
+      "rationale": "experiments/inbox/ contains 23 files, above the configured limit of 1. Inbox should represent pending proposals; old cycle proposals should be reviewed before being marked archived.",
+      "suggested_target": "experiments/archive/<version>/",
+      "affected_paths": [
+        "experiments/inbox/1aeb1bb9105e_policy_diversity_repair.json",
+        "experiments/inbox/2bd4c391531c_experiment_planner_self-check.json",
+        "experiments/inbox/c7177882b39f_stability_probe_for_reflection_selection.json",
+        "experiments/inbox/selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_10_selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_1_selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_2_selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_3_selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_4_selected_next_experiment.json",
+        "experiments/inbox/v2_0_5_cycle_5_selected_next_experiment.json"
+      ],
+      "destructive": false,
+      "requires_human_approval": true,
+      "execute_now": false
+    },
+    {
+      "proposal_id": "76940831adcc",
+      "area": "memory/inbox",
+      "priority": "high",
+      "action_type": "human_review_candidate",
+      "title": "Review memory inbox proposals",
+      "rationale": "memory/inbox/ contains 13 files, above the configured limit of 1. Memory proposals must not be auto-approved. A human should review, approve, reject, or summarize them.",
+      "suggested_target": "memory/approved or memory/rejected after human review",
+      "affected_paths": [
+        "memory/inbox/.gitkeep",
+        "memory/inbox/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json",
+        "memory/inbox/2026-06-29T12-15-43-233124+00-00_192ebd7c728d.json",
+        "memory/inbox/2026-06-29T12-29-59-059530+00-00_b826bcdb65d9.json",
+        "memory/inbox/2026-06-29T12-30-02-592234+00-00_fd07196c40c6.json",
+        "memory/inbox/2026-06-29T12-42-40-370993+00-00_20bc9ac2e8f5.json",
+        "memory/inbox/2026-06-29T12-42-46-003274+00-00_d316623b3e28.json",
+        "memory/inbox/2026-06-29T12-44-48-194344+00-00_b9bcb99044a6.json",
+        "memory/inbox/2026-06-29T12-44-53-464149+00-00_6c74813ca13d.json",
+        "memory/inbox/2026-06-29T12-51-37-811332+00-00_08d3dbbc1a1d.json"
+      ],
+      "destructive": false,
+      "requires_human_approval": true,
+      "execute_now": false
+    },
+    {
+      "proposal_id": "fb43fa78e783",
+      "area": "logs",
+      "priority": "low",
+      "action_type": "curation_candidate",
+      "title": "Curate important runtime logs into docs/logs",
+      "rationale": "logs/ contains 24 markdown files, above the configured limit of 1. logs/ is generated runtime output; only important human-reviewed logs should be copied into docs/logs/.",
+      "suggested_target": "docs/logs/<curated_log_name>.md",
+      "affected_paths": [
+        "logs/.gitkeep",
+        "logs/daily_reflection.md",
+        "logs/emergent_reflection.md",
+        "logs/v1_9_runtime_smoke_reflection.md",
+        "logs/v2_0_3_stability_stability_novelty_m0_02_risk_p0_00.md",
+        "logs/v2_0_3_stability_stability_novelty_m0_02_risk_p0_02.md",
+        "logs/v2_0_3_stability_stability_novelty_p0_00_risk_p0_00.md",
+        "logs/v2_0_3_stability_stability_novelty_p0_00_risk_p0_02.md",
+        "logs/v2_0_3_stability_stability_novelty_p0_02_risk_p0_00.md",
+        "logs/v2_0_3_stability_stability_novelty_p0_02_risk_p0_02.md"
+      ],
+      "destructive": false,
+      "requires_human_approval": true,
+      "execute_now": false
+    },
+    {
+      "proposal_id": "8d840d218b62",
+      "area": "repository",
+      "priority": "baseline",
+      "action_type": "policy_candidate",
+      "title": "Keep cleanup proposal-only until approved",
+      "rationale": "SAGE should not delete, move, rename, auto-archive, auto-approve memory, or perform git actions without human approval. Cleanup should first create a report and exact commands marked review-only.",
+      "suggested_target": "docs/versions or docs/logs for reviewed docs; archive folders only after approval",
+      "affected_paths": [],
+      "destructive": false,
+      "requires_human_approval": true,
+      "execute_now": false
+    }
+  ],
+  "selected_summary": [
+    "[high] results: Archive older result JSON files by version",
+    "[medium] configs/generated: Archive generated config folders by run/version",
+    "[medium] experiments/inbox: Review old experiment proposals before archiving",
+    "[high] memory/inbox: Review memory inbox proposals",
+    "[low] logs: Curate important runtime logs into docs/logs",
+    "[baseline] repository: Keep cleanup proposal-only until approved"
+  ],
+  "safety_policy": {
+    "file_delete": false,
+    "file_move": false,
+    "file_rename": false,
+    "git_actions": false,
+    "auto_archive": false,
+    "auto_cleanup": false,
+    "auto_approve_memory": false,
+    "human_approval_required": true,
+    "proposal_only": true
+  },
+  "passed": true
+}

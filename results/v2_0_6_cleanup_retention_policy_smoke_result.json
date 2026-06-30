@@ -1,0 +1,43 @@
+{
+  "benchmark": "SAGE-v2.0.6-cleanup-retention-policy-smoke",
+  "version": "v2.0.6",
+  "proposal_count": 6,
+  "proposal_action_types": [
+    "archive_candidate",
+    "archive_candidate",
+    "review_candidate",
+    "human_review_candidate",
+    "curation_candidate",
+    "policy_candidate"
+  ],
+  "destructive_flags": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "execute_flags": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "output_path": "results\\v2_0_6_cleanup_retention_policy_smoke.json",
+  "inbox_path": "experiments\\inbox\\v2_0_6_cleanup_retention_policy_smoke_proposal.json",
+  "safety_policy": {
+    "file_delete": false,
+    "file_move": false,
+    "file_rename": false,
+    "git_actions": false,
+    "auto_archive": false,
+    "auto_cleanup": false,
+    "auto_approve_memory": false,
+    "human_approval_required": true,
+    "proposal_only": true
+  },
+  "passed": true
+}
