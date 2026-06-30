@@ -27,3 +27,18 @@ dist/
 .DS_Store
 .vscode/
 *.log
+
+# SAGE generated runtime artifacts
+results/
+memory/inbox/
+memory/review/
+logs/
+runtime_control/
+configs/generated/
+experiments/inbox/
+
+# Teacher generated data
+data/teacher/
+
+# Local secrets
+.env

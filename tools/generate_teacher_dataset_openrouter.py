@@ -93,6 +93,7 @@ async def generate_one(
     temperature: float,
     max_retries: int,
     require_parameters: bool,
+    max_tokens: int,
 ) -> dict[str, Any]:
     user_prompt = make_user_prompt(seed)
     last_error = None
@@ -113,6 +114,7 @@ async def generate_one(
                     {"role": "user", "content": user_prompt},
                 ],
                 temperature=temperature,
+                max_tokens=max_tokens,
                 response_format={
                     "type": "json_schema",
                     "json_schema": {
@@ -183,6 +185,7 @@ async def run(args: argparse.Namespace) -> None:
                     temperature=args.temperature,
                     max_retries=args.max_retries,
                     require_parameters=args.require_parameters,
+                    max_tokens=args.max_tokens,
                 )
                 append_jsonl(out_path, obj)
                 append_jsonl(raw_path, {"created_at": utc_now(), "seed": seed, "object": obj})
@@ -230,6 +233,7 @@ def main() -> None:
     parser.add_argument("--errors", default="data/teacher/errors.jsonl")
     parser.add_argument("--limit", type=int, default=20)
     parser.add_argument("--concurrency", type=int, default=3)
+    parser.add_argument("--max-tokens", type=int, default=1024)
     parser.add_argument("--temperature", type=float, default=0.3)
     parser.add_argument("--max-retries", type=int, default=2)
     parser.add_argument("--seed-random", type=int, default=42)
