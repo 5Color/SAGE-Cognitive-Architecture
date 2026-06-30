@@ -1,0 +1,13 @@
+{
+  "version": "v2.3",
+  "mode": "single_action_decision",
+  "decision": {
+    "action": "file_delete",
+    "requested_level": 2,
+    "allowed": false,
+    "requires_human_approval": true,
+    "reason": "forbidden_action_denied",
+    "category": "forbidden",
+    "forbidden": true
+  }
+}

@@ -1,0 +1,4 @@
+{
+  "policy_path": "configs/autonomy_level_policy.json",
+  "output_path": "results/v2_3_autonomy_level_policy_report.json"
+}

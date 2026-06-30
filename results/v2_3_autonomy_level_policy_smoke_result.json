@@ -1,0 +1,81 @@
+{
+  "benchmark": "SAGE-v2.3-autonomy-level-policy-smoke",
+  "version": "v2.3",
+  "active_level": 2,
+  "checks": {
+    "run_reflection_loop": {
+      "action": "run_reflection_loop",
+      "requested_level": 2,
+      "allowed": true,
+      "requires_human_approval": false,
+      "reason": "allowed_by_active_level",
+      "category": "safe_auto",
+      "forbidden": false
+    },
+    "run_cleanup_advisor": {
+      "action": "run_cleanup_advisor",
+      "requested_level": 2,
+      "allowed": true,
+      "requires_human_approval": false,
+      "reason": "allowed_by_active_level",
+      "category": "safe_auto",
+      "forbidden": false
+    },
+    "write_memory_proposal": {
+      "action": "write_memory_proposal",
+      "requested_level": 2,
+      "allowed": true,
+      "requires_human_approval": false,
+      "reason": "allowed_by_active_level",
+      "category": "write",
+      "forbidden": false
+    },
+    "approve_memory": {
+      "action": "approve_memory",
+      "requested_level": 2,
+      "allowed": false,
+      "requires_human_approval": true,
+      "reason": "requires_level_3",
+      "category": "approval",
+      "forbidden": false
+    },
+    "file_delete": {
+      "action": "file_delete",
+      "requested_level": 2,
+      "allowed": false,
+      "requires_human_approval": true,
+      "reason": "forbidden_action_denied",
+      "category": "forbidden",
+      "forbidden": true
+    },
+    "git_push": {
+      "action": "git_push",
+      "requested_level": 2,
+      "allowed": false,
+      "requires_human_approval": true,
+      "reason": "forbidden_action_denied",
+      "category": "forbidden",
+      "forbidden": true
+    },
+    "network_access": {
+      "action": "network_access",
+      "requested_level": 2,
+      "allowed": false,
+      "requires_human_approval": true,
+      "reason": "forbidden_action_denied",
+      "category": "forbidden",
+      "forbidden": true
+    },
+    "unknown_action": {
+      "action": "unknown_action",
+      "requested_level": 2,
+      "allowed": false,
+      "requires_human_approval": true,
+      "reason": "unknown_action_denied_by_default",
+      "category": "unknown",
+      "forbidden": true
+    }
+  },
+  "report_passed": true,
+  "passed": true
+}

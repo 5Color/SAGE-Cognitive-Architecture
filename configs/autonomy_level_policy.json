@@ -1,0 +1,4 @@
+{
+  "active_level": 2,
+  "note": "Level 2 Safe Auto: SAGE may run whitelisted local loops and write proposals/results. Approval, deletion, code modification, git, network, and arbitrary shell actions remain blocked."
+}
