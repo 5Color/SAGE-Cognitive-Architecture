@@ -1,0 +1,20 @@
+{
+  "memory_root": "memory",
+  "memory_summary_path": "memory/summaries/latest_memory_summary.md",
+  "output_path": "results/v2_8_memory_context_bundle.json",
+  "stages": [
+    "approved",
+    "validated",
+    "provisional"
+  ],
+  "max_items_per_stage": 200,
+  "max_selected_items": 6,
+  "max_summary_snippets": 6,
+  "max_bundle_chars": 6000,
+  "stage_weights": {
+    "approved": 1.4,
+    "validated": 1.1,
+    "provisional": 0.75
+  },
+  "note": "Read-only memory context selector. It builds a compact context bundle for the current query."
+}

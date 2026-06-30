@@ -1,0 +1,150 @@
+{
+  "benchmark": "SAGE-v2.8-memory-context-manager-smoke",
+  "version": "v2.8",
+  "bundle": {
+    "version": "v2.8",
+    "created_at": "2026-06-30T04:24:19.237197+00:00",
+    "tool_name": "memory_context_manager",
+    "mode": "read_only_context_selection",
+    "query": "CPU Language Core와 safety policy 기준으로 다음 단계 알려줘",
+    "query_terms": [
+      "cpu",
+      "language",
+      "core와",
+      "safety",
+      "policy",
+      "기준으로",
+      "단계",
+      "알려줘"
+    ],
+    "inferred_topics": [
+      "safety",
+      "language_core"
+    ],
+    "selected_summary_snippets": [
+      {
+        "score": 6.3,
+        "heading": "language_core",
+        "text": "- CPU Language Core passed true and handles Korean chunking.",
+        "reasons": [
+          "matched_terms:cpu,language",
+          "topic:language_core",
+          "verified_result_hint"
+        ]
+      },
+      {
+        "score": 4.2,
+        "heading": "safety",
+        "text": "- file_delete, git_push, and network_access are forbidden under Level 2 Safe Auto.",
+        "reasons": [
+          "matched_terms:safety",
+          "topic:safety",
+          "safety_policy_hint"
+        ]
+      },
+      {
+        "score": 0.4,
+        "heading": "chat_loop",
+        "text": "- Local Chat Loop links user input to memory candidate proposals.",
+        "reasons": [
+          "memory_context_hint"
+        ]
+      }
+    ],
+    "selected_memory_items": [
+      {
+        "score": 9.38,
+        "stage": "approved",
+        "path": "results/v2_8_memory_context_manager_smoke_workspace/memory/approved/v2_4_cpu_language_core.json",
+        "preview": "SAGE v2.4 CPU Language Core benchmark passed true. It validates CPU-only Korean chunking, state extraction, and approved memory retrieval.",
+        "reasons": [
+          "matched_terms:cpu,language",
+          "topic:language_core",
+          "verified_result_hint",
+          "memory_context_hint",
+          "stage_weight:approved=1.4"
+        ],
+        "matched_terms": [
+          "cpu",
+          "language"
+        ]
+      },
+      {
+        "score": 7.0,
+        "stage": "approved",
+        "path": "results/v2_8_memory_context_manager_smoke_workspace/memory/approved/v2_3_safety_policy.json",
+        "preview": "SAGE v2.3 autonomy policy passed true. file_delete, git_push, and network_access are forbidden. Level 2 Safe Auto allows reflection and cleanup advisor only.",
+        "reasons": [
+          "matched_terms:policy",
+          "topic:safety",
+          "verified_result_hint",
+          "safety_policy_hint",
+          "stage_weight:approved=1.4"
+        ],
+        "matched_terms": [
+          "policy"
+        ]
+      },
+      {
+        "score": 6.49,
+        "stage": "validated",
+        "path": "results/v2_8_memory_context_manager_smoke_workspace/memory/validated/v2_7_chat_loop.json",
+        "preview": "SAGE v2.7 Local Chat Loop connects user input, CPU Language Core, memory summary, approved memory retrieval, and memory candidate proposal.",
+        "reasons": [
+          "matched_terms:cpu,language",
+          "topic:language_core",
+          "memory_context_hint",
+          "stage_weight:validated=1.1"
+        ],
+        "matched_terms": [
+          "cpu",
+          "language"
+        ]
+      }
+    ],
+    "context_text": "# SAGE Memory Context Bundle\n\nQuery: CPU Language Core와 safety policy 기준으로 다음 단계 알려줘\nInferred topics: safety, language_core\n\n## Selected Summary Snippets\n\n### Summary 1: language_core · score 6.3\n- CPU Language Core passed true and handles Korean chunking.\n\n### Summary 2: safety · score 4.2\n- file_delete, git_push, and network_access are forbidden under Level 2 Safe Auto.\n\n### Summary 3: chat_loop · score 0.4\n- Local Chat Loop links user input to memory candidate proposals.\n\n## Selected Memory Items\n\n### Memory 1: approved · score 9.38\nPath: results/v2_8_memory_context_manager_smoke_workspace/memory/approved/v2_4_cpu_language_core.json\nReasons: matched_terms:cpu,language, topic:language_core, verified_result_hint, memory_context_hint, stage_weight:approved=1.4\nSAGE v2.4 CPU Language Core benchmark passed true. It validates CPU-only Korean chunking, state extraction, and approved memory retrieval.\n\n### Memory 2: approved · score 7.0\nPath: results/v2_8_memory_context_manager_smoke_workspace/memory/approved/v2_3_safety_policy.json\nReasons: matched_terms:policy, topic:safety, verified_result_hint, safety_policy_hint, stage_weight:approved=1.4\nSAGE v2.3 autonomy policy passed true. file_delete, git_push, and network_access are forbidden. Level 2 Safe Auto allows reflection and cleanup advisor only.\n\n### Memory 3: validated · score 6.49\nPath: results/v2_8_memory_context_manager_smoke_workspace/memory/validated/v2_7_chat_loop.json\nReasons: matched_terms:cpu,language, topic:language_core, memory_context_hint, stage_weight:validated=1.1\nSAGE v2.7 Local Chat Loop connects user input, CPU Language Core, memory summary, approved memory retrieval, and memory candidate proposal.\n\n## Safety\n\nThis bundle is read-only context selection. It does not approve, delete, move, or execute memory.",
+    "stats": {
+      "query_char_count": 47,
+      "query_term_count": 8,
+      "summary_snippet_count": 3,
+      "memory_item_count": 3,
+      "context_char_count": 1803,
+      "stage_counts": {
+        "approved": 2,
+        "validated": 1
+      }
+    },
+    "config": {
+      "memory_root": "results\\v2_8_memory_context_manager_smoke_workspace\\memory",
+      "memory_summary_path": "results\\v2_8_memory_context_manager_smoke_workspace\\memory\\summaries\\latest_memory_summary.md",
+      "output_path": "results\\v2_8_memory_context_manager_smoke_workspace\\v2_8_memory_context_bundle.json",
+      "stages": [
+        "approved",
+        "validated",
+        "provisional"
+      ],
+      "max_items_per_stage": 200,
+      "max_selected_items": 4,
+      "max_summary_snippets": 4,
+      "max_bundle_chars": 6000,
+      "stage_weights": {
+        "approved": 1.4,
+        "validated": 1.1,
+        "provisional": 0.75
+      }
+    },
+    "safety_policy": {
+      "read_only_memory": true,
+      "source_memory_delete": false,
+      "source_memory_move": false,
+      "memory_auto_approve": false,
+      "network_actions": false,
+      "git_actions": false,
+      "arbitrary_shell_actions": false,
+      "writes_context_bundle_only": true
+    },
+    "passed": true
+  },
+  "selected_paths": "results/v2_8_memory_context_manager_smoke_workspace/memory/approved/v2_4_cpu_language_core.json results/v2_8_memory_context_manager_smoke_workspace/memory/approved/v2_3_safety_policy.json results/v2_8_memory_context_manager_smoke_workspace/memory/validated/v2_7_chat_loop.json",
+  "passed": true
+}

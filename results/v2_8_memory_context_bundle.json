@@ -1,0 +1,129 @@
+{
+  "version": "v2.8",
+  "created_at": "2026-06-30T04:24:05.588057+00:00",
+  "tool_name": "memory_context_manager",
+  "mode": "read_only_context_selection",
+  "query": "CPU Language Core와 safety policy 기준으로 다음 단계 알려줘",
+  "query_terms": [
+    "cpu",
+    "language",
+    "core와",
+    "safety",
+    "policy",
+    "기준으로",
+    "단계",
+    "알려줘"
+  ],
+  "inferred_topics": [
+    "safety",
+    "language_core"
+  ],
+  "selected_summary_snippets": [
+    {
+      "score": 4.6,
+      "heading": "Safety Note",
+      "text": "This summarizer is read-only with respect to source memory. It writes derived summaries only.",
+      "reasons": [
+        "matched_terms:safety",
+        "topic:safety",
+        "safety_policy_hint",
+        "memory_context_hint"
+      ]
+    },
+    {
+      "score": 1.2,
+      "heading": "Top Topics",
+      "text": "- architecture: 3 - reflection: 3 - benchmark: 1 - memory: 1",
+      "reasons": [
+        "verified_result_hint",
+        "memory_context_hint"
+      ]
+    },
+    {
+      "score": 0.4,
+      "heading": "SAGE Memory Summary",
+      "text": "Created: 2026-06-30T04:08:44.033361+00:00",
+      "reasons": [
+        "memory_context_hint"
+      ]
+    },
+    {
+      "score": 0.4,
+      "heading": "Scope",
+      "text": "This summary is derived from SAGE memory stages. - `approved`: 3 items - `validated`: 0 items - `provisional`: 0 items",
+      "reasons": [
+        "memory_context_hint"
+      ]
+    },
+    {
+      "score": 0.4,
+      "heading": "approved: `memory/approved/2026-06-29T12-29-59-059530+00-00_b826bcdb65d9.json`",
+      "text": "SAGE should not confuse logs or random variation with true emergence. Proposal: Track whether a reflection improves later decisions before calling it emergent.",
+      "reasons": [
+        "memory_context_hint"
+      ]
+    },
+    {
+      "score": 0.4,
+      "heading": "approved: `memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json`",
+      "text": "SAGE v1.9 runtime node started in safe idle mode. It can persist state, read organ registry, propose memory, and write reflection logs.",
+      "reasons": [
+        "memory_context_hint"
+      ]
+    }
+  ],
+  "selected_memory_items": [
+    {
+      "score": 0.56,
+      "stage": "approved",
+      "path": "memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json",
+      "preview": "SAGE v1.9 runtime node started in safe idle mode. It can persist state, read organ registry, propose memory, and write reflection logs.",
+      "reasons": [
+        "memory_context_hint",
+        "stage_weight:approved=1.4"
+      ],
+      "matched_terms": []
+    }
+  ],
+  "context_text": "# SAGE Memory Context Bundle\n\nQuery: CPU Language Core와 safety policy 기준으로 다음 단계 알려줘\nInferred topics: safety, language_core\n\n## Selected Summary Snippets\n\n### Summary 1: Safety Note · score 4.6\nThis summarizer is read-only with respect to source memory. It writes derived summaries only.\n\n### Summary 2: Top Topics · score 1.2\n- architecture: 3 - reflection: 3 - benchmark: 1 - memory: 1\n\n### Summary 3: SAGE Memory Summary · score 0.4\nCreated: 2026-06-30T04:08:44.033361+00:00\n\n### Summary 4: Scope · score 0.4\nThis summary is derived from SAGE memory stages. - `approved`: 3 items - `validated`: 0 items - `provisional`: 0 items\n\n### Summary 5: approved: `memory/approved/2026-06-29T12-29-59-059530+00-00_b826bcdb65d9.json` · score 0.4\nSAGE should not confuse logs or random variation with true emergence. Proposal: Track whether a reflection improves later decisions before calling it emergent.\n\n### Summary 6: approved: `memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json` · score 0.4\nSAGE v1.9 runtime node started in safe idle mode. It can persist state, read organ registry, propose memory, and write reflection logs.\n\n## Selected Memory Items\n\n### Memory 1: approved · score 0.56\nPath: memory/approved/2026-06-29T12-15-32-621720+00-00_3fd9b5f26bb4.json\nReasons: memory_context_hint, stage_weight:approved=1.4\nSAGE v1.9 runtime node started in safe idle mode. It can persist state, read organ registry, propose memory, and write reflection logs.\n\n## Safety\n\nThis bundle is read-only context selection. It does not approve, delete, move, or execute memory.",
+  "stats": {
+    "query_char_count": 47,
+    "query_term_count": 8,
+    "summary_snippet_count": 6,
+    "memory_item_count": 1,
+    "context_char_count": 1578,
+    "stage_counts": {
+      "approved": 1
+    }
+  },
+  "config": {
+    "memory_root": "memory",
+    "memory_summary_path": "memory/summaries/latest_memory_summary.md",
+    "output_path": "results/v2_8_memory_context_bundle.json",
+    "stages": [
+      "approved",
+      "validated",
+      "provisional"
+    ],
+    "max_items_per_stage": 200,
+    "max_selected_items": 6,
+    "max_summary_snippets": 6,
+    "max_bundle_chars": 6000,
+    "stage_weights": {
+      "approved": 1.4,
+      "validated": 1.1,
+      "provisional": 0.75
+    }
+  },
+  "safety_policy": {
+    "read_only_memory": true,
+    "source_memory_delete": false,
+    "source_memory_move": false,
+    "memory_auto_approve": false,
+    "network_actions": false,
+    "git_actions": false,
+    "arbitrary_shell_actions": false,
+    "writes_context_bundle_only": true
+  },
+  "passed": true
+}

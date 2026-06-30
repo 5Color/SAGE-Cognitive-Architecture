@@ -1,0 +1,4 @@
+{
+  "config_path": "configs/memory_context_manager.json",
+  "note": "Runtime wrapper config for SAGE v2.8 Memory Context Manager."
+}
