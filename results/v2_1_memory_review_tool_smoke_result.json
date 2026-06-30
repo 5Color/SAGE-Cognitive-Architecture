@@ -1,0 +1,32 @@
+{
+  "benchmark": "SAGE-v2.1-memory-review-tool-smoke",
+  "version": "v2.1",
+  "initial_inbox_count": 1,
+  "candidate_id": "5ce530f205d8",
+  "show_has_raw": true,
+  "final_inbox_count": 0,
+  "final_approved_count": 1,
+  "final_rejected_count": 0,
+  "last_decision": {
+    "candidate_id": "5ce530f205d8",
+    "action": "approve",
+    "source_path": "results/v2_1_memory_review_smoke_workspace/memory/inbox/sample_memory_proposal.json",
+    "target_path": "results/v2_1_memory_review_smoke_workspace/memory/approved/sample_memory_proposal.json",
+    "reason": "Smoke test approves a synthetic memory proposal.",
+    "reviewer": "human",
+    "decided_at": "2026-06-30T01:53:05.763501+00:00",
+    "destructive": false,
+    "auto_approved": false,
+    "requires_human_approval": true
+  },
+  "safety_policy": {
+    "auto_approve_memory": false,
+    "auto_reject_memory": false,
+    "auto_delete_memory": false,
+    "file_delete": false,
+    "requires_human_confirmation_for_move": true,
+    "human_approval_required": true,
+    "proposal_only_until_commanded": true
+  },
+  "passed": true
+}
