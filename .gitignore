@@ -1,19 +1,11 @@
+# Virtual environment / Python cache
 .venv/
 __pycache__/
 *.pyc
-runtime_state/
+*.pyo
+*.pyd
 
-# Generated logs
-logs/*
-!logs/.gitkeep
-
-# Human-reviewed memory lanes
-memory/approved/*
-!memory/approved/.gitkeep
-memory/rejected/*
-!memory/rejected/.gitkeep
-
-# Python caches/build outputs
+# Python test/build/cache outputs
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
@@ -25,20 +17,61 @@ dist/
 
 # Local/editor/system files
 .DS_Store
+Thumbs.db
 .vscode/
+.idea/
 *.log
-
-# SAGE generated runtime artifacts
-results/
-memory/inbox/
-memory/review/
-logs/
-runtime_control/
-configs/generated/
-experiments/inbox/
-
-# Teacher generated data
-data/teacher/
 
 # Local secrets
 .env
+.env.*
+*.key
+*.secret
+secrets.*
+config.local.*
+
+# SAGE runtime artifacts
+runtime_state/
+runtime_control/
+logs/*
+!logs/.gitkeep
+
+# SAGE generated configs / inboxes
+configs/generated/
+experiments/inbox/
+
+# Memory lanes
+memory/inbox/
+memory/review/
+memory/approved/*
+!memory/approved/.gitkeep
+memory/rejected/*
+!memory/rejected/.gitkeep
+
+# Teacher generated data
+data/teacher/
+teacher/
+raw_teacher_outputs.jsonl
+errors.jsonl
+
+# Large/generated data
+data/raw/
+data/generated/
+outputs/
+
+# Models / checkpoints
+models/
+checkpoints/
+*.pt
+*.pth
+*.safetensors
+*.bin
+*.onnx
+*.gguf
+
+# Results
+results/raw/
+results/generated/
+results/*.jsonl
+results/*.csv
+results/*.pkl
