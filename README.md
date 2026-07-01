@@ -1,3 +1,6 @@
+# Self-organizing Adaptive Generative Ecosystem
+# 자연생태계+ 인간을 하이브리드로 모방
+
 ## Why I Continue This Project
 
 솔직히 저는 SAGE가 언젠가 AGI에 가까운 방향으로 발전할 수 있다고 믿고 있습니다.
